@@ -24,22 +24,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Magic",
+                    "name": "Attack2",
                     "type": "Button",
                     "id": "dd867ff4-f868-43bc-8477-f7a26d113ac2",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "6170ea9b-aad3-44b0-9a92-bcfcc4e3a5bc",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 },
                 {
                     "name": "Sprint",
@@ -173,17 +164,6 @@
                 },
                 {
                     "name": "",
-                    "id": "1707b012-48ff-4914-a446-ff1d2c1f3622",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "1874b7f5-de03-4714-9932-ea5146e70838",
                     "path": "<Keyboard>/shift",
                     "interactions": "",
@@ -200,7 +180,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Magic",
+                    "action": "Attack2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
