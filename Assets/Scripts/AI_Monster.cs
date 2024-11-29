@@ -24,7 +24,7 @@ public class AI_Monster : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (AI_Enemy == AI_State.Patrol)
         {
@@ -56,6 +56,11 @@ public class AI_Monster : MonoBehaviour
         {
             AttackPlayer(attackDamage);
         }
+        else if(Dist_Player > 20)
+        {
+            AI_Enemy = AI_State.Patrol;
+        }
+    
     }
     public void AttackPlayer(int damage)
     {
@@ -64,8 +69,9 @@ public class AI_Monster : MonoBehaviour
         if (player_health <= 0)
         {
             Player.SetActive(false);
+            gameObject.GetComponent<Animator>().SetTrigger("Off");
             AI_Enemy = AI_State.Patrol; // Вернуться в состояние патрулирования
-            AI_Agent.ResetPath(); // Сбросить путь, чтобы враг не продолжал двигаться
+            // AI_Agent.ResetPath(); // Сбросить путь, чтобы враг не продолжал двигаться
         }
     }
 }
