@@ -39,9 +39,7 @@ public class Player_Animation : MonoBehaviour
         }
 
         // Параметр атаки
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            m_anim.SetTrigger("Attack");
-        }
+        bool isAttackPressed = Mouse.current.leftButton.wasPressedThisFrame;
+        m_anim.SetBool("Attack", isAttackPressed);
     }
 }

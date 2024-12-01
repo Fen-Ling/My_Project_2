@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         m_attackAction.Enable();
 
         // Подписываемся на событие атаки
-        m_attackAction.performed += ctx => Attack();
+        // m_attackAction.performed += ctx => Attack();
 
         m_cameraOffset = cameraTransform.position - transform.position;
     }
@@ -72,13 +72,13 @@ public class PlayerController : MonoBehaviour
 
 
 
-    private void Attack()
-    {
-        if (characterAttack != null)
-        {
-            characterAttack.Attack(); // Вызов метода атаки из класса CharacterAttack
-        }
-    }
+    // private void Attack()
+    // {
+    //     if (characterAttack != null)
+    //     {
+    //         characterAttack.Attack(); // Вызов метода атаки из класса CharacterAttack
+    //     }
+    // }
     private void LateUpdate()
     {
         cameraTransform.position = transform.position + m_cameraOffset;
