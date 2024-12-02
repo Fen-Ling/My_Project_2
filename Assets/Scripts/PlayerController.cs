@@ -16,13 +16,9 @@ public class PlayerController : MonoBehaviour
     private InputAction m_attackAction; // Добавляем действие атаки
     private Vector3 m_cameraOffset;
     private Vector3 m_Rotation;
-
-    private CharacterAttack characterAttack; // Ссылка на скрипт атак
-
     private void Awake()
     {
         m_characterController = GetComponent<CharacterController>();
-        characterAttack = GetComponent<CharacterAttack>(); // Получаем компонент CharacterAttack
     }
 
     void Start()
@@ -34,9 +30,6 @@ public class PlayerController : MonoBehaviour
         m_moveAction.Enable();
         m_lookAction.Enable();
         m_attackAction.Enable();
-
-        // Подписываемся на событие атаки
-        // m_attackAction.performed += ctx => Attack();
 
         m_cameraOffset = cameraTransform.position - transform.position;
     }
@@ -70,15 +63,6 @@ public class PlayerController : MonoBehaviour
         transform.localEulerAngles = m_Rotation;
     }
 
-
-
-    // private void Attack()
-    // {
-    //     if (characterAttack != null)
-    //     {
-    //         characterAttack.Attack(); // Вызов метода атаки из класса CharacterAttack
-    //     }
-    // }
     private void LateUpdate()
     {
         cameraTransform.position = transform.position + m_cameraOffset;

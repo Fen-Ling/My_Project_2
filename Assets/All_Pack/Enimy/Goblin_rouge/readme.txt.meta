@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: de8c62b12506dec41a423127280cecbc
+timeCreated: 1468256868
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 66959
+  packageName: Goblin bandit
+  packageVersion: 1.0
+  assetPath: Assets/C&C_Pack/Goblin_rouge/readme.txt
+  uploadId: 126751

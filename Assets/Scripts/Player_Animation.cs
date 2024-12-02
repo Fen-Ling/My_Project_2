@@ -32,13 +32,11 @@ public class Player_Animation : MonoBehaviour
         m_anim.SetBool("Left", moveInput.x < 0);
         m_anim.SetBool("Right", moveInput.x > 0);
 
-        // Параметры анимации спринта
         if (Keyboard.current.leftShiftKey.isPressed)
         {
             m_anim.SetTrigger("Sprint");
         }
 
-        // Параметр атаки
         bool isAttackPressed = Mouse.current.leftButton.wasPressedThisFrame;
         m_anim.SetBool("Attack", isAttackPressed);
     }

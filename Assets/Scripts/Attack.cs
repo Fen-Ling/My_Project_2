@@ -9,7 +9,7 @@ public class Attack : MonoBehaviour
         // Наносим урон, если объект – враг
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enimy_Controll>().TakeDamage(damage);
+            other.GetComponent<Enimy_AI>().TakeDamage(damage);
         }
     }
 }
