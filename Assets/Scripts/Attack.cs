@@ -10,6 +10,7 @@ public class Attack : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             other.GetComponent<Enimy_AI>().TakeDamage(damage);
+            
         }
     }
 }

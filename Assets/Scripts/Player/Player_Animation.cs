@@ -23,18 +23,18 @@ public class Player_Animation : MonoBehaviour
     {
         Vector2 moveInput = m_moveAction.ReadValue<Vector2>();
 
-        // // Установка анимационных параметров движения
-        // m_anim.SetBool("Moving", moveInput.magnitude > 0);
-
         // Установка направления движения
         m_anim.SetBool("Forward", moveInput.y > 0);
         m_anim.SetBool("Backward", moveInput.y < 0);
         m_anim.SetBool("Left", moveInput.x < 0);
         m_anim.SetBool("Right", moveInput.x > 0);
 
+        // bool isSprintPressed = Keyboard.current.leftShiftKey.wasPressedThisFrame;
+        // m_anim.SetBool("Sprint", isSprintPressed);
+        
         if (Keyboard.current.leftShiftKey.isPressed)
         {
-            m_anim.SetTrigger("Sprint");
+            m_anim.SetTrigger("Sprint 0");
         }
 
         bool isAttackPressed = Mouse.current.leftButton.wasPressedThisFrame;

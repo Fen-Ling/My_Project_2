@@ -9,6 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: PT_Armors_Material_Toon
   m_Shader: {fileID: 4800000, guid: ad5cc8499eb3f43439c02eb1f62381e4, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
   - BOOLEAN_DB96F4EA_ON
@@ -24,6 +26,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -133,3 +136,4 @@ Material:
     - _SCLERACOLOR: {r: 0.9056604, g: 0.8159487, b: 0.8159487, a: 0}
     - _SKINCOLOR: {r: 0.5660378, g: 0.23588906, b: 0.15218939, a: 1}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

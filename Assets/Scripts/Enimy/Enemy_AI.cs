@@ -5,16 +5,18 @@ using System.Collections;
 
 public class Enimy_AI : MonoBehaviour
 {
-    public float range = 25f;       // Радиус для поиска случайной точки
-    public float chaseRange = 10f;   // Радиус обнаружения врагов
+    public float range = 30f;       // Радиус для поиска случайной точки
+    private float chaseRange;   // Радиус обнаружения врагов
     public float attackRange = 2.5f;    // Радиус атаки
-    public float patrolSpeed = 1f;    // Скорость движения при патрулировании
-    public float chaseSpeed = 3f;     // Скорость движения при преследовании
+    public float stopRange = 2f;
+    public float patrolSpeed = 0.5f;    // Скорость движения при патрулировании
+    public float chaseSpeed = 2f;     // Скорость движения при преследовании
     private int HP = 100;
     public Slider healthBar;
     private NavMeshAgent agent;         // Компонент NavMeshAgent
     private Transform player;           // Ссылка на игрока
     private Animator animator;           // Компонент Animator для управления анимациями
+    private string[] attackAnimations = { "Attack1", "Attack2", "Attack3" };
     public bool isChasing;             // Флаг, указывающий, преследует ли враг игрока
     private bool isPatrolling;           // Флаг для проверки патрулирования
     private Vector3 initialPosition;     // Начальная позиция врага
@@ -23,6 +25,7 @@ public class Enimy_AI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform; // Ищем объект игрока
         animator = GetComponent<Animator>(); // Получаем компонент Animator
+        chaseRange = range / 2;
         isChasing = false;
         isPatrolling = false; // Начинаем не патрулируя
         initialPosition = transform.position; // Сохраняем начальную позицию
@@ -32,9 +35,8 @@ public class Enimy_AI : MonoBehaviour
 
     private IEnumerator IdleAndPatrol()
     {
-        animator.SetBool("Idle", true); // Переход в состояние ожидания
+        animator.SetBool("Patroll", false); // Переход в состояние ожидания
         yield return new WaitForSeconds(3f); // Ждем 3 секунды
-        animator.SetBool("Idle", false); // Возвращаемся из состояния ожидания
         agent.speed = patrolSpeed; // Устанавливаем скорость патрулирования
         isPatrolling = true; // Начинаем патрулирование
         animator.SetBool("Patroll", true);
@@ -43,6 +45,7 @@ public class Enimy_AI : MonoBehaviour
 
     void Update()
     {
+        healthBar.value = HP;
         float distanceToPlayer = Vector3.Distance(transform.position, player.position) + 1f; // Добавлено +1 к расстоянию
 
         if (isChasing)
@@ -64,12 +67,21 @@ public class Enimy_AI : MonoBehaviour
 
             if (distanceToPlayer <= attackRange) // Если враг в радиусе атаки
             {
-                agent.isStopped = true; // Останавливаем движение врага
+
                 Attack(); // Выполнение атаки
+               
             }
+
             else
             {
-                agent.isStopped = false; // Продолжаем движение, если не в радиусе атаки
+                if (distanceToPlayer > stopRange)
+                {
+                    agent.SetDestination(player.position);
+                }
+                else
+                {
+                    agent.ResetPath();
+                }
             }
         }
         else
@@ -105,7 +117,7 @@ public class Enimy_AI : MonoBehaviour
         if (NavMesh.SamplePosition(randomPosition, out hit, range, NavMesh.AllAreas))
         {
             float distanceFromInitial = Vector3.Distance(initialPosition, hit.position); // Расстояние от начальной точки
-            if (distanceFromInitial <= 50f) // Проверяем, чтобы не было превышения радиуса
+            if (distanceFromInitial <= range) // Проверяем, чтобы не было превышения радиуса
             {
                 agent.destination = hit.position; // Устанавливаем новую случайную цель
             }
@@ -128,6 +140,7 @@ public class Enimy_AI : MonoBehaviour
             GetComponent<Collider>().enabled = false;
             healthBar.gameObject.SetActive(false);
             gameObject.SetActive(false);
+            Destroy(gameObject);
 
         }
         else
@@ -139,6 +152,10 @@ public class Enimy_AI : MonoBehaviour
 
     public void Attack()
     {
-        animator.SetTrigger("Attack");
+        int randomIndex = Random.Range(0, attackAnimations.Length);
+        
+        animator.SetTrigger(attackAnimations[randomIndex]);
+        
+        // animator.SetTrigger("Attack");
     }
 }
