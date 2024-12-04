@@ -3,7 +3,6 @@ using UnityEngine;
 public class Attack_Warrior : MonoBehaviour
 {
     public GameObject Weapon_Slot; 
-
     private Collider swordCollider; 
 
     void Start()

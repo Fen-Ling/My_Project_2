@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,17 +10,21 @@ public class PlayerController : MonoBehaviour
     public float rotateSpeed;
     public float burstSpeed;
     public InputActionAsset inputActions;
-
     private CharacterController m_characterController;
-    public Transform cameraTransform;
+    private Animator animator;
+    public int HP = 200;
+    public Slider healthBar;
+    // public Transform cameraTransform;
     private InputAction m_moveAction;
     private InputAction m_lookAction;
     private InputAction m_attackAction; // Добавляем действие атаки
-    private Vector3 m_cameraOffset;
+    // private Vector3 m_cameraOffset;
     private Vector3 m_Rotation;
     private void Awake()
     {
         m_characterController = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
+
     }
 
     void Start()
@@ -31,7 +37,8 @@ public class PlayerController : MonoBehaviour
         m_lookAction.Enable();
         m_attackAction.Enable();
 
-        m_cameraOffset = cameraTransform.position - transform.position;
+        // m_cameraOffset = cameraTransform.position - transform.position;
+        healthBar.value = HP;
     }
 
     public void Update()
@@ -63,8 +70,28 @@ public class PlayerController : MonoBehaviour
         transform.localEulerAngles = m_Rotation;
     }
 
-    private void LateUpdate()
+    public void TakeDamage(int damageAmount)
     {
-        cameraTransform.position = transform.position + m_cameraOffset;
+        HP -= damageAmount;
+        if (HP <= 0)
+        {
+            animator.SetTrigger("Death");
+            GetComponent<Collider>().enabled = false;
+            healthBar.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+            // Destroy(gameObject);
+
+        }
+        else
+        {
+            animator.SetTrigger("Damage");
+
+        }
     }
+    
+    
+    // private void LateUpdate()
+    // {
+    //     cameraTransform.position = transform.position + m_cameraOffset;
+    // }
 }

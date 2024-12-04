@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 5059726095271780202}
   - component: {fileID: 6009498068833930777}
   m_Layer: 5
-  m_Name: Enimy_Canvas
+  m_Name: Canvas_HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

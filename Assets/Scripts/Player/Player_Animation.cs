@@ -39,5 +39,7 @@ public class Player_Animation : MonoBehaviour
 
         bool isAttackPressed = Mouse.current.leftButton.wasPressedThisFrame;
         m_anim.SetBool("Attack", isAttackPressed);
+
+        
     }
 }

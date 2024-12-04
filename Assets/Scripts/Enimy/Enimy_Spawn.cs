@@ -7,7 +7,7 @@ public class DynamicEnemySpawner : MonoBehaviour
 {
     public GameObject[] enemyPrefabs; // Массив префабов врагов
     public int enemyCount = 6; // Исходное количество врагов
-    public float spawnRadius = 5f; // Радиус спавна
+    public float spawnRadius = 20f; // Радиус спавна
     public float spawnInterval = 5f; // Интервал спавна в секундах
     public Transform spawnPoint; // Точка спауна
 
@@ -18,7 +18,14 @@ public class DynamicEnemySpawner : MonoBehaviour
         enemies = new List<GameObject>();
         StartCoroutine(SpawnEnemiesCoroutine());
     }
-
+private void FixedUpdate()
+    {
+        CheckAndSpawnEnemies();
+        if (enemies.Count == 0)
+        {
+            StartCoroutine(SpawnEnemiesCoroutine());
+        }
+    }
     private IEnumerator SpawnEnemiesCoroutine()
     {
         while (enemies.Count < enemyCount) // Пока врагов меньше исходного количества

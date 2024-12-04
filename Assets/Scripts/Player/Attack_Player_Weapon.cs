@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Attack : MonoBehaviour
+public class Attack_Player_Weapon : MonoBehaviour
 {
     public int damage = 10;
 

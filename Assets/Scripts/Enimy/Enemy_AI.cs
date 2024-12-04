@@ -16,7 +16,7 @@ public class Enimy_AI : MonoBehaviour
     private NavMeshAgent agent;         // Компонент NavMeshAgent
     private Transform player;           // Ссылка на игрока
     private Animator animator;           // Компонент Animator для управления анимациями
-    private string[] attackAnimations = { "Attack1", "Attack2", "Attack3" };
+    private string[] attackAnimations = { "Attack", "Attack1", "Attack2" };
     public bool isChasing;             // Флаг, указывающий, преследует ли враг игрока
     private bool isPatrolling;           // Флаг для проверки патрулирования
     private Vector3 initialPosition;     // Начальная позиция врага
