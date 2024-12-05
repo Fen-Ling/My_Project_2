@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Magic_Ball : MonoBehaviour
+public class Player_Magic_Ball : MonoBehaviour
 {
     public int damage = 10; // Урон, который будет нанесен врагу
     public float lifetime = 3f; // Время жизни снаряда
@@ -12,7 +12,7 @@ public class Magic_Ball : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enimy_AI>().TakeDamage(damage);
+            other.GetComponent<Enimy_Damage>().TakeDamage(damage);
             Destroy(gameObject);
         }
 

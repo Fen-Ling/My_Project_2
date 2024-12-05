@@ -1,10 +1,19 @@
 using UnityEngine;
 
-public class Lock_At_Player : MonoBehaviour
+public class Billboard : MonoBehaviour
 {
-    public Transform camera;
-    void LateUpdate()
+    private Camera targetCamera;
+
+    void Start()
     {
-        transform.LookAt(camera);
+        targetCamera = GameObject.Find("Cam1").GetComponent<Camera>();
+    }
+
+    void Update()
+    {
+        if (targetCamera != null)
+        {
+            transform.LookAt(targetCamera.transform);
+        }
     }
 }

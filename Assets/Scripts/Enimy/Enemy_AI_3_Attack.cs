@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using System.Collections;
 
-public class Enimy_AI : MonoBehaviour
+public class Enimy_AI_3 : MonoBehaviour
 {
     public float range = 30f;       // Радиус для поиска случайной точки
     private float chaseRange;   // Радиус обнаружения врагов
@@ -11,8 +11,6 @@ public class Enimy_AI : MonoBehaviour
     public float stopRange = 2f;
     public float patrolSpeed = 0.5f;    // Скорость движения при патрулировании
     public float chaseSpeed = 2f;     // Скорость движения при преследовании
-    private int HP = 100;
-    public Slider healthBar;
     private NavMeshAgent agent;         // Компонент NavMeshAgent
     private Transform player;           // Ссылка на игрока
     private Animator animator;           // Компонент Animator для управления анимациями
@@ -45,7 +43,6 @@ public class Enimy_AI : MonoBehaviour
 
     void Update()
     {
-        healthBar.value = HP;
         float distanceToPlayer = Vector3.Distance(transform.position, player.position) + 1f; // Добавлено +1 к расстоянию
 
         if (isChasing)
@@ -69,7 +66,7 @@ public class Enimy_AI : MonoBehaviour
             {
 
                 Attack(); // Выполнение атаки
-               
+
             }
 
             else
@@ -131,31 +128,9 @@ public class Enimy_AI : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f); // Плавный поворот
     }
 
-    public void TakeDamage(int damageAmount)
-    {
-        HP -= damageAmount;
-        if (HP <= 0)
-        {
-            animator.SetTrigger("Death");
-            GetComponent<Collider>().enabled = false;
-            healthBar.gameObject.SetActive(false);
-            gameObject.SetActive(false);
-            Destroy(gameObject);
-
-        }
-        else
-        {
-            animator.SetTrigger("Damage");
-
-        }
-    }
-
     public void Attack()
     {
         int randomIndex = Random.Range(0, attackAnimations.Length);
-        
         animator.SetTrigger(attackAnimations[randomIndex]);
-        
-        // animator.SetTrigger("Attack");
     }
 }

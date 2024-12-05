@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
+        healthBar.value = HP;
         Vector2 move = m_moveAction.ReadValue<Vector2>();
         Vector2 look = m_lookAction.ReadValue<Vector2>();
         Move(move);
@@ -88,8 +89,8 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-    
-    
+
+
     // private void LateUpdate()
     // {
     //     cameraTransform.position = transform.position + m_cameraOffset;
