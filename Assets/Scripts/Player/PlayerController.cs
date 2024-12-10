@@ -12,8 +12,9 @@ public class PlayerController : MonoBehaviour
     public InputActionAsset inputActions;
     private CharacterController m_characterController;
     private Animator animator;
-    public int MaxHP = 200;
-    private int HP;
+    public float MaxHP = 200f;
+    public float healHP = 0.5f;
+    private float HP;
     public Slider healthBar;
     // public Transform cameraTransform;
     private InputAction m_moveAction;
@@ -47,11 +48,14 @@ public class PlayerController : MonoBehaviour
     public void Update()
     {
         healthBar.value = HP;
-
         // Vector2 move = m_moveAction.ReadValue<Vector2>();
         Vector2 look = m_lookAction.ReadValue<Vector2>();
         // Move(move);
         Look(look);
+    }
+    private void FixedUpdate()
+    {
+        Heal(healHP);
     }
 
     // private void Move(Vector2 direction)
@@ -75,7 +79,7 @@ public class PlayerController : MonoBehaviour
         transform.localEulerAngles = m_Rotation;
     }
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(float damageAmount)
     {
         HP -= damageAmount;
 
@@ -95,7 +99,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Heal(int HealAmount)
+    public void Heal(float HealAmount)
     {
         HP += HealAmount; // Увеличиваем текущее здоровье
         HP = Mathf.Clamp(HP, 0, MaxHP);

@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public class Enimy_Damage : MonoBehaviour
 {
-    public int MaxHP = 100;
-    public int healing = 1;
-    private int CorHP;
+    public float MaxHP = 100f;
+    public float healing = 0.05f;
+    public float CorHP;
     public Slider healthBar;
     private Animator animator;
 
@@ -30,7 +30,7 @@ public class Enimy_Damage : MonoBehaviour
             animator.SetTrigger("Death");
             GetComponent<Collider>().enabled = false;
             healthBar.gameObject.SetActive(false);
-            // gameObject.SetActive(false);
+            gameObject.SetActive(false);
             Destroy(gameObject, 3f);
 
         }
@@ -41,7 +41,7 @@ public class Enimy_Damage : MonoBehaviour
         }
     }
 
-    public void Heal(int HealAmount)
+    public void Heal(float HealAmount)
     {
         CorHP += HealAmount;
         CorHP = Mathf.Clamp(CorHP, 0, MaxHP); // Ограничиваем здоровье в пределах 0 и MaxHP

@@ -8,7 +8,7 @@ public class DynamicEnemySpawner : MonoBehaviour
     public GameObject[] enemyPrefabs; // Массив префабов врагов
     public int enemyCount = 6; // Исходное количество врагов
     public float spawnRadius = 20f; // Радиус спавна
-    public float spawnInterval = 5f; // Интервал спавна в секундах
+    public float spawnInterval = 1.5f; // Интервал спавна в секундах
     public Transform spawnPoint; // Точка спауна
 
     private List<GameObject> enemies; // Список активных врагов
@@ -40,7 +40,7 @@ private void FixedUpdate()
     void SpawnEnemy()
     {
         Vector3 randomPosition = spawnPoint.position + Random.insideUnitSphere * spawnRadius;
-        randomPosition.y = 0; // Установка Y в 0 для спавна на плоскости
+        // randomPosition.y = 0; // Установка Y в 0 для спавна на плоскости
 
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomPosition, out hit, 1.0f, NavMesh.AllAreas))
