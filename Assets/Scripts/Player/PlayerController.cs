@@ -6,13 +6,14 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed;
+    // public float moveSpeed;
     public float rotateSpeed;
-    public float burstSpeed;
+    // public float burstSpeed;
     public InputActionAsset inputActions;
     private CharacterController m_characterController;
     private Animator animator;
-    public int HP = 200;
+    public int MaxHP = 200;
+    private int HP;
     public Slider healthBar;
     // public Transform cameraTransform;
     private InputAction m_moveAction;
@@ -27,38 +28,41 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void Start()
+    private void Start()
     {
-        m_moveAction = inputActions.FindAction("Player/Move");
+        // m_moveAction = inputActions.FindAction("Player/Move");
         m_lookAction = inputActions.FindAction("Player/Look");
-        m_attackAction = inputActions.FindAction("Player/Attack"); // Получаем действие атаки
+        m_attackAction = inputActions.FindAction("Player/Attack");
 
-        m_moveAction.Enable();
+        // m_moveAction.Enable();
         m_lookAction.Enable();
         m_attackAction.Enable();
 
         // m_cameraOffset = cameraTransform.position - transform.position;
+        HP = MaxHP;
+        healthBar.maxValue = HP;
         healthBar.value = HP;
     }
 
     public void Update()
     {
         healthBar.value = HP;
-        Vector2 move = m_moveAction.ReadValue<Vector2>();
+
+        // Vector2 move = m_moveAction.ReadValue<Vector2>();
         Vector2 look = m_lookAction.ReadValue<Vector2>();
-        Move(move);
+        // Move(move);
         Look(look);
     }
 
-    private void Move(Vector2 direction)
-    {
-        if (direction.sqrMagnitude < 0.01)
-            return;
+    // private void Move(Vector2 direction)
+    // {
+    //     if (direction.sqrMagnitude < 0.01)
+    //         return;
 
-        var scaledMoveSpeed = moveSpeed * Time.deltaTime;
-        var move = Quaternion.Euler(0, transform.eulerAngles.y, 0) * new Vector3(direction.x, 0, direction.y);
-        transform.position += move * scaledMoveSpeed;
-    }
+    //     var scaledMoveSpeed = moveSpeed * Time.deltaTime;
+    //     var move = Quaternion.Euler(0, transform.eulerAngles.y, 0) * new Vector3(direction.x, 0, direction.y);
+    //     transform.position += move * scaledMoveSpeed;
+    // }
 
     private void Look(Vector2 rotate)
     {
@@ -74,13 +78,14 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         HP -= damageAmount;
+
         if (HP <= 0)
         {
             animator.SetTrigger("Death");
             GetComponent<Collider>().enabled = false;
             healthBar.gameObject.SetActive(false);
-            gameObject.SetActive(false);
-            // Destroy(gameObject);
+            // gameObject.SetActive(false);
+            Destroy(gameObject, 5f);
 
         }
         else
@@ -90,6 +95,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Heal(int HealAmount)
+    {
+        HP += HealAmount; // Увеличиваем текущее здоровье
+        HP = Mathf.Clamp(HP, 0, MaxHP);
+    }
 
     // private void LateUpdate()
     // {

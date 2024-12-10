@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Billboard : MonoBehaviour
+public class Lock_At_Player : MonoBehaviour
 {
     private Camera targetCamera;
 
