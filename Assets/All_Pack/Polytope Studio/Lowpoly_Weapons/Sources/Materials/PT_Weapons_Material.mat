@@ -8,7 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PT_Weapons_Material
-  m_Shader: {fileID: 4800000, guid: d50c8cde2c95f1d43ae0b94621f0abc4, type: 3}
+  m_Shader: {fileID: 4800000, guid: f927324484469bb4787e5d7bce49fa04, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _METALICON_ON
@@ -19,6 +21,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -121,3 +124,4 @@ Material:
     - _WOOD2COLOR: {r: 0.1320755, g: 0.06452555, b: 0.05420079, a: 0}
     - _WOOD3COLOR: {r: 0.1037736, g: 0.07509367, b: 0.04650232, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

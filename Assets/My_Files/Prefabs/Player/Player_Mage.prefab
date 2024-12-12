@@ -1359,7 +1359,7 @@ Transform:
   m_GameObject: {fileID: 6076171900545248438}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1456,9 +1456,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60aad71e7aa42a84ea57463191d88ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 5920701282153680505, guid: 55c23dc61c96b2d4192a22360e1814c7, type: 3}
+  Prefab_Magic: {fileID: 5077845453110078037, guid: 8d0e14576f239f14590d970c440c9132, type: 3}
   spawnPoint: {fileID: 8153588053301105858}
-  animator: {fileID: 5466530231738057113}
 --- !u!1 &6091134085873343542
 GameObject:
   m_ObjectHideFlags: 0

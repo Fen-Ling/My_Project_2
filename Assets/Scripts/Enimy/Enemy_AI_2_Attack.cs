@@ -43,7 +43,7 @@ public class Enimy_AI_2 : MonoBehaviour
 
     void Update()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position) + 1f; // Добавлено +1 к расстоянию
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position); // Добавлено +1 к расстоянию
 
         if (isChasing)
         {
@@ -83,7 +83,7 @@ public class Enimy_AI_2 : MonoBehaviour
         }
         else
         {
-            if (!agent.pathPending && agent.remainingDistance < 1f)
+            if (!agent.pathPending && agent.remainingDistance <= stopRange)
             {
                 if (isPatrolling)
                 {
@@ -108,7 +108,7 @@ public class Enimy_AI_2 : MonoBehaviour
     void GoToRandomPatrolPoint()
     {
         Vector3 randomDirection = Random.insideUnitSphere * range;
-        randomDirection.y = 0; // Убедитесь, что высота равна 0 (или установите нужную вам высоту)
+        // randomDirection.y = 0; // Убедитесь, что высота равна 0 (или установите нужную вам высоту)
         Vector3 randomPosition = initialPosition + randomDirection; // Расчет случайной позиции от начальной точки
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomPosition, out hit, range, NavMesh.AllAreas))

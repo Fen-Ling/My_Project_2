@@ -82,7 +82,7 @@ public class Enimy_AI_1 : MonoBehaviour
         }
         else
         {
-            if (!agent.pathPending && agent.remainingDistance < 1f)
+            if (!agent.pathPending && agent.remainingDistance <= stopRange)
             {
                 if (isPatrolling)
                 {
@@ -107,7 +107,7 @@ public class Enimy_AI_1 : MonoBehaviour
     void GoToRandomPatrolPoint()
     {
         Vector3 randomDirection = Random.insideUnitSphere * range;
-        randomDirection.y = 0; // Убедитесь, что высота равна 0 (или установите нужную вам высоту)
+        // randomDirection.y = 0; // Убедитесь, что высота равна 0 (или установите нужную вам высоту)
         Vector3 randomPosition = initialPosition + randomDirection; // Расчет случайной позиции от начальной точки
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomPosition, out hit, range, NavMesh.AllAreas))
