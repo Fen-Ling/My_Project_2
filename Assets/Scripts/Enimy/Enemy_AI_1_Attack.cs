@@ -42,7 +42,7 @@ public class Enimy_AI_1 : MonoBehaviour
 
     void Update()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position) + 1f; // Добавлено +1 к расстоянию
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position); // Добавлено +1 к расстоянию
 
         if (isChasing)
         {
@@ -82,7 +82,7 @@ public class Enimy_AI_1 : MonoBehaviour
         }
         else
         {
-            if (!agent.pathPending && agent.remainingDistance < 0.5f)
+            if (!agent.pathPending && agent.remainingDistance < 1f)
             {
                 if (isPatrolling)
                 {

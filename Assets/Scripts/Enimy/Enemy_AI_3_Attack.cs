@@ -34,7 +34,7 @@ public class Enimy_AI_3 : MonoBehaviour
     private IEnumerator IdleAndPatrol()
     {
         animator.SetBool("Patroll", false); // Переход в состояние ожидания
-        yield return new WaitForSeconds(3f); // Ждем 3 секунды
+        yield return new WaitForSeconds(1f); // Ждем 3 секунды
         agent.speed = patrolSpeed; // Устанавливаем скорость патрулирования
         isPatrolling = true; // Начинаем патрулирование
         animator.SetBool("Patroll", true);
@@ -43,7 +43,7 @@ public class Enimy_AI_3 : MonoBehaviour
 
     void Update()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position) + 1f; // Добавлено +1 к расстоянию
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         if (isChasing)
         {
@@ -83,7 +83,7 @@ public class Enimy_AI_3 : MonoBehaviour
         }
         else
         {
-            if (!agent.pathPending && agent.remainingDistance < 0.5f)
+            if (!agent.pathPending && agent.remainingDistance <= 1)
             {
                 if (isPatrolling)
                 {

@@ -1869,7 +1869,7 @@ GameObject:
   - component: {fileID: 3405082282723955217}
   - component: {fileID: 5418784222142899251}
   - component: {fileID: 7383580129746339207}
-  - component: {fileID: 4924364841112084286}
+  - component: {fileID: 8945691370868235748}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Enemy
@@ -1929,6 +1929,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9447f804ec1f26a46ae9bf3c6b99d05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHP: 100
+  healing: 0.05
+  CorHP: 0
   healthBar: {fileID: 2977380907036863841}
 --- !u!114 &5418784222142899251
 MonoBehaviour:
@@ -1957,7 +1960,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8918810613051367908}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 1
+  m_Radius: 0.5
   m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
@@ -1970,8 +1973,8 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!64 &4924364841112084286
-MeshCollider:
+--- !u!136 &8945691370868235748
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1988,10 +1991,11 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 93f175331b13808429d4b085140d308c, type: 3}
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &8966347059353303450
 GameObject:
   m_ObjectHideFlags: 0

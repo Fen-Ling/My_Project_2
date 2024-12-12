@@ -1323,10 +1323,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2996714420181093996}
   - component: {fileID: 1771393161870498582}
-  - component: {fileID: 1183211682642656398}
   - component: {fileID: 1451188415515050453}
   - component: {fileID: 5072493141809990014}
   - component: {fileID: -741958078588704836}
+  - component: {fileID: -6294789351424564283}
   m_Layer: 0
   m_Name: spider_green
   m_TagString: Enemy
@@ -1374,28 +1374,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!64 &1183211682642656398
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5702535359400005489}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3309482177814998703, guid: b332d0a35f177a846a778e57e5d319a8, type: 3}
 --- !u!195 &1451188415515050453
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1448,7 +1426,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9447f804ec1f26a46ae9bf3c6b99d05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHP: 100
+  healing: 0.05
+  CorHP: 0
   healthBar: {fileID: 8001707397354473983}
+--- !u!136 &-6294789351424564283
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702535359400005489}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &5852147250709257324
 GameObject:
   m_ObjectHideFlags: 0

@@ -1761,7 +1761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 748bb098821dea94585ca4ea7fc9db4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 30
+  range: 25
   attackRange: 3
   stopRange: 2.5
   patrolSpeed: 1
@@ -1779,6 +1779,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9447f804ec1f26a46ae9bf3c6b99d05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHP: 100
+  healing: 0.05
+  CorHP: 0
   healthBar: {fileID: 3271567688703541580}
 --- !u!136 &825119576570878367
 CapsuleCollider:

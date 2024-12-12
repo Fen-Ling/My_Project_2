@@ -1106,7 +1106,7 @@ GameObject:
   - component: {fileID: 2401093207281318703}
   - component: {fileID: -4739270006988891259}
   - component: {fileID: 5966972477619079751}
-  - component: {fileID: -6840220313100368209}
+  - component: {fileID: -7248410350904754180}
   m_Layer: 0
   m_Name: spider_black
   m_TagString: Enemy
@@ -1206,9 +1206,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9447f804ec1f26a46ae9bf3c6b99d05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHP: 100
+  healing: 0.05
+  CorHP: 0
   healthBar: {fileID: 1762175706659744748}
---- !u!64 &-6840220313100368209
-MeshCollider:
+--- !u!136 &-7248410350904754180
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1225,10 +1228,11 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2076370903636516922, guid: 2761082c7dc2b614392d66e8f87713e8, type: 3}
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &4642556395888559740
 GameObject:
   m_ObjectHideFlags: 0

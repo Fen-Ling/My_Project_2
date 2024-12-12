@@ -12,7 +12,7 @@ public class Attack_Warrior : MonoBehaviour
             swordCollider = Weapon_Slot.GetComponentInChildren<Collider>();
         }
     }
-    public void OnAnimation()
+    public void OnAnimation() //добавить событие в начало анимации
     {
         if (swordCollider != null)
         {
@@ -20,7 +20,7 @@ public class Attack_Warrior : MonoBehaviour
         }
     }
 
-    public void OnAnimationEnd()
+    public void OnAnimationEnd()    //добавить событие в конец анимации
     {
         if (swordCollider != null)
         {

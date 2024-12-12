@@ -1265,8 +1265,8 @@ GameObject:
   - component: {fileID: 3796458562451887659}
   - component: {fileID: 7367564477668493761}
   - component: {fileID: 3893033123869426202}
-  - component: {fileID: 4256809302510431743}
   - component: {fileID: 7594254840009473120}
+  - component: {fileID: 4839127960727435757}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Enemy
@@ -1323,7 +1323,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4026104807548298721}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 1
+  m_Radius: 0.5
   m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
@@ -1354,8 +1354,24 @@ MonoBehaviour:
   patrolSpeed: 0.5
   chaseSpeed: 2
   isChasing: 0
---- !u!64 &4256809302510431743
-MeshCollider:
+--- !u!114 &7594254840009473120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4026104807548298721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9447f804ec1f26a46ae9bf3c6b99d05c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHP: 100
+  healing: 0.05
+  CorHP: 0
+  healthBar: {fileID: 5365995024042946562}
+--- !u!136 &4839127960727435757
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1372,23 +1388,11 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8950947897166563805, guid: 0112b3ddf6b69f148b600356eb9c21a3, type: 3}
---- !u!114 &7594254840009473120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4026104807548298721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9447f804ec1f26a46ae9bf3c6b99d05c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 5365995024042946562}
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &4079149968751985884
 GameObject:
   m_ObjectHideFlags: 0

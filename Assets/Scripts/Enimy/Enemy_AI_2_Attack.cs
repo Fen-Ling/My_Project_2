@@ -83,7 +83,7 @@ public class Enimy_AI_2 : MonoBehaviour
         }
         else
         {
-            if (!agent.pathPending && agent.remainingDistance < 0.5f)
+            if (!agent.pathPending && agent.remainingDistance < 1f)
             {
                 if (isPatrolling)
                 {
