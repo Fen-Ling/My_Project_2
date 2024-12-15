@@ -915,8 +915,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9447f804ec1f26a46ae9bf3c6b99d05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 100
-  healing: 0.05
+  MaxHP: 200
+  healing: 0.1
   CorHP: 0
   healthBar: {fileID: 1154351001017323267}
 --- !u!114 &7637390619013770919
@@ -931,10 +931,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb19ca5b48025f4a8c601e410373efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 30
+  range: 15
   attackRange: 3
   stopRange: 2.5
-  patrolSpeed: 0.5
+  patrolSpeed: 1
   chaseSpeed: 2
   isChasing: 0
 --- !u!195 &960397367184019963
@@ -1131,7 +1131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7890b31ff58e97345a3f5605f3d4b69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 20
 --- !u!1 &3424028975100075991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,7 +1666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7890b31ff58e97345a3f5605f3d4b69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 20
 --- !u!1 &5569651704552902263
 GameObject:
   m_ObjectHideFlags: 0
