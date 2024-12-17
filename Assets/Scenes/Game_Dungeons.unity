@@ -5412,8 +5412,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590280302}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16018225, y: 0, z: 0, w: 0.9870875}
-  m_LocalPosition: {x: 117, y: -47, z: -79}
+  m_LocalRotation: {x: -0.08474195, y: 0.89231133, z: -0.18838869, w: -0.40138397}
+  m_LocalPosition: {x: 121.250916, y: -45.606575, z: -69.95744}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7489,8 +7489,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734850097}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16018225, y: 0, z: 0, w: 0.9870875}
-  m_LocalPosition: {x: 117, y: -47, z: -79}
+  m_LocalRotation: {x: -0.08474195, y: 0.89231133, z: -0.18838869, w: -0.40138397}
+  m_LocalPosition: {x: 121.250916, y: -45.606575, z: -69.95744}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7555,7 +7555,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 1862553053}
+    TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -16031,12 +16031,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1545840176}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1545840176
 Transform:
   m_ObjectHideFlags: 0

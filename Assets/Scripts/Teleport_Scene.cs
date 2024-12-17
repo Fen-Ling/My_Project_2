@@ -17,7 +17,10 @@ public class PortalTeleport : MonoBehaviour
 
     private IEnumerator TeleportPlayer(Transform player)
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
+        // AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
+        
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
 
         while (!asyncLoad.isDone)
         {
