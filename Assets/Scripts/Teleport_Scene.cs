@@ -4,12 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class PortalTeleport : MonoBehaviour
 {
-    public string sceneToLoad; // Название сцены для загрузки
-    public Vector3 spawnPosition; // Позиция, куда будет телепортирован игрок
+    public string sceneToLoad;
+    public Vector3 teleportPoint;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) // Проверка, что объект - игрок
+        if (other.CompareTag("Player"))
         {
             StartCoroutine(TeleportPlayer(other.transform));
         }
@@ -17,16 +17,18 @@ public class PortalTeleport : MonoBehaviour
 
     private IEnumerator TeleportPlayer(Transform player)
     {
-        // Загрузить новую сцену
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
-        
-        // Ожидание завершения загрузки
+
         while (!asyncLoad.isDone)
         {
             yield return null;
         }
 
-        // Телепортация игрока на нужную позицию
-        player.position = spawnPosition;
+
+
+        player.GetComponent<CharacterController>().enabled = false;
+        player.position = teleportPoint;
+        player.GetComponent<CharacterController>().enabled = true;
+
     }
 }
