@@ -64,6 +64,17 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "5f7d4d12-31d6-41c3-9a90-09154cc1cbcc",
+                    "path": "<Joystick>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "WASD",
                     "id": "d3a542d5-e4e7-44f6-a77a-ee4853754e86",
                     "path": "2DVector",
@@ -161,6 +172,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "539e819d-f9c7-4dbb-9b52-d2d6acc38fee",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",

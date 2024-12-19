@@ -4,19 +4,23 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public float rotateSpeed;
     public InputActionAsset inputActions;
     private CharacterController m_characterController;
     private Animator animator;
+    public Joystick Joystick;
+    private Vector3 m_Rotation;
+    private float moveSpeed = 1f;
+    private float rotateSpeed = 80f;
+
     public float MaxHP = 200f;
     public float healHP = 0.5f;
     private float HP;
     public Slider healthBar;
     private InputAction m_lookAction;
-    private InputAction m_attackAction;
-    private Vector3 m_Rotation;
+
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         m_characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
 
@@ -25,10 +29,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         m_lookAction = inputActions.FindAction("Player/Look");
-        m_attackAction = inputActions.FindAction("Player/Attack");
-
         m_lookAction.Enable();
-        m_attackAction.Enable();
 
         HP = MaxHP;
         healthBar.maxValue = HP;
@@ -37,13 +38,25 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
-        healthBar.value = HP;
         Vector2 look = m_lookAction.ReadValue<Vector2>();
         Look(look);
+
+        Vector2 moveDirection = new Vector2(Joystick.Horizontal, Joystick.Vertical);
+        Move(moveDirection);
+
     }
     private void FixedUpdate()
     {
         Heal(healHP);
+    }
+
+    private void Move(Vector2 direction)
+    {
+        if (direction.sqrMagnitude < 0.01)
+            return;
+
+        var move = Quaternion.Euler(0, m_Rotation.y, 0) * new Vector3(direction.x, 0, direction.y);
+        m_characterController.Move(move * moveSpeed * Time.deltaTime);
     }
 
     private void Look(Vector2 rotate)

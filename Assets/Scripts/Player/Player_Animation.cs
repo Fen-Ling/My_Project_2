@@ -5,6 +5,7 @@ public class Player_Animation : MonoBehaviour
 {
     private Animator m_anim;
     public InputActionAsset inputActions;
+    public Joystick joystick;
     private InputAction m_moveAction;
 
     void Start()
@@ -15,7 +16,18 @@ public class Player_Animation : MonoBehaviour
 
     void Update()
     {
-        Vector2 moveInput = m_moveAction.ReadValue<Vector2>();
+        Vector2 moveInput = Vector2.zero;
+
+        if (joystick != null)
+        {
+            moveInput = joystick.Direction;
+        }
+
+        if (moveInput == Vector2.zero)
+        {
+            moveInput = m_moveAction.ReadValue<Vector2>();
+        }
+
 
         m_anim.SetBool("Forward", moveInput.y > 0);
         m_anim.SetBool("Backward", moveInput.y < 0);

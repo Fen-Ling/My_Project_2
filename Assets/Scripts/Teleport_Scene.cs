@@ -11,27 +11,39 @@ public class PortalTeleport : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(TeleportPlayer(other.transform));
+            StartCoroutine(LoadSceneAsync(sceneToLoad, other.transform));
         }
     }
 
-    private IEnumerator TeleportPlayer(Transform player)
+    IEnumerator LoadSceneAsync(string sceneName, Transform player)
     {
-        // AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
-        
+        // SceneManager.LoadScene("Empty", LoadSceneMode.Additive);
+        // var emptyScene = SceneManager.GetSceneByName("Empty");
+        var activeScene = SceneManager.GetActiveScene();
+        var ao = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
-
-        while (!asyncLoad.isDone)
+        while (!ao.isDone)
         {
+            Debug.Log("Загрузка: " + ao.progress);
             yield return null;
         }
 
+        yield return new WaitForSecondsRealtime(1f);
 
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+        
+        TeleportPlayer(player);
 
+        yield return SceneManager.UnloadSceneAsync(activeScene.name);
+        Debug.Log("Новая сцена загружена и игрок телепортирован.");
+
+        // SceneManager.UnloadSceneAsync(emptyScene.name);
+    }
+
+    private void TeleportPlayer(Transform player)
+    {
         player.GetComponent<CharacterController>().enabled = false;
         player.position = teleportPoint;
         player.GetComponent<CharacterController>().enabled = true;
-
     }
 }
