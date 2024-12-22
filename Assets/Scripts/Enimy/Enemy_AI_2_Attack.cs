@@ -43,7 +43,7 @@ public class Enimy_AI_2 : MonoBehaviour
 
     void Update()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position); // Добавлено +1 к расстоянию
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         if (isChasing)
         {

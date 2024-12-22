@@ -3365,17 +3365,17 @@ MonoBehaviour:
   needsOwnSort: 0
   needsOwnAabbBuffer: 0
   m_Topology:
-    rid: 2576622224267804904
+    rid: 1000
   m_Shading:
-    rid: 2576622224267804905
+    rid: 1001
   references:
     version: 2
     RefIds:
-    - rid: 2576622224267804904
+    - rid: 1000
       type: {class: ParticleTopologyPlanarPrimitive, ns: UnityEditor.VFX, asm: Unity.VisualEffectGraph.Editor}
       data:
         primitiveType: 1
-    - rid: 2576622224267804905
+    - rid: 1001
       type: {class: ParticleShadingShaderGraph, ns: UnityEditor.VFX, asm: Unity.VisualEffectGraph.Editor}
       data:
         shaderGraph: {fileID: 4333940904281232215, guid: 08364555ff200634bb446979102ec3c8, type: 3}
@@ -4309,17 +4309,17 @@ MonoBehaviour:
   needsOwnSort: 0
   needsOwnAabbBuffer: 0
   m_Topology:
-    rid: 2576622224267804906
+    rid: 1000
   m_Shading:
-    rid: 2576622224267804907
+    rid: 1001
   references:
     version: 2
     RefIds:
-    - rid: 2576622224267804906
+    - rid: 1000
       type: {class: ParticleTopologyPlanarPrimitive, ns: UnityEditor.VFX, asm: Unity.VisualEffectGraph.Editor}
       data:
         primitiveType: 1
-    - rid: 2576622224267804907
+    - rid: 1001
       type: {class: ParticleShadingShaderGraph, ns: UnityEditor.VFX, asm: Unity.VisualEffectGraph.Editor}
       data:
         shaderGraph: {fileID: 4333940904281232215, guid: 8d8b8e91aa55f3145a9a644e270e4803, type: 3}

@@ -3858,10 +3858,8 @@ MonoBehaviour:
       data:
         shaderGraph: {fileID: 4333940904281232215, guid: 8d8b8e91aa55f3145a9a644e270e4803, type: 3}
         materialSettings:
-          m_PropertyNames:
-          - _QueueControl
-          m_PropertyValues:
-          - 0
+          m_PropertyNames: []
+          m_PropertyValues: []
           renderQueue: -1
 --- !u!114 &8926484042661614858
 MonoBehaviour:

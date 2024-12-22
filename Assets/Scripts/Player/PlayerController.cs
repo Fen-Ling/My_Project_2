@@ -4,24 +4,19 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public float rotateSpeed;
     public InputActionAsset inputActions;
-    private CharacterController m_characterController;
-    private Animator animator;
-    public Joystick Joystick;
-    private Vector3 m_Rotation;
-    private float moveSpeed = 1f;
-    private float rotateSpeed = 80f;
-
-    public float MaxHP = 200f;
-    public float healHP = 0.5f;
-    private float HP;
     public Slider healthBar;
-    private InputAction m_lookAction;
+    private Animator animator;
+    public float MaxHP = 200f;
+    private float healHP;
+    private float HP;
 
+    private InputAction m_lookAction;
+    private Vector3 m_Rotation;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        m_characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
 
     }
@@ -34,29 +29,18 @@ public class PlayerController : MonoBehaviour
         HP = MaxHP;
         healthBar.maxValue = HP;
         healthBar.value = HP;
+        healHP = MaxHP / 1000;
     }
 
     public void Update()
     {
+        healthBar.value = HP;
         Vector2 look = m_lookAction.ReadValue<Vector2>();
         Look(look);
-
-        Vector2 moveDirection = new Vector2(Joystick.Horizontal, Joystick.Vertical);
-        Move(moveDirection);
-
     }
     private void FixedUpdate()
     {
         Heal(healHP);
-    }
-
-    private void Move(Vector2 direction)
-    {
-        if (direction.sqrMagnitude < 0.01)
-            return;
-
-        var move = Quaternion.Euler(0, m_Rotation.y, 0) * new Vector3(direction.x, 0, direction.y);
-        m_characterController.Move(move * moveSpeed * Time.deltaTime);
     }
 
     private void Look(Vector2 rotate)
@@ -79,19 +63,18 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Death");
             GetComponent<Collider>().enabled = false;
             healthBar.gameObject.SetActive(false);
-            Destroy(gameObject, 5f);
 
+            Destroy(gameObject, 5f);
         }
         else
         {
             animator.SetTrigger("Damage");
-
         }
     }
 
     public void Heal(float HealAmount)
     {
-        HP += HealAmount; // Увеличиваем текущее здоровье
+        HP += HealAmount;
         HP = Mathf.Clamp(HP, 0, MaxHP);
     }
 }
