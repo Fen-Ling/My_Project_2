@@ -8,19 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PT_Armors_Material_Toon
-  m_Shader: {fileID: 4800000, guid: ad5cc8499eb3f43439c02eb1f62381e4, type: 3}
+  m_Shader: {fileID: 4800000, guid: 66cf399cd52203c4685e11681d535f09, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _RECEIVE_SHADOWS_OFF
   m_InvalidKeywords:
-  - BOOLEAN_DB96F4EA_ON
-  - _CAPE_KEY1
-  - _FLATCOLORS_ON
-  - _GLOSSYREFLECTIONS_OFF
-  - _KEYWORD0_ON
-  - _SPECULARHIGHLIGHTS_OFF
-  - _TOGGLESWITCH1_ON
-  m_LightmapFlags: 2
+  - _SMOOTHNESSON_ON
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -95,14 +90,38 @@ Material:
     - _CEL2SIZE: 0.4
     - _CEL3POWER: 0.15
     - _CEL3SIZE: 0.8
+    - _EYESSMOOTHNESS: 0.7
+    - _EnvironmentReflections: 1
+    - _GEMS1SMOOTHNESS: 1
+    - _GEMS2SMOOTHNESS: 0
+    - _GEMS3SMOOTHNESS: 0
+    - _HAIRSMOOTHNESS: 0.1
+    - _LEATHER1SMOOTHNESS: 0.3
+    - _LEATHER2SMOOTHNESS: 0.3
+    - _LEATHER3SMOOTHNESS: 0.3
     - _LIGHT1POWER: 0.15
     - _LIGHT1SIZE: 0.1
     - _LIGHT2POWER: 0.15
     - _LIGHT2SIZE: 0.4
     - _LIGHT3POWER: 0.15
     - _LIGHT3SIZE: 0.8
+    - _LIPSSMOOTHNESS: 0.4
+    - _METAL1METALLIC: 0.65
+    - _METAL1SMOOTHNESS: 0.7
+    - _METAL2METALLIC: 0.65
+    - _METAL2SMOOTHNESS: 0.7
+    - _METAL3METALLIC: 0.65
+    - _METAL3SMOOTHNESS: 0.7
+    - _MetalicOn: 0
+    - _OCCLUSION: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _ReceiveShadows: 0
+    - _SCARSSMOOTHNESS: 0.3
+    - _SCLERASMOOTHNESS: 0.5
+    - _SKINSMOOTHNESS: 0.3
+    - _SmoothnessOn: 1
+    - _SpecularHighlights: 1
     - _TessValue: 16
     - __dirty: 0
     m_Colors:
@@ -134,6 +153,6 @@ Material:
     - _METAL3COLOR: {r: 0.10653259, g: 0.10653259, b: 0.13207549, a: 0}
     - _SCARSCOLOR: {r: 0.8490566, g: 0.5037117, b: 0.3884835, a: 0}
     - _SCLERACOLOR: {r: 0.9056604, g: 0.8159487, b: 0.8159487, a: 0}
-    - _SKINCOLOR: {r: 0.5660378, g: 0.23588906, b: 0.15218939, a: 1}
+    - _SKINCOLOR: {r: 1.4728189, g: 0.6410087, b: 0.43767732, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

@@ -18,5 +18,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Game_Dungeons.unity
     guid: 3dadea1b0e5b89f4fb0a67306b0c61b8
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: c0a6917f822ddd34497247de80cc3381, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: a717a235cc3e1d849972a1786c461e32, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: f9c3bbf411835fa41860a3977068addd, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: d5f7f6a9871e8bf42a836dc314571f46, type: 3}
   m_UseUCBPForAssetBundles: 0
