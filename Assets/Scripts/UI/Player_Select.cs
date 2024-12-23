@@ -3,32 +3,32 @@ using UnityEngine.SceneManagement;
 
 public class Player_Select : MonoBehaviour
 {
-    public GameObject[] maleCharacters; // Массив для мужских персонажей
-    public GameObject[] femaleCharacters; // Массив для женских персонажей
-    public GameObject[] warriorCharacters; // Массив для воинов
-    public GameObject[] mageCharacters; // Массив для магов
-    public GameObject[] archerCharacters; // Массив для лучников
+    public GameObject[] maleCharacters;
+    public GameObject[] femaleCharacters;
+    public GameObject[] warriorCharacters;
+    public GameObject[] mageCharacters;
+    public GameObject[] archerCharacters;
 
     private int genderIndex; // 0 - мужской, 1 - женский
     private int classIndex; // 0 - воин, 1 - маг, 2 - лучник
-    private GameObject[] currentCharacters; // Текущий массив персонажей
+    private GameObject[] currentCharacters;
 
     private void Start()
     {
-        genderIndex = PlayerPrefs.GetInt("SelectGender", 0); // По умолчанию мужской
-        classIndex = PlayerPrefs.GetInt("SelectClass", 0); // По умолчанию воин
+        genderIndex = PlayerPrefs.GetInt("SelectGender", 0);
+        classIndex = PlayerPrefs.GetInt("SelectClass", 0);
 
         UpdateCharacterArray();
-        ActivateCurrentCharacter(); // Активируем только текущий (первый) персонаж
+        ActivateCurrentCharacter();
     }
 
     private void UpdateCharacterArray()
     {
-        if (genderIndex == 0) // Мужской
+        if (genderIndex == 0)
         {
             currentCharacters = maleCharacters;
         }
-        else // Женский
+        else
         {
             currentCharacters = femaleCharacters;
         }
@@ -36,7 +36,6 @@ public class Player_Select : MonoBehaviour
 
     private void ActivateCurrentCharacter()
     {
-        // Сначала деактивируем всех персонажей
         foreach (GameObject go in maleCharacters)
         {
             go.SetActive(false);
@@ -47,48 +46,47 @@ public class Player_Select : MonoBehaviour
             go.SetActive(false);
         }
 
-        // Активируем только нулевого персонажа в текущем массиве
         if (classIndex >= 0 && classIndex < currentCharacters.Length)
         {
-            currentCharacters[classIndex].SetActive(true); // Активируем только первого персонажа
+            currentCharacters[classIndex].SetActive(true);
         }
     }
 
     public void SelectGenderLeft()
     {
-        genderIndex = (genderIndex + 1) % 2; // Переключаем пол
+        genderIndex = (genderIndex + 1) % 2;
         PlayerPrefs.SetInt("SelectGender", genderIndex);
         UpdateCharacterArray();
-        ActivateCurrentCharacter(); // Обновляем активного персонажа
+        ActivateCurrentCharacter();
     }
 
     public void SelectGenderRight()
     {
-        genderIndex = (genderIndex - 1 + 2) % 2; // Переключаем пол
+        genderIndex = (genderIndex - 1 + 2) % 2;
         PlayerPrefs.SetInt("SelectGender", genderIndex);
         UpdateCharacterArray();
-        ActivateCurrentCharacter(); // Обновляем активного персонажа
+        ActivateCurrentCharacter();
     }
 
     public void SelectClassLeft()
     {
-        classIndex = (classIndex + 1) % 3; // Переключаем класс
+        classIndex = (classIndex + 1) % 3;
         PlayerPrefs.SetInt("SelectClass", classIndex);
-        ActivateCurrentCharacter(); // Обновляем активного персонажа
+        ActivateCurrentCharacter();
     }
 
     public void SelectClassRight()
     {
-        classIndex = (classIndex - 1 + 3) % 3; // Переключаем класс
+        classIndex = (classIndex - 1 + 3) % 3;
         PlayerPrefs.SetInt("SelectClass", classIndex);
-        ActivateCurrentCharacter(); // Обновляем активного персонажа
+        ActivateCurrentCharacter();
     }
 
     public void StartScene()
     {
         PlayerPrefs.SetInt("SelectGender", genderIndex);
         PlayerPrefs.SetInt("SelectClass", classIndex);
-        PlayerPrefs.Save(); // Сохраняем данные
+        PlayerPrefs.Save();
         SceneManager.LoadScene("Game_Terra");
     }
 }

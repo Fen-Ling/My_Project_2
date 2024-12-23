@@ -1,4 +1,5 @@
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class CharacterLoader : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class CharacterLoader : MonoBehaviour
     private int genderIndex;
     private int classIndex;
     private GameObject[] currentCharacters;
+    private CinemachineCamera virtualCamera;
 
     private void Start()
     {
@@ -18,6 +20,7 @@ public class CharacterLoader : MonoBehaviour
         ActivateCurrentCharacter();
         RemoveInactiveCharacters(currentCharacters, classIndex);
 
+        // AssignPlayerToCamera();
     }
 
     private void UpdateCharacterArray()
@@ -34,7 +37,6 @@ public class CharacterLoader : MonoBehaviour
 
     private void ActivateCurrentCharacter()
     {
-        // Сначала деактивируем всех персонажей
         foreach (GameObject go in maleCharacters)
         {
             go.SetActive(false);
@@ -45,7 +47,6 @@ public class CharacterLoader : MonoBehaviour
             go.SetActive(false);
         }
 
-        // Активируем только нулевого персонажа в текущем массиве
         if (classIndex >= 0 && classIndex < currentCharacters.Length)
         {
             currentCharacters[classIndex].SetActive(true); // Активируем только первого персонажа
@@ -66,7 +67,26 @@ public class CharacterLoader : MonoBehaviour
 
         for (int i = oppositeGenderCharacters.Length - 1; i >= 0; i--)
         {
-            Destroy(oppositeGenderCharacters[i]); // Удаляем всех персонажей противоположного пола
+            Destroy(oppositeGenderCharacters[i]);
         }
     }
-    }
+
+    // private void AssignPlayerToCamera()
+    // {
+    //     // Получаем компонент CinemachineVirtualCamera
+    //     virtualCamera = GameObject.;
+
+    //     // Находим игрока по тегу
+    //     GameObject player = GameObject.FindGameObjectWithTag("Player");
+    //     if (player != null)
+    //     {
+    //         // Присваиваем игрока в качестве Tracking Target
+    //         virtualCamera.Follow = player.transform;
+    //         virtualCamera.LookAt = player.transform; // Если нужно, чтобы камера смотрела на игрока
+    //     }
+    //     else
+    //     {
+    //         Debug.LogWarning("Игрок с тегом 'Player' не найден!");
+    //     }
+    // }
+}

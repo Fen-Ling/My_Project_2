@@ -1,39 +1,27 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Unity.Cinemachine;
 
-public class CinemachineCameraSetup : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
+    public string playerTag = "Player"; // Тег игрока
+    private CinemachineCamera virtualCamera;
+
     private void Start()
     {
-        // Подписываемся на событие загрузки новой сцены
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
+        // Получаем компонент CinemachineVirtualCamera
+        virtualCamera = GetComponent<CinemachineCamera>();
 
-    private void OnDestroy()
-    {
-        // Отписываемся от события, когда объект уничтожается
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        // Ищем игрока по тегу "Player"
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        // Находим игрока по тегу
+        GameObject player = GameObject.FindGameObjectWithTag(playerTag);
         if (player != null)
         {
-            // Находим компонент CinemachineVirtualCamera
-            CinemachineCamera virtualCamera = GetComponent<CinemachineCamera>();
-            if (virtualCamera != null)
-            {
-                // Устанавливаем цель для камеры
-                virtualCamera.Follow = player.transform;
-                virtualCamera.LookAt = player.transform;
-            }
+            // Присваиваем игрока в качестве Tracking Target
+            virtualCamera.Follow = player.transform;
+            virtualCamera.LookAt = player.transform;
         }
         else
         {
-            Debug.LogWarning("Player с тегом 'Player' не найден!");
+            Debug.LogWarning("Игрок с тегом '" + playerTag + "' не найден!");
         }
     }
 }
