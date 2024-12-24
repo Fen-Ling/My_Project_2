@@ -4,8 +4,8 @@ public class MainMenuState : MonoBehaviour
 {
     public GameObject mainMenuUI;
     public CharacterState CharacterState;
-    public LoadingsState LoadingState;
-    public SettingsState SettingState;
+    public Loadings_State LoadingState;
+    public Settings_State SettingState;
 
     private void OnEnable()
     {

@@ -16,9 +16,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 m_Rotation;
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         animator = GetComponent<Animator>();
-
     }
 
     private void Start()

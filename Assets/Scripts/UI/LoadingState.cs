@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class LoadingsState : MonoBehaviour
+public class Loadings_State : MonoBehaviour
 {
     public GameObject LoadingUI;
-    public MainMenuState MainMenu;
+    public Pause_Menu PauseMenu;
 
     private void OnEnable()
     {
@@ -18,7 +18,7 @@ public class LoadingsState : MonoBehaviour
     public void BackToMainMenu()
     {
         gameObject.SetActive(false);
-        MainMenu.gameObject.SetActive(true);
+        PauseMenu.gameObject.SetActive(true);
     }
 
     

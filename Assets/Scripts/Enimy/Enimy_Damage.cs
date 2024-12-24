@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Enimy_Damage : MonoBehaviour
 {
     public float MaxHP = 100f;
-    public float healing = 0.05f;
+    public float healing;
     public float CorHP;
     public Slider healthBar;
     private Animator animator;
@@ -13,6 +13,7 @@ public class Enimy_Damage : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         CorHP = MaxHP;
+        healing = MaxHP/1000;
         healthBar.maxValue = CorHP;
         healthBar.value = CorHP;
     }
