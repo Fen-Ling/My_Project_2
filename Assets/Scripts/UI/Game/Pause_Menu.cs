@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class Pause_Menu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
-    public Loadings_Game LoadGame;
     public Saving_Game SaveGame;
     public Settings_Game SettingGame;
 
@@ -27,11 +26,6 @@ public class Pause_Menu : MonoBehaviour
 
     }
 
-    public void Load()
-    {
-        gameObject.SetActive(false);
-        LoadGame.gameObject.SetActive(true);
-    }
     public void Save()
     {
         gameObject.SetActive(false);

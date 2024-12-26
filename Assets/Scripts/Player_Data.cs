@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public static class PlayerData
+public class PlayerData
 {
-    public static Vector3 playerPosition;
+    public int level;
+    public int currentExperience;
+    public float money;
+    public Vector3 position; // для текущих координат (x, y, z)
 }

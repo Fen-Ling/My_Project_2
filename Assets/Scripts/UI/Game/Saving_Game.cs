@@ -22,5 +22,10 @@ public class Saving_Game : MonoBehaviour
         PauseMenu.gameObject.SetActive(true);
     }
 
-    
+    public void Saving()
+    {
+
+
+    }
+
 }

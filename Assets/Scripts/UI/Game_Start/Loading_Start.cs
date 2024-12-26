@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Loadings_Start : MonoBehaviour
 {
     public GameObject LoadingUI;
     public Main_Menu MainMenu;
+    private PlayerDataManager PDM;
 
     private void OnEnable()
     {
@@ -19,6 +21,12 @@ public class Loadings_Start : MonoBehaviour
     {
         gameObject.SetActive(false);
         MainMenu.gameObject.SetActive(true);
+    }
+
+    public void Loading()
+    {
+        PDM.LoadPlayerData();
+        SceneManager.LoadScene("Game_Terra");
     }
 
     

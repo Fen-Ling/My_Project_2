@@ -23,15 +23,14 @@ public class GameControls : MonoBehaviour
     {
         if (context.performed)
         {
-            // Логика для открытия/закрытия меню паузы
             if (Time.timeScale == 1)
             {
-                Time.timeScale = 0; // Остановить игру
+                Time.timeScale = 0;
                 states.GetChild(0).gameObject.SetActive(true);
             }
             else
             {
-                Time.timeScale = 1; // Продолжить игру
+                Time.timeScale = 1;
                 states.GetChild(0).gameObject.SetActive(false);
             }
         }

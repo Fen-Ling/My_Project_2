@@ -10,7 +10,6 @@ public class CharacterLoader : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
         genderIndex = PlayerPrefs.GetInt("SelectGender");
         classIndex = PlayerPrefs.GetInt("SelectClass");
 
