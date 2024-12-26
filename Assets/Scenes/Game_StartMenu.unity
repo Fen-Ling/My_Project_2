@@ -665,7 +665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 191032248}
-  - component: {fileID: 191032247}
+  - component: {fileID: 191032249}
   m_Layer: 0
   m_Name: LoadingState
   m_TagString: Untagged
@@ -673,20 +673,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &191032247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 191032246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 796bcef330204ae4e8bb33cef5e4ecb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LoadingUI: {fileID: 1798996552}
-  MainMenu: {fileID: 719027936}
 --- !u!4 &191032248
 Transform:
   m_ObjectHideFlags: 0
@@ -702,6 +688,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1833389527}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &191032249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191032246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b91a452caee14da44b9a46b8b2c24f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoadingUI: {fileID: 1798996552}
+  MainMenu: {fileID: 719027936}
 --- !u!1 &197481476
 GameObject:
   m_ObjectHideFlags: 0
@@ -2600,7 +2600,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1651561386}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingsState, Assembly-CSharp
         m_MethodName: BackToMainMenu
         m_Mode: 1
@@ -2681,8 +2681,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuUI: {fileID: 474266875}
   CharacterState: {fileID: 34510917}
-  LoadingState: {fileID: 191032247}
-  SettingState: {fileID: 1651561386}
+  LoadingState: {fileID: 0}
+  SettingState: {fileID: 0}
 --- !u!4 &719027937
 Transform:
   m_ObjectHideFlags: 0
@@ -4819,7 +4819,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1651561384}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c7b81bd9491da14eb2b0fc5fe355a1c, type: 3}
+  m_Script: {fileID: 11500000, guid: aab70030499f6ac408419747944a584c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SettingsUI: {fileID: 1808121182}
@@ -5931,7 +5931,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 191032247}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LoadingsState, Assembly-CSharp
         m_MethodName: BackToMainMenu
         m_Mode: 1
