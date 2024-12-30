@@ -1937,7 +1937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &474266876
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2600,8 +2600,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SettingsState, Assembly-CSharp
+      - m_Target: {fileID: 1651561386}
+        m_TargetAssemblyTypeName: Settings_Start, Assembly-CSharp
         m_MethodName: BackToMainMenu
         m_Mode: 1
         m_Arguments:
@@ -2681,8 +2681,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuUI: {fileID: 474266875}
   CharacterState: {fileID: 34510917}
-  LoadingState: {fileID: 0}
-  SettingState: {fileID: 0}
+  LoadingState: {fileID: 191032249}
+  SettingState: {fileID: 1651561386}
 --- !u!4 &719027937
 Transform:
   m_ObjectHideFlags: 0
@@ -5745,7 +5745,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1877706865
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5931,8 +5931,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LoadingsState, Assembly-CSharp
+      - m_Target: {fileID: 191032249}
+        m_TargetAssemblyTypeName: Loadings_Start, Assembly-CSharp
         m_MethodName: BackToMainMenu
         m_Mode: 1
         m_Arguments:
