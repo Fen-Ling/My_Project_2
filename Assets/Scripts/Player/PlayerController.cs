@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private float HP;
     private InputAction m_lookAction;
     private Vector3 m_Rotation;
+    private PlayerData playerData;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        playerData =  PlayerDataManager.playerData;
         m_lookAction = inputActions.FindAction("Player/Look");
         m_lookAction.Enable();
 

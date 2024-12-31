@@ -895,5 +895,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8501d759ced2248950fd9349194422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LoadingUI: {fileID: 0}
   sceneToLoad: 
-  teleportPoint: {fileID: 0}
+  teleportPoint: {x: 0, y: 0, z: 0}

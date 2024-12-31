@@ -4,21 +4,24 @@ using UnityEngine.SceneManagement;
 
 public class PortalTeleport : MonoBehaviour
 {
-    public string sceneToLoad;
+    [SerializeField]
+    private string sceneToLoad;
     public Vector3 teleportPoint;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+
             StartCoroutine(LoadSceneAsync(sceneToLoad, other.transform));
+
         }
     }
 
     IEnumerator LoadSceneAsync(string sceneName, Transform player)
     {
-        // SceneManager.LoadScene("Game_Loading", LoadSceneMode.Additive);
-        // var emptyScene = SceneManager.GetSceneByName("Game_Loading");
+        SceneManager.LoadScene("Game_Loading", LoadSceneMode.Additive);
+        Time.timeScale = 0;
 
         var activeScene = SceneManager.GetActiveScene();
 
@@ -30,7 +33,7 @@ public class PortalTeleport : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(5f);
 
         var scene = SceneManager.GetSceneByName(sceneName);
 
@@ -40,10 +43,10 @@ public class PortalTeleport : MonoBehaviour
 
         TeleportPlayer(player);
 
-        yield return SceneManager.UnloadSceneAsync(activeScene.name);
         Debug.Log("Новая сцена загружена и игрок телепортирован.");
-        // SceneManager.UnloadSceneAsync(emptyScene.name);
-
+        SceneManager.UnloadSceneAsync("Game_Loading");
+        Time.timeScale = 1;
+        yield return SceneManager.UnloadSceneAsync(activeScene.name);
     }
 
     private void TeleportPlayer(Transform player)

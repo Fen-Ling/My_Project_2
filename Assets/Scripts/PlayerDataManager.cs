@@ -1,42 +1,42 @@
 using UnityEngine;
 using System.IO;
 
-public class PlayerDataManager : MonoBehaviour
+public static class PlayerDataManager
 {
-    private string filePath;
+    public static PlayerData playerData = new();
 
-    private void Start()
+    public static void SavePlayerData(string filename)//int level, int currentExperience, float money, Vector3 position)
     {
-        filePath = Path.Combine(Application.persistentDataPath, "playerData.json");
-    }
-
-    public void SavePlayerData(int level, int currentExperience, float money, Vector3 position)
-    {
-        PlayerData playerData = new PlayerData()
-        {
-            level = level,
-            currentExperience = currentExperience,
-            money = money,
-            position = position
-        };
+        string filepath = Path.Combine(Application.persistentDataPath, filename);
+        // playerData = new PlayerData()
+        // {
+        //     level = level,
+        //     currentExperience = currentExperience,
+        //     money = money,
+        //     position = position
+        // };
 
         string json = JsonUtility.ToJson(playerData, true);
-        File.WriteAllText(filePath, json);
+        File.WriteAllText(filepath, json);
         Debug.Log("Данные игрока сохранены в файл!");
     }
 
-    public void LoadPlayerData()
+    public static bool LoadPlayerData(string filename)
     {
-        if (File.Exists(filePath))
+        string filepath = Path.Combine(Application.persistentDataPath, filename);
+
+        if (File.Exists(filepath))
         {
-            string json = File.ReadAllText(filePath);
-            PlayerData loadedData = JsonUtility.FromJson<PlayerData>(json);
+            string json = File.ReadAllText(filepath);
+            playerData = JsonUtility.FromJson<PlayerData>(json);
             Debug.Log("Данные игрока загружены!");
-            Debug.Log($"Уровень: {loadedData.level}, Опыт: {loadedData.currentExperience}, Деньги: {loadedData.money}, Координаты: {loadedData.position}");
+            Debug.Log($"Уровень: {playerData.level}, Опыт: {playerData.currentExperience}, Деньги: {playerData.money}, Координаты: {playerData.position}");
+            return true;
         }
         else
         {
             Debug.Log("Файл c данными игрока не найден.");
+            return false;
         }
     }
 }

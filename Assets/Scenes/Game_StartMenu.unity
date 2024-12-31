@@ -702,6 +702,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LoadingUI: {fileID: 1798996552}
   MainMenu: {fileID: 719027936}
+  buttons:
+  - {fileID: 1187750519}
+  - {fileID: 438876980}
+  - {fileID: 1435848507}
+  - {fileID: 319430578}
+  - {fileID: 2039171310}
+  - {fileID: 706138119}
+  - {fileID: 1104443487}
+  defaultFilename: playerData0
 --- !u!1 &197481476
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,7 +811,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1231,7 +1240,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 319430579}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 191032249}
+        m_TargetAssemblyTypeName: Loadings_Start, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: playerData04.json
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &319430579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1327,7 +1348,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1745,7 +1766,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 438876981}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 191032249}
+        m_TargetAssemblyTypeName: Loadings_Start, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: playerData02.json
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &438876981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1841,7 +1874,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2479,7 +2512,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 706138120}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 191032249}
+        m_TargetAssemblyTypeName: Loadings_Start, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: playerData06.json
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &706138120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3006,7 +3051,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3524,7 +3569,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1104443488}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 191032249}
+        m_TargetAssemblyTypeName: Loadings_Start, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: playerData07.json
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1104443488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3854,7 +3911,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1187750520}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 191032249}
+        m_TargetAssemblyTypeName: Loadings_Start, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: playerData01.json
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1187750520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4249,7 +4318,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1435848508}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 191032249}
+        m_TargetAssemblyTypeName: Loadings_Start, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: playerData03.json
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1435848508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4431,7 +4512,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4699,7 +4780,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5156,7 +5237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1798996553
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5745,7 +5826,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1877706865
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6219,7 +6300,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6447,7 +6528,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2039171311}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 191032249}
+        m_TargetAssemblyTypeName: Loadings_Start, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: playerData05.json
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2039171311
 MonoBehaviour:
   m_ObjectHideFlags: 0

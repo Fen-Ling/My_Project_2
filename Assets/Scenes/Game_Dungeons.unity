@@ -23819,6 +23819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8501d759ced2248950fd9349194422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LoadingUI: {fileID: 5122266355174285275, guid: ee0c230eb9a6fd747bb326105aad8d00, type: 3}
   sceneToLoad: Game_Terra
   teleportPoint: {x: 171, y: 57, z: 672}
 --- !u!23 &1433163900028969251
@@ -23926,6 +23927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8501d759ced2248950fd9349194422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LoadingUI: {fileID: 5122266355174285275, guid: ee0c230eb9a6fd747bb326105aad8d00, type: 3}
   sceneToLoad: Game_Terra
   teleportPoint: {x: 424, y: 69.5, z: 567}
 --- !u!4 &2305083954028960581

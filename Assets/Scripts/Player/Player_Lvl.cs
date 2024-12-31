@@ -4,37 +4,39 @@ using UnityEngine.UI;
 
 public class Player_Lvl : MonoBehaviour
 {
-    public float CorEXP = 1;
-    public int lvl = 1;
-    public float LVL_EXP = 10;
+    public float currentExp = 1;
+    public int currentLvl = 1;
+    public float expForNewLVL = 10;
     public Slider EXPBar;
     public TextMeshProUGUI Lvl_TXT;
 
     public void Start()
     {
-        EXPBar.maxValue = LVL_EXP;
-        EXPBar.value = CorEXP;
-        Lvl_TXT.text = lvl.ToString();
+        EXPBar.maxValue = expForNewLVL;
+        EXPBar.value = currentExp;
+        Lvl_TXT.text = currentLvl.ToString();
     }
-    private void Update()
-    {
-        EXPBar.value = CorEXP;
-    }
+    // private void Update()
+    // {
+    //     EXPBar.value = currentExp;
+    // }
 
     public void Experience(float EXP)
     {
-        CorEXP += EXP;
-        LevelUP();
+        currentExp += EXP;
+        if (currentExp > expForNewLVL)
+        {
+            LevelUP();
+        }
+        EXPBar.value = currentExp;
     }
     public void LevelUP()
     {
-        if (CorEXP > LVL_EXP)
-        {
-            lvl++;
-            CorEXP -= LVL_EXP;
-            EXPBar.value = CorEXP;
-            LVL_EXP = LVL_EXP * 1.5f;
-            Lvl_TXT.text = lvl.ToString();
-        }
+        currentLvl++;
+        Lvl_TXT.text = currentLvl.ToString();
+
+        currentExp -= expForNewLVL;
+        expForNewLVL *= 1.5f;
+        EXPBar.maxValue = expForNewLVL;
     }
 }
