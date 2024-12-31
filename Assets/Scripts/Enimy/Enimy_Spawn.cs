@@ -10,7 +10,6 @@ public class DynamicEnemySpawner : MonoBehaviour
     public float spawnRadius = 20f; // Радиус спавна
     public float spawnInterval = 1.5f; // Интервал спавна в секундах
     public Transform spawnPoint; // Точка спауна
-
     private List<GameObject> enemies; // Список активных врагов
 
     void Start()

@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public float MaxHP = 200f;
     private float healHP;
     private float HP;
-
     private InputAction m_lookAction;
     private Vector3 m_Rotation;
     private void Awake()
@@ -27,7 +26,7 @@ public class PlayerController : MonoBehaviour
         HP = MaxHP;
         healthBar.maxValue = HP;
         healthBar.value = HP;
-        healHP = MaxHP / 1000;
+        healHP = MaxHP / 1000f;
     }
 
     public void Update()
