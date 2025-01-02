@@ -15,8 +15,8 @@ public class Player_Select : MonoBehaviour
 
     private void Start()
     {
-        genderIndex = PlayerPrefs.GetInt("SelectGender", 0);
-        classIndex = PlayerPrefs.GetInt("SelectClass", 0);
+        genderIndex = 0;
+        classIndex = 0;
 
         UpdateCharacterArray();
         ActivateCurrentCharacter();
@@ -55,7 +55,6 @@ public class Player_Select : MonoBehaviour
     public void SelectGenderLeft()
     {
         genderIndex = (genderIndex + 1) % 2;
-        PlayerPrefs.SetInt("SelectGender", genderIndex);
         UpdateCharacterArray();
         ActivateCurrentCharacter();
     }
@@ -63,7 +62,6 @@ public class Player_Select : MonoBehaviour
     public void SelectGenderRight()
     {
         genderIndex = (genderIndex - 1 + 2) % 2;
-        PlayerPrefs.SetInt("SelectGender", genderIndex);
         UpdateCharacterArray();
         ActivateCurrentCharacter();
     }
@@ -71,22 +69,18 @@ public class Player_Select : MonoBehaviour
     public void SelectClassLeft()
     {
         classIndex = (classIndex + 1) % 3;
-        PlayerPrefs.SetInt("SelectClass", classIndex);
         ActivateCurrentCharacter();
     }
 
     public void SelectClassRight()
     {
         classIndex = (classIndex - 1 + 3) % 3;
-        PlayerPrefs.SetInt("SelectClass", classIndex);
         ActivateCurrentCharacter();
     }
 
     public void StartScene()
     {
-        PlayerPrefs.SetInt("SelectGender", genderIndex);
-        PlayerPrefs.SetInt("SelectClass", classIndex);
-        PlayerPrefs.Save();
+        PlayerDataManager.NewGame_PlayerData(genderIndex, classIndex);
         SceneManager.LoadScene("Game_Terra");
     }
 }

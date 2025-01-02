@@ -4,14 +4,14 @@ public class CharacterLoader : MonoBehaviour
 {
     public GameObject[] maleCharacters;
     public GameObject[] femaleCharacters;
-    private int genderIndex;
-    private int classIndex;
+    public int genderIndex;
+    public int classIndex;
     private GameObject[] currentCharacters;
 
     private void Start()
     {
-        genderIndex = PlayerPrefs.GetInt("SelectGender");
-        classIndex = PlayerPrefs.GetInt("SelectClass");
+        genderIndex = PlayerDataManager.playerData.genderIndex;
+        classIndex = PlayerDataManager.playerData.classIndex;
 
         UpdateCharacterArray();
         ActivateCurrentCharacter();

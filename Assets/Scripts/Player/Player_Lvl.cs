@@ -12,9 +12,15 @@ public class Player_Lvl : MonoBehaviour
 
     public void Start()
     {
+        currentExp = PlayerDataManager.playerData.curExp;
+        currentLvl = PlayerDataManager.playerData.level;
+        expForNewLVL = PlayerDataManager.playerData.ExpToLvl;
+
         EXPBar.maxValue = expForNewLVL;
         EXPBar.value = currentExp;
         Lvl_TXT.text = currentLvl.ToString();
+
+
     }
     public void Experience(float EXP)
     {

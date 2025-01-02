@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Game_Terra.unity
     guid: 9d8b106ee8888f14fb129b751a8001d4
   - enabled: 1
-    path: Assets/Scenes/Game_Loading.unity
-    guid: 1380ca8d53db20d46bd5373c07142178
-  - enabled: 1
     path: Assets/Scenes/Game_Dungeons.unity
     guid: 3dadea1b0e5b89f4fb0a67306b0c61b8
+  - enabled: 1
+    path: Assets/Scenes/Game_Loading.unity
+    guid: 1380ca8d53db20d46bd5373c07142178
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: c0a6917f822ddd34497247de80cc3381, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: a717a235cc3e1d849972a1786c461e32, type: 2}

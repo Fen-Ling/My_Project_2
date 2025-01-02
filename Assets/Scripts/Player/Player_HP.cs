@@ -5,13 +5,13 @@ public class Player_HP : MonoBehaviour
 {
     public Slider healthBar;
     private Animator animator;
-    public float MaxHP;
+    public float MaxHP = 200f;
     private float healHP;
     private float HP;
 
     public void Start()
     {
-        // MaxHP = 
+        MaxHP = PlayerDataManager.playerData.MaxHP;
         animator = GetComponent<Animator>();
         HP = MaxHP;
         healthBar.maxValue = HP;

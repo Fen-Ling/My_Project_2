@@ -7,10 +7,10 @@ public class PlayerController : MonoBehaviour
     public InputActionAsset inputActions;
     private InputAction m_lookAction;
     private Vector3 m_Rotation;
-    private PlayerData playerData;
+
     private void Start()
     {
-        playerData =  PlayerDataManager.playerData;
+        transform.position = PlayerDataManager.playerData.position;
         m_lookAction = inputActions.FindAction("Player/Look");
         m_lookAction.Enable();
     }

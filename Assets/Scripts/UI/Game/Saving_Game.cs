@@ -1,10 +1,13 @@
 using System;
 using System.IO;
 using TMPro;
+using Unity.Core;
 using UnityEngine;
 using UnityEngine.UI;
 public class Saving_Game : MonoBehaviour
 {
+    private const string FileExtension = ".json";
+
     public GameObject SaveUI;
     public Pause_Menu PauseMenu;
     public Button[] buttons;
@@ -48,7 +51,7 @@ public class Saving_Game : MonoBehaviour
     public void Saving(int index)
     {
         string filename = defaultFilename + (index + 1).ToString();
-        PlayerDataManager.SavePlayerData(filename, player);
+        PlayerDataManager.SavePlayerData(filename + FileExtension, player);
         buttons[index].gameObject.GetComponentInChildren<TextMeshProUGUI>().text = filename;
     }
 
