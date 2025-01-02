@@ -4,9 +4,9 @@ using UnityEngine.UI;
 
 public class Player_Lvl : MonoBehaviour
 {
-    public float currentExp = 1;
+    public float currentExp = 0;
     public int currentLvl = 1;
-    public float expForNewLVL = 10;
+    public float expForNewLVL = 100;
     public Slider EXPBar;
     public TextMeshProUGUI Lvl_TXT;
 
@@ -16,11 +16,6 @@ public class Player_Lvl : MonoBehaviour
         EXPBar.value = currentExp;
         Lvl_TXT.text = currentLvl.ToString();
     }
-    // private void Update()
-    // {
-    //     EXPBar.value = currentExp;
-    // }
-
     public void Experience(float EXP)
     {
         currentExp += EXP;
@@ -36,7 +31,7 @@ public class Player_Lvl : MonoBehaviour
         Lvl_TXT.text = currentLvl.ToString();
 
         currentExp -= expForNewLVL;
-        expForNewLVL *= 1.5f;
+        expForNewLVL *= 2;
         EXPBar.maxValue = expForNewLVL;
     }
 }

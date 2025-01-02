@@ -19,7 +19,7 @@ public class Enimy_Damage : MonoBehaviour
         healing = MaxHP / 1000;
         healthBar.maxValue = CorHP;
         healthBar.value = CorHP;
-        Enimy_EXP = MaxHP /10;
+        Enimy_EXP = MaxHP / 10f;
     }
     private void FixedUpdate()
     {

@@ -12,7 +12,7 @@ public class Attack_Enemy_Arrow : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerController>().TakeDamage(damage);
+            other.GetComponent<Player_HP>().TakeDamage(damage);
             Destroy(gameObject);
         }
 

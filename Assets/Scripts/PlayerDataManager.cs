@@ -3,19 +3,23 @@ using System.IO;
 
 public static class PlayerDataManager
 {
-    public static PlayerData playerData = new();
+    public static PlayerData playerData;
 
-    public static void SavePlayerData(string filename)//int level, int currentExperience, float money, Vector3 position)
+    public static void SavePlayerData(string filename, GameObject player)
     {
-        string filepath = Path.Combine(Application.persistentDataPath, filename);
-        // playerData = new PlayerData()
-        // {
-        //     level = level,
-        //     currentExperience = currentExperience,
-        //     money = money,
-        //     position = position
-        // };
+        var playerLevel = player.GetComponent<Player_Lvl>();
+        var playerHealth = player.GetComponent<Player_HP>();
 
+        playerData = new PlayerData()
+        {
+            level = playerLevel.currentLvl,
+            curExp = playerLevel.currentExp,
+            ExpToLvl = playerLevel.expForNewLVL,
+            MaxHP = playerHealth.MaxHP,
+            position = player.transform.position
+        };
+
+        string filepath = Path.Combine(Application.persistentDataPath, filename);
         string json = JsonUtility.ToJson(playerData, true);
         File.WriteAllText(filepath, json);
         Debug.Log("Данные игрока сохранены в файл!");
@@ -30,7 +34,25 @@ public static class PlayerDataManager
             string json = File.ReadAllText(filepath);
             playerData = JsonUtility.FromJson<PlayerData>(json);
             Debug.Log("Данные игрока загружены!");
-            Debug.Log($"Уровень: {playerData.level}, Опыт: {playerData.currentExperience}, Деньги: {playerData.money}, Координаты: {playerData.position}");
+
+            // Получаем компоненты Player_Lvl и Player_HP
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            var playerLevel = player.GetComponent<Player_Lvl>();
+            var playerHealth = player.GetComponent<Player_HP>();
+
+            // Обновляем значения компонентов
+            playerLevel.currentLvl = playerData.level;
+            playerLevel.currentExp = playerData.curExp;
+            playerLevel.expForNewLVL = playerData.ExpToLvl;
+            playerHealth.MaxHP = playerData.MaxHP;
+
+            // Перемещаем игрока в загруженные координаты
+            player.transform.position = playerData.position;
+
+
+
+
+            Debug.Log($"Уровень: {playerData.level}, Опыт: {playerData.curExp}, Опыта до след. уровня: {playerData.ExpToLvl}, Макс. НР: {playerData.MaxHP}, Координаты: {playerData.position}");
             return true;
         }
         else

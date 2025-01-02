@@ -9,11 +9,14 @@ public class Saving_Game : MonoBehaviour
     public Pause_Menu PauseMenu;
     public Button[] buttons;
     public string defaultFilename;
+    private GameObject player;
 
     private void OnEnable()
     {
         SaveUI.SetActive(true);
         Time.timeScale = 0;
+        player = GameObject.FindGameObjectWithTag("Player");
+        
         for (int i = 0; i < buttons.Length; i++)
         {
             string filename = defaultFilename + (i + 1).ToString();
@@ -28,6 +31,7 @@ public class Saving_Game : MonoBehaviour
                 buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "-";
             }
         }
+
     }
 
     private void OnDisable()
@@ -44,7 +48,7 @@ public class Saving_Game : MonoBehaviour
     public void Saving(int index)
     {
         string filename = defaultFilename + (index + 1).ToString();
-        PlayerDataManager.SavePlayerData(filename);
+        PlayerDataManager.SavePlayerData(filename, player);
         buttons[index].gameObject.GetComponentInChildren<TextMeshProUGUI>().text = filename;
     }
 
