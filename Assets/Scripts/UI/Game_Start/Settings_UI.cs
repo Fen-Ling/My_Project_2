@@ -8,23 +8,29 @@ public class Settings_UI : MonoBehaviour
 	public Slider sliderVal;
 	public Dropdown resolutionDropdown;
 	public Toggle fullscreenToggle;
-
 	private Resolution[] resolutions;
-	private int currResolutionIndex;
-
 
 	private void Start()
 	{
+		LoadSettings();
+	}
+
+	public void LoadSettings()
+	{
+		Settings_Data settings = SettingsDataManager.LoadSettings();
+
 		resolutions = Screen.resolutions;
 		resolutionDropdown.ClearOptions();
 		List<string> options = new List<string>();
+
+		int currResolutionIndex = 0;
 
 		for (int i = 0; i < resolutions.Length; i++)
 		{
 			string option = resolutions[i].width + " x " + resolutions[i].height;
 			options.Add(option);
 
-			if (resolutions[i].Equals(Screen.currentResolution))
+			if (resolutions[i].width == settings.width && resolutions[i].height == settings.height)
 			{
 				currResolutionIndex = i;
 			}
@@ -34,64 +40,49 @@ public class Settings_UI : MonoBehaviour
 		resolutionDropdown.value = currResolutionIndex;
 		resolutionDropdown.RefreshShownValue();
 
-		audioSource.loop = true;
-		audioSource.Play();
+		audioSource.volume = settings.volume;
+		sliderVal.value = settings.volume;
 
-		LoadSettings();
+		fullscreenToggle.isOn = settings.isFullScreen;
 
+		ApplySettings(settings);
 	}
-
-
 	public void ChangeVolume(float value)
 	{
+		audioSource.volume = value;
 		sliderVal.value = value;
-		audioSource.volume = sliderVal.value;
-
 	}
 
-	public void ChangeResolution(int resolutionindex)
+	public void ChangeResolution(int resolutionIndex)
 	{
-		Resolution resolution = resolutions[resolutionindex];
+		Resolution resolution = resolutions[resolutionIndex];
 		Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-
-
 	}
 
 	public void ChangeFullscreenMode(bool isFullscreen)
 	{
 		Screen.fullScreen = isFullscreen;
-
 	}
 
 	public void SaveSettings()
 	{
-		PlayerPrefs.SetInt("ResolutionIndex", resolutionDropdown.value);
-		PlayerPrefs.SetInt("Fullscreen", fullscreenToggle.isOn ? 1 : 0);
-		PlayerPrefs.SetFloat("Volume", audioSource.volume);
-		PlayerPrefs.Save();
+		Settings_Data settings = new Settings_Data
+		{
+			volume = audioSource.volume,
+			width = resolutions[resolutionDropdown.value].width,
+			height = resolutions[resolutionDropdown.value].height,
+			isFullScreen = fullscreenToggle.isOn
+		};
+
+		SettingsDataManager.SaveSettings(settings);
 	}
 
-	private void LoadSettings()
+	private void ApplySettings(Settings_Data settings)
 	{
-		if (PlayerPrefs.HasKey("ResolutionIndex"))
-		{
-			resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionIndex");
-			resolutionDropdown.RefreshShownValue();
-			ChangeResolution(resolutionDropdown.value);
-		}
+		audioSource.volume = settings.volume;
+		sliderVal.value = settings.volume;
 
-		if (PlayerPrefs.HasKey("Fullscreen"))
-		{
-			bool isFullscreen = PlayerPrefs.GetInt("Fullscreen") == 1;
-			fullscreenToggle.isOn = isFullscreen;
-			ChangeFullscreenMode(isFullscreen);
-		}
-
-		if (PlayerPrefs.HasKey("Volume"))
-		{
-			audioSource.volume = PlayerPrefs.GetFloat("Volume");
-			ChangeVolume(audioSource.volume);
-		}
+		Screen.SetResolution(settings.width, settings.height, settings.isFullScreen);
+		fullscreenToggle.isOn = settings.isFullScreen;
 	}
-
 }

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerData
 {
-
     public float curExp;
     public float ExpToLvl;
     public int level;

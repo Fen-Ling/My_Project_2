@@ -12,6 +12,7 @@ public class CharacterLoader : MonoBehaviour
     {
         genderIndex = PlayerDataManager.playerData.genderIndex;
         classIndex = PlayerDataManager.playerData.classIndex;
+        
 
         UpdateCharacterArray();
         ActivateCurrentCharacter();

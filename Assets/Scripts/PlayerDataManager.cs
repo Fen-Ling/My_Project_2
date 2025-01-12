@@ -1,13 +1,9 @@
 using UnityEngine;
 using System.IO;
-using UnityEngine.SceneManagement;
-
 
 public static class PlayerDataManager
 {
     public static PlayerData playerData;
-
-
 
     public static void SavePlayerData(string filename, GameObject player)
     {
