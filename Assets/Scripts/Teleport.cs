@@ -12,7 +12,7 @@ public class Teleport : MonoBehaviour
         }
     }
 
-    private void TeleportPlayer(Transform player)
+    public void TeleportPlayer(Transform player)
     {
         player.GetComponent<CharacterController>().enabled = false;
         player.position = teleportPoint.position;

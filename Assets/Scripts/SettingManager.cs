@@ -18,5 +18,7 @@ public class SettingsManager : MonoBehaviour
         audioSource.volume = settings.volume;
 
         Screen.fullScreen = settings.isFullScreen;
+
+        
     }
-   }
+}

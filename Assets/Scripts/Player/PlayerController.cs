@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private InputAction m_lookAction;
     private Vector3 m_Rotation;
 
-    private void Start()
+    private void Awake()
     {
         transform.position = PlayerDataManager.playerData.position;
         m_lookAction = inputActions.FindAction("Player/Look");

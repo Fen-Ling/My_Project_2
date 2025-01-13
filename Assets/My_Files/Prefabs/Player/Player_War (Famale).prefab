@@ -932,8 +932,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 80
   inputActions: {fileID: -944628639613478452, guid: d5f7f6a9871e8bf42a836dc314571f46, type: 3}
-  healthBar: {fileID: 5127607810231587111}
-  MaxHP: 200
 --- !u!114 &8970453980228098697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,6 +945,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weapon_Slot: {fileID: 7538030773829984290}
+  audioSword: {fileID: 0}
+  volume: 1
 --- !u!1 &2403218686353030612
 GameObject:
   m_ObjectHideFlags: 0
@@ -4258,17 +4258,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5832990524984757733, guid: f4c015520e25b074db046c26a74d75dd, type: 3}
   m_PrefabInstance: {fileID: 6327175196568507388}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5127607810231587111 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1217740409543819995, guid: f4c015520e25b074db046c26a74d75dd, type: 3}
-  m_PrefabInstance: {fileID: 6327175196568507388}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8767402628081823208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4400,6 +4389,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  audioSwowd: {fileID: 8300000, guid: c76433141fc27c34d8a4fe1b0a51b7dc, type: 3}
+  volume: 1
 --- !u!54 &9107990789701812126
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -184,3 +184,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   lifetime: 3
+  audioArrow: {fileID: 8300000, guid: 28d5a8ef243a2374d955d53d0bf618b6, type: 3}
+  volume: 1

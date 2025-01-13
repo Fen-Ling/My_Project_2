@@ -3,16 +3,27 @@ using UnityEngine;
 public class Attack_Archer : MonoBehaviour
 {
     public GameObject Arrow_Prefab;
+    public AudioClip audioArrow;
+    private AudioSource hitAudioSource;
+    [Range(0f, 1f)]
+    public float volume = 1f;
     public Transform spawnPoint;
+
+    private void Start()
+    {
+        hitAudioSource = gameObject.AddComponent<AudioSource>();
+        hitAudioSource.clip = audioArrow;
+        hitAudioSource.volume = volume;
+    }
 
     private void Fire()
     {
         if (spawnPoint == null)
-    {
-        return;
-    }
+        {
+            return;
+        }
         GameObject arrow = Instantiate(Arrow_Prefab, spawnPoint.position, spawnPoint.rotation);
-              
+
         const int size = 1;
 
         Rigidbody rb = arrow.GetComponent<Rigidbody>();
@@ -24,7 +35,8 @@ public class Attack_Archer : MonoBehaviour
     }
     public void OnAttackAnimationComplete()
     {
-        Fire(); // Делаем выстрел после завершения анимации, добавить событие в анимацию
+        Fire();
+        hitAudioSource.Play();
     }
 }
 

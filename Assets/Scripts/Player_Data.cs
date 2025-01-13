@@ -8,6 +8,7 @@ public class PlayerData
     public float MaxHP;
     public int classIndex;
     public int genderIndex;
+    public int sceneIndex;
     public Vector3 position; // для текущих координат (x, y, z)
 
 }

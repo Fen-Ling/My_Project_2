@@ -97,6 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 15
   lifetime: 3
+  audioMagic: {fileID: 8300000, guid: 78a25b7244981074bb021f2faf7c0918, type: 3}
+  volume: 1
 --- !u!1 &7616231576473851292
 GameObject:
   m_ObjectHideFlags: 0

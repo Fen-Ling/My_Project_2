@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using TMPro;
 using UnityEngine.UI;
-using Unity.Entities.UniversalDelegates;
 
 public class Loadings_Start : MonoBehaviour
 {
@@ -47,7 +46,18 @@ public class Loadings_Start : MonoBehaviour
     {
         if (PlayerDataManager.LoadPlayerData(filename))
         {
-            SceneManager.LoadScene("Game_Terra");
+            int indexScene = PlayerDataManager.playerData.sceneIndex;
+
+            if (indexScene == 1)
+            {
+                SceneManager.LoadScene(indexScene);
+            }
+            else
+            {
+                PlayerDataManager.playerData.position = new Vector3(433, 69, 564);
+                SceneManager.LoadScene(1);
+            }
+
         }
     }
 }
