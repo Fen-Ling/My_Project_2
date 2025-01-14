@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Player_Icon : MonoBehaviour
 {
-    public Sprite[] sprites; // Заполните этот массив через инспектор
+    public Sprite[] sprites;
 
     [SerializeField]
     private Image currentIcon;
