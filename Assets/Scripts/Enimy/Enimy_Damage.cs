@@ -12,10 +12,12 @@ public class Enimy_Damage : MonoBehaviour
     private GameObject player;
     public AudioClip audioDeath;
     private AudioSource hitAudioSource;
+    private KillEnemy killEnemy;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        killEnemy = player.GetComponentInParent<KillEnemy>();
         animator = GetComponent<Animator>();
         hitAudioSource = gameObject.AddComponent<AudioSource>();
         hitAudioSource.clip = audioDeath;
@@ -39,6 +41,7 @@ public class Enimy_Damage : MonoBehaviour
             hitAudioSource.Play();
             animator.SetTrigger("Death");
             player.GetComponent<Player_Lvl>().Experience(Enimy_EXP);
+            killEnemy.IncreaseKillCount();
             GetComponent<Collider>().enabled = false;
             healthBar.gameObject.SetActive(false);
             Destroy(gameObject, 1.5f);

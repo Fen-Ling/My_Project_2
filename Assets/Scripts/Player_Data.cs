@@ -9,6 +9,7 @@ public class PlayerData
     public int classIndex;
     public int genderIndex;
     public int sceneIndex;
+    public int Kill;
     public Vector3 position; // для текущих координат (x, y, z)
 
 }

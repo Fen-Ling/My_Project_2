@@ -12,6 +12,7 @@ public static class PlayerDataManager
         var playerLevel = player.GetComponent<Player_Lvl>();
         var playerHealth = player.GetComponent<Player_HP>();
         var playerLoader = player.GetComponentInParent<CharacterLoader>();
+        var KillStatistic = player.GetComponentInParent<KillEnemy>();
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         playerData = new PlayerData()
@@ -23,13 +24,14 @@ public static class PlayerDataManager
             curExp = playerLevel.currentExp,
             ExpToLvl = playerLevel.expForNewLVL,
             MaxHP = playerHealth.MaxHP,
+            Kill = KillStatistic.enemyKillCount,
             position = player.transform.position
         };
 
         string json = JsonUtility.ToJson(playerData, true);
         File.WriteAllText(filepath, json);
         Debug.Log("Данные игрока сохранены в файл!");
-        Debug.Log($"Сцена: {playerData.sceneIndex}, Уровень: {playerData.level}, Опыт: {playerData.curExp}, Опыта до след. уровня: {playerData.ExpToLvl}, Макс. НР: {playerData.MaxHP}, Координаты: {playerData.position}");
+        Debug.Log($"Сцена: {playerData.sceneIndex}, Уровень: {playerData.level}, Опыт: {playerData.curExp}, Опыта до след. уровня: {playerData.ExpToLvl}, Макс. НР: {playerData.MaxHP}, Убито: {playerData.Kill}, Координаты: {playerData.position}");
     }
 
     public static bool LoadPlayerData(string filename)
@@ -41,7 +43,7 @@ public static class PlayerDataManager
             string json = File.ReadAllText(filepath);
             playerData = JsonUtility.FromJson<PlayerData>(json);
             Debug.Log("Данные игрока загружены!");
-            Debug.Log($"Сцена: {playerData.sceneIndex}, Уровень: {playerData.level}, Опыт: {playerData.curExp}, Опыта до след. уровня: {playerData.ExpToLvl}, Макс. НР: {playerData.MaxHP}, Координаты: {playerData.position}");
+            Debug.Log($"Сцена: {playerData.sceneIndex}, Уровень: {playerData.level}, Опыт: {playerData.curExp}, Опыта до след. уровня: {playerData.ExpToLvl}, Макс. НР: {playerData.MaxHP}, Убито: {playerData.Kill}, Координаты: {playerData.position}");
 
             return true;
         }
@@ -77,6 +79,7 @@ public static class PlayerDataManager
             curExp = 0,
             ExpToLvl = 100,
             MaxHP = 200,
+            Kill = 0,
             position = new Vector3(192, 56, 54)
         };
     }

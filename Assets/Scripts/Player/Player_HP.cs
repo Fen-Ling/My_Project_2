@@ -7,7 +7,7 @@ public class Player_HP : MonoBehaviour
     private Animator animator;
     public float MaxHP = 200f;
     private float healHP;
-    private float HP;
+    public float HP;
 
     public void Start()
     {
