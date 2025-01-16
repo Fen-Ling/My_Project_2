@@ -1765,7 +1765,7 @@ MonoBehaviour:
   attackRange: 3
   stopRange: 2.5
   patrolSpeed: 1
-  chaseSpeed: 2
+  chaseSpeed: 1.5
   isChasing: 0
 --- !u!114 &1067028666321188286
 MonoBehaviour:
@@ -1782,7 +1782,9 @@ MonoBehaviour:
   MaxHP: 100
   healing: 0.05
   CorHP: 0
+  Enimy_EXP: 0
   healthBar: {fileID: 3271567688703541580}
+  audioDeath: {fileID: 8300000, guid: 6aad7f6c1884fd4408d3cef152023f67, type: 3}
 --- !u!136 &825119576570878367
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4397,6 +4399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  audioAttack: {fileID: 8300000, guid: bdd3d763cb20fc54e88fb4ba5bfe9e7b, type: 3}
 --- !u!4 &6656557697430285918 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1127450730860520516, guid: b84d7ca3927758646a65731cc107aa76, type: 3}

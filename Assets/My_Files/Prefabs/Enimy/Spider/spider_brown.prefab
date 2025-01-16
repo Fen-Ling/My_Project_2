@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  audioAttack: {fileID: 8300000, guid: 3b9dfbddfa9711948bbbb0d640ce8d5c, type: 3}
 --- !u!1 &1126155395697127030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,7 +1676,9 @@ MonoBehaviour:
   MaxHP: 100
   healing: 0.05
   CorHP: 0
+  Enimy_EXP: 0
   healthBar: {fileID: 7251793942352283067}
+  audioDeath: {fileID: 8300000, guid: 2f905cf578c2567469699be3ca258080, type: 3}
 --- !u!136 &2388719857887269580
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2148,6 +2151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  audioAttack: {fileID: 8300000, guid: 3b9dfbddfa9711948bbbb0d640ce8d5c, type: 3}
 --- !u!1 &8274322187532216094
 GameObject:
   m_ObjectHideFlags: 0

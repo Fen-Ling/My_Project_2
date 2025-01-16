@@ -3246,9 +3246,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 80
   inputActions: {fileID: -944628639613478452, guid: d5f7f6a9871e8bf42a836dc314571f46, type: 3}
-  MaxHP: 200
-  healHP: 0.5
-  healthBar: {fileID: 4591297055446427961}
 --- !u!114 &7291696825665969770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3262,6 +3259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Arrow_Prefab: {fileID: 9003682227420312995, guid: b836e14c291182540b6b5c1a34b6cbae, type: 3}
+  audioArrow: {fileID: 8300000, guid: e2cdbdebfd8f96549a4c0769bac287c3, type: 3}
+  volume: 1
   spawnPoint: {fileID: 2710618175412881367}
 --- !u!1 &7593320077938456167
 GameObject:
@@ -4182,17 +4181,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4c015520e25b074db046c26a74d75dd, type: 3}
---- !u!114 &4591297055446427961 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1217740409543819995, guid: f4c015520e25b074db046c26a74d75dd, type: 3}
-  m_PrefabInstance: {fileID: 3409744076307819490}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &9197240844342420999 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5832990524984757733, guid: f4c015520e25b074db046c26a74d75dd, type: 3}

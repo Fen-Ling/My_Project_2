@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class DynamicEnemySpawner : MonoBehaviour
+public class Enemy_Spawn : MonoBehaviour
 {
     public GameObject[] enemyPrefabs; // Массив префабов врагов
     public int enemyCount = 6; // Исходное количество врагов

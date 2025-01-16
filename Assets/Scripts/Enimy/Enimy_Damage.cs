@@ -10,11 +10,15 @@ public class Enimy_Damage : MonoBehaviour
     public Slider healthBar;
     private Animator animator;
     private GameObject player;
+    public AudioClip audioDeath;
+    private AudioSource hitAudioSource;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponent<Animator>();
+        hitAudioSource = gameObject.AddComponent<AudioSource>();
+        hitAudioSource.clip = audioDeath;
         CorHP = MaxHP;
         healing = MaxHP / 1000;
         healthBar.maxValue = CorHP;
@@ -32,12 +36,12 @@ public class Enimy_Damage : MonoBehaviour
         CorHP -= damageAmount;
         if (CorHP <= 0)
         {
+            hitAudioSource.Play();
             animator.SetTrigger("Death");
             player.GetComponent<Player_Lvl>().Experience(Enimy_EXP);
             GetComponent<Collider>().enabled = false;
             healthBar.gameObject.SetActive(false);
-            gameObject.SetActive(false);
-            Destroy(gameObject, 1f);
+            Destroy(gameObject, 1.5f);
 
         }
         else

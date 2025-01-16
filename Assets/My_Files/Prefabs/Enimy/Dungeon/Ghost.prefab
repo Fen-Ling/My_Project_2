@@ -918,7 +918,9 @@ MonoBehaviour:
   MaxHP: 200
   healing: 0.1
   CorHP: 0
+  Enimy_EXP: 0
   healthBar: {fileID: 1154351001017323267}
+  audioDeath: {fileID: 8300000, guid: ba15d7ff945f0b04c9bfdafa789ce9fb, type: 3}
 --- !u!114 &7637390619013770919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,7 +933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb19ca5b48025f4a8c601e410373efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 15
+  range: 20
   attackRange: 3
   stopRange: 2.5
   patrolSpeed: 1
@@ -1132,6 +1134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
+  audioAttack: {fileID: 8300000, guid: 9a9d54710462a9f47ab52018b143e5e0, type: 3}
 --- !u!1 &3424028975100075991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1667,6 +1670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
+  audioAttack: {fileID: 8300000, guid: 9a9d54710462a9f47ab52018b143e5e0, type: 3}
 --- !u!1 &5569651704552902263
 GameObject:
   m_ObjectHideFlags: 0

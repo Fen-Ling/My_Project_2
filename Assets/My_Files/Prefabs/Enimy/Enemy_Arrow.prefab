@@ -184,3 +184,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   lifetime: 3
+  audioAttack: {fileID: 8300000, guid: e2cdbdebfd8f96549a4c0769bac287c3, type: 3}

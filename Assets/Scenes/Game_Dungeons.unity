@@ -2661,7 +2661,6 @@ GameObject:
   m_Component:
   - component: {fileID: 242478147}
   - component: {fileID: 242478146}
-  - component: {fileID: 242478145}
   - component: {fileID: 242478144}
   m_Layer: 0
   m_Name: MaxMapCam
@@ -2714,14 +2713,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &242478145
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242478143}
-  m_Enabled: 1
 --- !u!20 &242478146
 Camera:
   m_ObjectHideFlags: 0
@@ -22482,7 +22473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7594254840009473120, guid: fabfd83eb9ab7ff489274618972cc0a0, type: 3}
       propertyPath: healing
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7754375505288375433, guid: fabfd83eb9ab7ff489274618972cc0a0, type: 3}
       propertyPath: m_Layer

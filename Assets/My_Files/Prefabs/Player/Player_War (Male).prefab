@@ -2733,7 +2733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weapon_Slot: {fileID: 6215069010838970351}
-  audioSword: {fileID: 0}
+  audioSword: {fileID: 8300000, guid: bdd3d763cb20fc54e88fb4ba5bfe9e7b, type: 3}
   volume: 1
 --- !u!1 &6376694616242708693
 GameObject:

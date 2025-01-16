@@ -3894,9 +3894,11 @@ MonoBehaviour:
   range: 25
   attackRange: 5
   stopRange: 5
-  patrolSpeed: 0.5
+  patrolSpeed: 1
   chaseSpeed: 1.5
   isChasing: 0
+  audioAttack: {fileID: 8300000, guid: 9ffb5d059ba913f49a819d95dedfc108, type: 3}
+  volume: 1
 --- !u!114 &5272657939266368740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3912,7 +3914,10 @@ MonoBehaviour:
   MaxHP: 100
   healing: 0.05
   CorHP: 0
+  Enimy_EXP: 0
   healthBar: {fileID: 7324753734442273276}
+  audioDeath: {fileID: 8300000, guid: 6aad7f6c1884fd4408d3cef152023f67, type: 3}
+  volume: 1
 --- !u!136 &7704360569986296141
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3950,6 +3955,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Magic_Prefab: {fileID: 5920701282153680505, guid: 245380083c9028f4b88be072722bd079, type: 3}
   spawnPoint: {fileID: 3079868878326618607}
+  audioAttack: {fileID: 0}
+  volume: 1
 --- !u!1 &8382576584251240373
 GameObject:
   m_ObjectHideFlags: 0

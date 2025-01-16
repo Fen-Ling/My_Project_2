@@ -1224,11 +1224,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 748bb098821dea94585ca4ea7fc9db4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 20
+  range: 25
   attackRange: 3
   stopRange: 2.5
   patrolSpeed: 1
-  chaseSpeed: 2
+  chaseSpeed: 1.5
   isChasing: 0
 --- !u!114 &4844748887431167153
 MonoBehaviour:
@@ -1245,7 +1245,9 @@ MonoBehaviour:
   MaxHP: 100
   healing: 0.05
   CorHP: 0
+  Enimy_EXP: 0
   healthBar: {fileID: 166503749342341678}
+  audioDeath: {fileID: 8300000, guid: 732ab8279ea711b4d85f53330580ddb7, type: 3}
 --- !u!136 &6371455093268314897
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4139,6 +4141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  audioAttack: {fileID: 8300000, guid: bdd3d763cb20fc54e88fb4ba5bfe9e7b, type: 3}
 --- !u!1 &8362103980142293374
 GameObject:
   m_ObjectHideFlags: 0

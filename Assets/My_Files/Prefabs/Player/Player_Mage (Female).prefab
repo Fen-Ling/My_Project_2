@@ -4064,9 +4064,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 80
   inputActions: {fileID: -944628639613478452, guid: d5f7f6a9871e8bf42a836dc314571f46, type: 3}
-  MaxHP: 200
-  healHP: 0.5
-  healthBar: {fileID: 7097550544525806559}
 --- !u!114 &2503164128382490390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4081,6 +4078,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab_Magic: {fileID: 1839965899329144940, guid: 55c23dc61c96b2d4192a22360e1814c7, type: 3}
   spawnPoint: {fileID: 3890511783926620394}
+  audioMagic: {fileID: 8300000, guid: 9ffb5d059ba913f49a819d95dedfc108, type: 3}
+  volume: 1
 --- !u!1 &8583769348408874406
 GameObject:
   m_ObjectHideFlags: 0
@@ -4291,14 +4290,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5832990524984757733, guid: f4c015520e25b074db046c26a74d75dd, type: 3}
   m_PrefabInstance: {fileID: 8257869912746805508}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7097550544525806559 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1217740409543819995, guid: f4c015520e25b074db046c26a74d75dd, type: 3}
-  m_PrefabInstance: {fileID: 8257869912746805508}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
