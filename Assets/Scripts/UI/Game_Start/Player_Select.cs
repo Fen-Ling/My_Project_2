@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Player_Select : MonoBehaviour
 {
@@ -81,6 +82,32 @@ public class Player_Select : MonoBehaviour
     public void StartScene()
     {
         PlayerDataManager.NewGame_PlayerData(genderIndex, classIndex);
-        SceneManager.LoadScene("Game_Terra");
+
+        StartCoroutine(LoadSceneAsync(1));
+    }
+
+    IEnumerator LoadSceneAsync(int sceneName)
+    {
+        SceneManager.LoadScene("Game_Loading", LoadSceneMode.Additive);
+
+        var activeScene = SceneManager.GetActiveScene();
+
+        var ao = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+
+        while (!ao.isDone)
+        {
+            Debug.Log("Загрузка: " + ao.progress);
+            yield return null;
+        }
+
+        var scene = SceneManager.GetSceneByBuildIndex(sceneName);
+
+        yield return new WaitUntil(() => scene.isLoaded);
+
+        SceneManager.SetActiveScene(scene);
+
+        Debug.Log("Новая сцена загружена");
+        SceneManager.UnloadSceneAsync("Game_Loading");
+        yield return SceneManager.UnloadSceneAsync(activeScene.name);
     }
 }

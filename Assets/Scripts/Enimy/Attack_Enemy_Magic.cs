@@ -8,7 +8,7 @@ public class Attack_Enemy_Magic : MonoBehaviour
     private AudioSource hitAudioSource;
     private void Start()
     {
-         hitAudioSource = gameObject.AddComponent<AudioSource>();
+        hitAudioSource = gameObject.AddComponent<AudioSource>();
         hitAudioSource.clip = audioAttack;
         Destroy(gameObject, lifetime);
     }
@@ -20,6 +20,5 @@ public class Attack_Enemy_Magic : MonoBehaviour
             hitAudioSource.Play();
             Destroy(gameObject);
         }
-
     }
 }

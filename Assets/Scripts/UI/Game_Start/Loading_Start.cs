@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
@@ -28,7 +29,6 @@ public class Loadings_Start : MonoBehaviour
                 buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "-";
             }
         }
-
     }
 
     private void OnDisable()
@@ -50,14 +50,39 @@ public class Loadings_Start : MonoBehaviour
 
             if (indexScene == 1)
             {
-                SceneManager.LoadScene(indexScene);
+               StartCoroutine(LoadSceneAsync(indexScene));
             }
             else
             {
+                
                 PlayerDataManager.playerData.position = new Vector3(433, 69, 564);
-                SceneManager.LoadScene(1);
+                StartCoroutine(LoadSceneAsync(1));
             }
-
         }
+    }
+
+    IEnumerator LoadSceneAsync(int sceneName)
+    {
+        SceneManager.LoadScene("Game_Loading", LoadSceneMode.Additive);
+
+        var activeScene = SceneManager.GetActiveScene();
+
+        var ao = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+
+        while (!ao.isDone)
+        {
+            Debug.Log("Загрузка: " + ao.progress);
+            yield return null;
+        }
+
+        var scene = SceneManager.GetSceneByBuildIndex(sceneName);
+
+        yield return new WaitUntil(() => scene.isLoaded);
+
+        SceneManager.SetActiveScene(scene);
+
+        Debug.Log("Новая сцена загружена");
+        SceneManager.UnloadSceneAsync("Game_Loading");
+        yield return SceneManager.UnloadSceneAsync(activeScene.name);
     }
 }

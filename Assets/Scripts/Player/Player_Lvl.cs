@@ -19,8 +19,6 @@ public class Player_Lvl : MonoBehaviour
         EXPBar.maxValue = expForNewLVL;
         EXPBar.value = currentExp;
         Lvl_TXT.text = currentLvl.ToString();
-
-
     }
     public void Experience(float EXP)
     {

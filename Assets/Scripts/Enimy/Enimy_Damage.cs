@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Enimy_Damage : MonoBehaviour
 {
     public float MaxHP = 100f;
-    public float healing;
+    // public float healing;
     public float CorHP;
     public float Enimy_EXP;
     public Slider healthBar;
@@ -22,7 +22,7 @@ public class Enimy_Damage : MonoBehaviour
         hitAudioSource = gameObject.AddComponent<AudioSource>();
         hitAudioSource.clip = audioDeath;
         CorHP = MaxHP;
-        healing = MaxHP / 1000;
+        // healing = MaxHP / 1000;
         healthBar.maxValue = CorHP;
         healthBar.value = CorHP;
         Enimy_EXP = MaxHP / 10f;
@@ -30,7 +30,7 @@ public class Enimy_Damage : MonoBehaviour
     private void FixedUpdate()
     {
         healthBar.value = CorHP;
-        Heal(healing);
+        // Heal(healing);
 
     }
     public void TakeDamage(int damageAmount)
@@ -53,10 +53,10 @@ public class Enimy_Damage : MonoBehaviour
 
         }
     }
-    public void Heal(float HealAmount)
-    {
-        CorHP += HealAmount;
-        CorHP = Mathf.Clamp(CorHP, 0, MaxHP); // Ограничиваем здоровье в пределах 0 и MaxHP
-    }
+    // public void Heal(float HealAmount)
+    // {
+    //     CorHP += HealAmount;
+    //     CorHP = Mathf.Clamp(CorHP, 0, MaxHP); // Ограничиваем здоровье в пределах 0 и MaxHP
+    // }
 
 }

@@ -21,6 +21,4 @@ public class Player_UI : MonoBehaviour
         GameUIState.gameObject.SetActive(true);
         Time.timeScale = 1;
     }
-
-
 }

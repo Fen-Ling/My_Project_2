@@ -13,7 +13,6 @@ public class CharacterLoader : MonoBehaviour
         genderIndex = PlayerDataManager.playerData.genderIndex;
         classIndex = PlayerDataManager.playerData.classIndex;
         
-
         UpdateCharacterArray();
         ActivateCurrentCharacter();
         RemoveInactiveCharacters(currentCharacters, classIndex);
@@ -66,5 +65,4 @@ public class CharacterLoader : MonoBehaviour
             Destroy(oppositeGenderCharacters[i]);
         }
     }
-
 }
