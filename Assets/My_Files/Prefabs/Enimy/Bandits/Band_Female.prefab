@@ -1227,8 +1227,8 @@ MonoBehaviour:
   range: 25
   attackRange: 3
   stopRange: 2.5
-  patrolSpeed: 1
-  chaseSpeed: 1.5
+  patrolSpeed: 0.5
+  chaseSpeed: 1
   isChasing: 0
 --- !u!114 &4844748887431167153
 MonoBehaviour:
@@ -1243,7 +1243,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHP: 100
-  healing: 0.05
   CorHP: 0
   Enimy_EXP: 0
   healthBar: {fileID: 166503749342341678}

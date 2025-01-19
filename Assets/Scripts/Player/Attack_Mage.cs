@@ -8,7 +8,8 @@ public class Attack_Mage : MonoBehaviour
     private AudioSource hitAudioSource;
     [Range(0f, 1f)]
     public float volume = 1f;
-    
+    private GameObject enemy;
+
     private void Start()
     {
         hitAudioSource = gameObject.AddComponent<AudioSource>();
@@ -18,9 +19,9 @@ public class Attack_Mage : MonoBehaviour
     private void Fire()
     {
         if (spawnPoint == null)
-    {
-        return;
-    }
+        {
+            return;
+        }
         var newProjectile = Instantiate(Prefab_Magic);
         newProjectile.transform.position = spawnPoint.position;
         newProjectile.transform.rotation = spawnPoint.rotation;
@@ -31,11 +32,36 @@ public class Attack_Mage : MonoBehaviour
         if (rb != null)
         {
             rb.mass = Mathf.Pow(size, 2);
-            rb.AddForce(spawnPoint.forward * 20f, ForceMode.Impulse);
+            Vector3 launchDirection;
+
+            // Если враг найден, направляем снаряд к врагу
+            if (enemy != null)
+            {
+                Vector3 targetPosition = enemy.transform.position;
+                targetPosition.y += 0.3f;
+                launchDirection = (targetPosition - spawnPoint.position).normalized;
+            }
+            else
+            {
+                // Если врага нет, направляем снаряд вперед
+                launchDirection = spawnPoint.forward;
+            }
+
+            // Добавляем силу к снаряду
+            rb.AddForce(launchDirection * 20f, ForceMode.Impulse);
         }
     }
     public void OnAttackAnimationComplete()
     {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit))
+        {
+            if (hit.collider.CompareTag("Enemy"))
+            {
+                enemy = hit.collider.gameObject; // Сохраняем врага
+                 Debug.Log("Enemy");
+            }
+        }
         Fire(); // Делаем выстрел после завершения анимации, добавить событие в анимацию
         hitAudioSource.Play();
     }

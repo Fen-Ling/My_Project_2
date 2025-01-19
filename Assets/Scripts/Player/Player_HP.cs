@@ -34,7 +34,8 @@ public class Player_HP : MonoBehaviour
             GetComponent<Collider>().enabled = false;
             healthBar.gameObject.SetActive(false);
 
-            Destroy(gameObject, 5f);
+            Destroy(gameObject, 2f);
+            
         }
         else
         {

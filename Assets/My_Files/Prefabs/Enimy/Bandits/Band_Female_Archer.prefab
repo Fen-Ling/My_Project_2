@@ -3355,11 +3355,9 @@ MonoBehaviour:
   range: 25
   attackRange: 5
   stopRange: 5
-  patrolSpeed: 1
-  chaseSpeed: 1.5
+  patrolSpeed: 0.5
+  chaseSpeed: 1
   isChasing: 0
-  audioAttack: {fileID: 8300000, guid: e2cdbdebfd8f96549a4c0769bac287c3, type: 3}
-  volume: 1
 --- !u!114 &6563475640146258147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3373,12 +3371,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHP: 100
-  healing: 0.05
   CorHP: 0
   Enimy_EXP: 0
   healthBar: {fileID: 2457117211041261614}
   audioDeath: {fileID: 8300000, guid: 732ab8279ea711b4d85f53330580ddb7, type: 3}
-  volume: 1
 --- !u!136 &4467364551267557595
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3416,8 +3412,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Arrow_Prefab: {fileID: 9003682227420312995, guid: 6fc433cb52764f044ab6ffce2f0000fb, type: 3}
   spawnPoint: {fileID: 2755601084202858912}
-  audioAttack: {fileID: 0}
-  volume: 1
 --- !u!1 &7101815991852774202
 GameObject:
   m_ObjectHideFlags: 0
