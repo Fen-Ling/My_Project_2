@@ -9,7 +9,7 @@ public class Player_Sword : MonoBehaviour
         // Наносим урон, если объект – враг
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enimy_Damage>().TakeDamage(damage);
+            other.GetComponent<Enemy_Damage>().TakeDamage(damage);
             
         }
     }

@@ -22,7 +22,7 @@ public class Player_Arrow : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enimy_Damage>().TakeDamage(damage);
+            other.GetComponent<Enemy_Damage>().TakeDamage(damage);
             hitAudioSource.Play();
             Destroy(gameObject);
         }

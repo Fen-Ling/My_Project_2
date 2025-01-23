@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using System.Collections;
 
-public class Enimy_AI : MonoBehaviour
+public class Enemy_AI : MonoBehaviour
 {
     public float range = 30f;       // Радиус для поиска случайной точки
     private float chaseRange;   // Радиус обнаружения врагов

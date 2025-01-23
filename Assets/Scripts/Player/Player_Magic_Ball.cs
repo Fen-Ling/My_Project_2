@@ -21,7 +21,7 @@ public class Player_Magic_Ball : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enimy_Damage>().TakeDamage(damage);
+            other.GetComponent<Enemy_Damage>().TakeDamage(damage);
             hitAudioSource.Play();
             Destroy(gameObject);
         }

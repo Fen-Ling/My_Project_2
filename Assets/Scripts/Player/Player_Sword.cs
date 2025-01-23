@@ -20,7 +20,7 @@ public class Attack_Player_Weapon : MonoBehaviour
         // Наносим урон, если объект – враг
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enimy_Damage>().TakeDamage(damage);
+            other.GetComponent<Enemy_Damage>().TakeDamage(damage);
             hitAudioSource.Play();
         }
     }
