@@ -50,11 +50,11 @@ public class Loadings_Start : MonoBehaviour
 
             if (indexScene == 1)
             {
-               StartCoroutine(LoadSceneAsync(indexScene));
+                StartCoroutine(LoadSceneAsync(indexScene));
             }
             else
             {
-                
+
                 PlayerDataManager.playerData.position = new Vector3(433, 69, 564);
                 StartCoroutine(LoadSceneAsync(1));
             }
@@ -64,10 +64,10 @@ public class Loadings_Start : MonoBehaviour
     IEnumerator LoadSceneAsync(int sceneName)
     {
         SceneManager.LoadScene("Game_Loading", LoadSceneMode.Additive);
+        yield return new WaitForSecondsRealtime(1f);
 
         var activeScene = SceneManager.GetActiveScene();
-
-        var ao = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        var ao = SceneManager.LoadSceneAsync(sceneName);
 
         while (!ao.isDone)
         {
@@ -76,11 +76,9 @@ public class Loadings_Start : MonoBehaviour
         }
 
         var scene = SceneManager.GetSceneByBuildIndex(sceneName);
-
         yield return new WaitUntil(() => scene.isLoaded);
 
         SceneManager.SetActiveScene(scene);
-
         Debug.Log("Новая сцена загружена");
         SceneManager.UnloadSceneAsync("Game_Loading");
         yield return SceneManager.UnloadSceneAsync(activeScene.name);

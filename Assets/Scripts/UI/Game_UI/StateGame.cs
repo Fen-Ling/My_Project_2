@@ -9,9 +9,9 @@ public class StateGame : MonoBehaviour
         {
             child.gameObject.SetActive(false);
         }
+
         states.GetChild(0).gameObject.SetActive(true);
 
         Settings_Data settings = SettingsDataManager.LoadSettings();
-        
     }
 }

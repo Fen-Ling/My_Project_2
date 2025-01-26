@@ -5,6 +5,7 @@ public class Player_HP : MonoBehaviour
 {
     public Slider healthBar;
     private Animator animator;
+    public GameOver_UI gameOver_State;
     public float MaxHP = 200f;
     private float healHP;
     public float HP;
@@ -33,7 +34,7 @@ public class Player_HP : MonoBehaviour
             animator.SetTrigger("Death");
             GetComponent<Collider>().enabled = false;
             healthBar.gameObject.SetActive(false);
-
+            gameOver_State.gameObject.SetActive(true);
             Destroy(gameObject, 2f);
             
         }

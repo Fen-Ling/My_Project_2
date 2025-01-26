@@ -82,17 +82,16 @@ public class Player_Select : MonoBehaviour
     public void StartScene()
     {
         PlayerDataManager.NewGame_PlayerData(genderIndex, classIndex);
-
         StartCoroutine(LoadSceneAsync(1));
     }
 
     IEnumerator LoadSceneAsync(int sceneName)
     {
         SceneManager.LoadScene("Game_Loading", LoadSceneMode.Additive);
+        yield return new WaitForSecondsRealtime(1f);
 
         var activeScene = SceneManager.GetActiveScene();
-
-        var ao = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        var ao = SceneManager.LoadSceneAsync(sceneName);
 
         while (!ao.isDone)
         {
@@ -101,11 +100,8 @@ public class Player_Select : MonoBehaviour
         }
 
         var scene = SceneManager.GetSceneByBuildIndex(sceneName);
-
         yield return new WaitUntil(() => scene.isLoaded);
-
         SceneManager.SetActiveScene(scene);
-
         Debug.Log("Новая сцена загружена");
         SceneManager.UnloadSceneAsync("Game_Loading");
         yield return SceneManager.UnloadSceneAsync(activeScene.name);
