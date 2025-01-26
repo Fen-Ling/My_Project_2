@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PortalTeleport : MonoBehaviour
 {
@@ -12,9 +13,7 @@ public class PortalTeleport : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
             StartCoroutine(LoadSceneAsync(sceneToLoad, other.transform));
-
         }
     }
 
@@ -24,21 +23,19 @@ public class PortalTeleport : MonoBehaviour
         Time.timeScale = 0;
 
         var activeScene = SceneManager.GetActiveScene();
-
         var ao = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
+        Slider slider = GameObject.Find("LoadingBar").GetComponent<Slider>();
+        slider.value = 0f;
         while (!ao.isDone)
         {
+            slider.value = ao.progress;
             Debug.Log("Загрузка: " + ao.progress);
             yield return null;
         }
 
-        yield return new WaitForSecondsRealtime(2f);
-
         var scene = SceneManager.GetSceneByName(sceneName);
-
         yield return new WaitUntil(() => scene.isLoaded);
-
         SceneManager.SetActiveScene(scene);
 
         TeleportPlayer(player);

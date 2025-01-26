@@ -68,9 +68,11 @@ public class Loadings_Start : MonoBehaviour
 
         var activeScene = SceneManager.GetActiveScene();
         var ao = SceneManager.LoadSceneAsync(sceneName);
-
+        Slider slider = GameObject.Find("LoadingBar").GetComponent<Slider>();
+        slider.value = 0f;
         while (!ao.isDone)
         {
+            slider.value = ao.progress;
             Debug.Log("Загрузка: " + ao.progress);
             yield return null;
         }

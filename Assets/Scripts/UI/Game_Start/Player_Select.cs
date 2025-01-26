@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Player_Select : MonoBehaviour
 {
@@ -85,22 +86,25 @@ public class Player_Select : MonoBehaviour
         StartCoroutine(LoadSceneAsync(1));
     }
 
-    IEnumerator LoadSceneAsync(int sceneName)
+     IEnumerator LoadSceneAsync(int sceneName)
     {
         SceneManager.LoadScene("Game_Loading", LoadSceneMode.Additive);
         yield return new WaitForSecondsRealtime(1f);
 
         var activeScene = SceneManager.GetActiveScene();
         var ao = SceneManager.LoadSceneAsync(sceneName);
-
+        Slider slider = GameObject.Find("LoadingBar").GetComponent<Slider>();
+        slider.value = 0f;
         while (!ao.isDone)
         {
+            slider.value = ao.progress;
             Debug.Log("Загрузка: " + ao.progress);
             yield return null;
         }
 
         var scene = SceneManager.GetSceneByBuildIndex(sceneName);
         yield return new WaitUntil(() => scene.isLoaded);
+
         SceneManager.SetActiveScene(scene);
         Debug.Log("Новая сцена загружена");
         SceneManager.UnloadSceneAsync("Game_Loading");
