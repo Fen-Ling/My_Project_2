@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class ArrowSelector : MonoBehaviour
 {
     public Button[] ArrowButtons;
+    public GameObject Buttons;
     public Attack_Archer attackArrow;
     private int selectedArrowIndex = -1;
 
@@ -14,6 +15,7 @@ public class ArrowSelector : MonoBehaviour
 
     private void Start()
     {
+        Buttons.SetActive(true);
         for (int i = 0; i < ArrowButtons.Length; i++)
         {
             int index = i;

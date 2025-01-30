@@ -9,14 +9,13 @@ public class Attack_Archer : MonoBehaviour
     public float volume = 1f;
     public Transform spawnPoint;
     private GameObject enemy;
-    private int fireindex;
+    private int fireindex = 0;
 
     private void Start()
     {
         hitAudioSource = gameObject.AddComponent<AudioSource>();
         hitAudioSource.clip = audioArrow;
         hitAudioSource.volume = volume;
-        fireindex = 0;
     }
 
     public void Fire()

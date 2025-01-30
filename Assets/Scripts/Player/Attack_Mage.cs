@@ -10,7 +10,7 @@ public class Attack_Mage : MonoBehaviour
     [Range(0f, 1f)]
     public float volume = 1f;
     private GameObject enemy;
-    private int magicIndex;
+    private int magicIndex = 0;
 
     private void Start()
     {

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class MagicSelector : MonoBehaviour
 {
     public Button[] magicButtons;
+    public GameObject Button;
     public Attack_Mage attackMage;
     private int selectedMagicIndex = -1;
 
@@ -13,6 +14,7 @@ public class MagicSelector : MonoBehaviour
     }
     private void Start()
     {
+        Button.SetActive(true);
         for (int i = 0; i < magicButtons.Length; i++)
         {
             int index = i;
