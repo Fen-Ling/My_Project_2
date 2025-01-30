@@ -155,7 +155,13 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 2.2086291, y: 0.080965176, z: 17.164577, w: 1}
+        m_Name: FireColor
+        m_Overridden: 0
+      - m_Value: {x: 25.688944, y: 8.361026, z: 19.407572, w: 1}
+        m_Name: ElectricityColor
+        m_Overridden: 0
     m_Uint:
       m_Array: []
     m_Int:
@@ -163,9 +169,112 @@ VisualEffect:
     m_Matrix4x4f:
       m_Array: []
     m_AnimationCurve:
-      m_Array: []
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0.010071183
+            value: 1.2548914
+            inSlope: -6.38387
+            outSlope: -3.369681
+            tangentMode: 5
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.21601687
+            value: 0.51746416
+            inSlope: -0.29006797
+            outSlope: -0.29006797
+            tangentMode: 1
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.5537911
+            value: 1.5079498
+            inSlope: -1.1135753
+            outSlope: -1.1135753
+            tangentMode: 1
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.811556
+            value: 0.8805476
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1.0856732
+            value: 1.1657289
+            inSlope: 0.7216182
+            outSlope: 0.7216182
+            tangentMode: 1
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1.3897859
+            value: 0.91978085
+            inSlope: -0.0977781
+            outSlope: -0.0977781
+            tangentMode: 1
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1.7097582
+            value: 1.3351607
+            inSlope: 3.800643
+            outSlope: 0
+            tangentMode: 1
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        m_Name: TextureLerp
+        m_Overridden: 0
     m_Gradient:
-      m_Array: []
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 12.294321, g: 3.1606565, b: 65.96597, a: 1}
+          key1: {r: 4.2511077, g: 0.12974039, b: 10.432955, a: 0}
+          key2: {r: 0.100347355, g: 0.0018375037, b: 0.015201958, a: 0}
+          key3: {r: 0, g: 0, b: 0, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 0
+          ctime1: 33773
+          ctime2: 65535
+          ctime3: 0
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: -1
+          m_NumColorKeys: 3
+          m_NumAlphaKeys: 2
+        m_Name: SparkColor
+        m_Overridden: 0
     m_NamedObject:
       m_Array: []
     m_Bool:

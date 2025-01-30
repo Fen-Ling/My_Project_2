@@ -17,7 +17,7 @@ public class Attack_Archer : MonoBehaviour
         hitAudioSource.volume = volume;
     }
 
-    private void Fire()
+    public void Fire()
     {
         if (spawnPoint == null)
         {
@@ -61,6 +61,58 @@ public class Attack_Archer : MonoBehaviour
         }
         Fire();
         hitAudioSource.Play();
+    }
+
+    public void FireMultipleArrows()
+    {
+        StartCoroutine(FireArrowsCoroutine(5, 0.1f));
+    }
+
+    private System.Collections.IEnumerator FireArrowsCoroutine(int numberOfArrows, float interval)
+    {
+        for (int i = 0; i < numberOfArrows; i++)
+        {
+            Fire();
+            hitAudioSource.Play();
+            yield return new WaitForSeconds(interval);
+        }
+    }
+
+    public void FireInCircle()
+    {
+        float angleStep = 360f / 8; // Угол между стрелами
+        for (int i = 0; i < 8; i++)
+        {
+            float angle = i * angleStep;
+            Quaternion rotation = Quaternion.Euler(0, angle, 0); // Поворачиваем стрелу
+            GameObject arrow = Instantiate(Arrow_Prefab, spawnPoint.position, rotation);
+            Rigidbody rb = arrow.GetComponent<Rigidbody>();
+
+            if (rb != null)
+            {
+                Vector3 launchDirection = rotation * Vector3.forward; // Направление по кругу
+                rb.AddForce(launchDirection * 20f, ForceMode.Impulse);
+            }
+        }
+    }
+
+    public void ChooseFireType(int fireType)
+    {
+        switch (fireType)
+        {
+            case 0:
+                Fire(); // Одиночный выстрел
+                break;
+            case 1:
+                FireMultipleArrows(); // 5 выстрелов каждые 0.1 секунды
+                break;
+            case 2:
+                FireInCircle(); // 8 стрел в круге
+                break;
+            default:
+                Debug.LogWarning("Неверный тип стрельбы");
+                break;
+        }
     }
 }
 

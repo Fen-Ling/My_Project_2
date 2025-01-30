@@ -7,7 +7,7 @@ public class Player_Lvl : MonoBehaviour
     public float currentExp = 0;
     public int currentLvl = 1;
     public float expForNewLVL = 100;
-    public Slider EXPBar;
+    public Image EXPBar;
     public TextMeshProUGUI Lvl_TXT;
 
     public void Start()
@@ -16,26 +16,34 @@ public class Player_Lvl : MonoBehaviour
         currentLvl = PlayerDataManager.playerData.level;
         expForNewLVL = PlayerDataManager.playerData.ExpToLvl;
 
-        EXPBar.maxValue = expForNewLVL;
-        EXPBar.value = currentExp;
+        // Инициализация значения EXPBar
+        UpdateEXPBar();
         Lvl_TXT.text = currentLvl.ToString();
     }
+
     public void Experience(float EXP)
     {
         currentExp += EXP;
-        if (currentExp > expForNewLVL)
+        if (currentExp >= expForNewLVL)
         {
             LevelUP();
         }
-        EXPBar.value = currentExp;
+        UpdateEXPBar();
     }
+
     public void LevelUP()
     {
         currentLvl++;
         Lvl_TXT.text = currentLvl.ToString();
 
-        currentExp -= expForNewLVL;
-        expForNewLVL *= 2;
-        EXPBar.maxValue = expForNewLVL;
+        currentExp -= expForNewLVL; // Уменьшаем текущий опыт на необходимый для левела
+        expForNewLVL *= 2; // Увеличиваем необходимый опыт для следующего уровня
+        UpdateEXPBar(); // Обновляем бар после левела
+    }
+
+    private void UpdateEXPBar()
+    {
+        float fillAmount = currentExp / expForNewLVL; // Процент заполнения
+        EXPBar.fillAmount = fillAmount; // Устанавливаем заполнение Image
     }
 }

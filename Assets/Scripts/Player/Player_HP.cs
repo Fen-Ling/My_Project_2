@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Player_HP : MonoBehaviour
 {
-    public Slider healthBar;
+    public Image healthBar;
     private Animator animator;
     public GameOver_UI gameOver_State;
     public float MaxHP = 200f;
@@ -15,15 +15,14 @@ public class Player_HP : MonoBehaviour
         MaxHP = PlayerDataManager.playerData.MaxHP;
         animator = GetComponent<Animator>();
         HP = MaxHP;
-        healthBar.maxValue = HP;
-        healthBar.value = HP;
+        UpdateHealthBar();
         healHP = MaxHP / 1000f;
     }
 
     private void FixedUpdate()
     {
-        healthBar.value = HP;
         Heal(healHP);
+        UpdateHealthBar();
     }
     public void TakeDamage(float damageAmount)
     {
@@ -48,5 +47,11 @@ public class Player_HP : MonoBehaviour
     {
         HP += HealAmount;
         HP = Mathf.Clamp(HP, 0, MaxHP);
+    }
+
+    private void UpdateHealthBar()
+    {
+        float fillAmount = HP / MaxHP;
+        healthBar.fillAmount = fillAmount;
     }
 }
