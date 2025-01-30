@@ -35,7 +35,7 @@ public class ArrowSelector : MonoBehaviour
         selectedArrowIndex = index;
         ArrowButtons[selectedArrowIndex].GetComponentInChildren<Image>().color = Color.green; // Меняем цвет нажатой кнопки
 
-        // attackArrow.ChooseFireType(selectedArrowIndex);
+        attackArrow.ChooseFireType(selectedArrowIndex);
 
     }
 }

@@ -9,12 +9,14 @@ public class Attack_Archer : MonoBehaviour
     public float volume = 1f;
     public Transform spawnPoint;
     private GameObject enemy;
+    private int fireindex;
 
     private void Start()
     {
         hitAudioSource = gameObject.AddComponent<AudioSource>();
         hitAudioSource.clip = audioArrow;
         hitAudioSource.volume = volume;
+        fireindex = 0;
     }
 
     public void Fire()
@@ -59,7 +61,7 @@ public class Attack_Archer : MonoBehaviour
                 Debug.Log("Enemy");
             }
         }
-        Fire();
+        ChooseFireType(fireindex);
         hitAudioSource.Play();
     }
 
@@ -113,6 +115,7 @@ public class Attack_Archer : MonoBehaviour
                 Debug.LogWarning("Неверный тип стрельбы");
                 break;
         }
+        fireindex = fireType;
     }
 }
 
