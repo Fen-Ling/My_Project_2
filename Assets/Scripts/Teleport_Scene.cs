@@ -20,13 +20,14 @@ public class PortalTeleport : MonoBehaviour
     IEnumerator LoadSceneAsync(string sceneName, Transform player)
     {
         SceneManager.LoadScene("Game_Loading", LoadSceneMode.Additive);
-        Time.timeScale = 0;
-
-        var activeScene = SceneManager.GetActiveScene();
-        var ao = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        
+        yield return new WaitForSecondsRealtime(1f);
 
         Slider slider = GameObject.Find("LoadingBar").GetComponent<Slider>();
         slider.value = 0f;
+        var activeScene = SceneManager.GetActiveScene();
+        var ao = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+
         while (!ao.isDone)
         {
             slider.value = ao.progress;
@@ -42,7 +43,6 @@ public class PortalTeleport : MonoBehaviour
 
         Debug.Log("Новая сцена загружена и игрок телепортирован.");
         SceneManager.UnloadSceneAsync("Game_Loading");
-        Time.timeScale = 1;
         yield return SceneManager.UnloadSceneAsync(activeScene.name);
     }
 
