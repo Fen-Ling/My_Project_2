@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using UnityEngine.UI;
 
 public class Pause_Menu : MonoBehaviour
 {
@@ -7,6 +9,7 @@ public class Pause_Menu : MonoBehaviour
     public Game_UI GameUIState;
     public Saving_Game SaveGame;
     public Settings_Game SettingGame;
+    public GameObject persistentObjects;
 
     private void OnEnable()
     {
@@ -34,10 +37,46 @@ public class Pause_Menu : MonoBehaviour
         SaveGame.gameObject.SetActive(true);
     }
 
+    public void Back_to_Menu()
+    {
+
+        StartCoroutine(LoadSceneAsync("Game_StartMenu"));
+
+    }
+
     public void Settings()
     {
         gameObject.SetActive(false);
         SettingGame.gameObject.SetActive(true);
+    }
+
+    IEnumerator LoadSceneAsync(string sceneName)
+    {
+        SceneManager.LoadScene("Game_Loading", LoadSceneMode.Additive);
+        
+        yield return new WaitForSecondsRealtime(1f);
+
+        Slider slider = GameObject.Find("LoadingBar").GetComponent<Slider>();
+        slider.value = 0f;
+        var activeScene = SceneManager.GetActiveScene();
+        var ao = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+
+        while (!ao.isDone)
+        {
+            slider.value = ao.progress;
+            Debug.Log("Загрузка: " + ao.progress);
+            yield return null;
+        }
+
+        var scene = SceneManager.GetSceneByName(sceneName);
+        yield return new WaitUntil(() => scene.isLoaded);
+        SceneManager.SetActiveScene(scene);
+
+        Destroy(persistentObjects);
+
+        Debug.Log("Новая сцена загружена");
+        SceneManager.UnloadSceneAsync("Game_Loading");
+        yield return SceneManager.UnloadSceneAsync(activeScene.name);
     }
 
 }

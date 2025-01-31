@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc3fdb7d10f7d1408c8eb5215e17a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
+  damage: 10
   lifetime: 3
   audioMagic: {fileID: 8300000, guid: 78a25b7244981074bb021f2faf7c0918, type: 3}
   volume: 1
@@ -140,7 +140,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7616231576473851292}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: cee54a03d28a1894992341158a095d63, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: a962f3c84b38afc4fb40c620ad151d78, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -288,7 +288,7 @@ VFXRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7616231576473851292}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0

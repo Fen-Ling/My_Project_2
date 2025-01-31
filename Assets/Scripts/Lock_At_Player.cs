@@ -4,7 +4,7 @@ public class Lock_At_Player : MonoBehaviour
 {
     private Camera targetCamera;
 
-    void Start()
+    void Awake()
     {
         targetCamera = GameObject.Find("Cam1").GetComponent<Camera>();
     }
