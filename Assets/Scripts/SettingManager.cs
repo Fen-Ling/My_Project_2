@@ -3,10 +3,12 @@ using UnityEngine;
 public class SettingsManager : MonoBehaviour
 {
     public AudioSource audioSource;
+    public Camera cam;
 
     private void Start()
     {
         LoadSettings();
+        cam.gameObject.SetActive(true);
     }
 
     public void LoadSettings()

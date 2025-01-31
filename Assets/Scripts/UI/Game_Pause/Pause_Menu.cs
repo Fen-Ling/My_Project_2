@@ -39,9 +39,7 @@ public class Pause_Menu : MonoBehaviour
 
     public void Back_to_Menu()
     {
-
         StartCoroutine(LoadSceneAsync("Game_StartMenu"));
-
     }
 
     public void Settings()
