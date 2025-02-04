@@ -567,6 +567,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "NPSTalk",
+                    "type": "Button",
+                    "id": "968b2bea-8627-45af-8f01-2bc21926f63d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -710,6 +719,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d19e6a3a-16cd-4864-83f2-04ab120fd22f",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NPSTalk",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
