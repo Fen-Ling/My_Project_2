@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 
 public class NPCDialogue : MonoBehaviour
 {
-    public string dialogueText;
     public QuestManager dialogueUIManager;
     public InputActionAsset inputActions;
     private InputAction m_questAction;
@@ -43,6 +42,6 @@ public class NPCDialogue : MonoBehaviour
 
     private void ShowDialogue()
     {
-        dialogueUIManager.ShowQuestUI(dialogueText); // Показываем UI с описанием квеста
+        dialogueUIManager.ShowQuestUI(); // Показываем UI с описанием квеста
     }
 }

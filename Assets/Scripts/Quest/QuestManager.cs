@@ -13,11 +13,12 @@ public class QuestManager : MonoBehaviour
 
     public GameObject questSelectPrefab;
     public TMP_Text questDescriptionText;
+    public TMP_Text questNameText;
+    public TMP_Text questText;
 
     public GameObject questParent;
     public GameObject questPrefab;
 
-    public List<QuestItem> acceptQuests = new List<QuestItem>();
     public List<QuestItem> activeQuests = new List<QuestItem>();
 
     private void Awake()
@@ -38,18 +39,23 @@ public class QuestManager : MonoBehaviour
         talkPrompt.SetActive(false);
     }
 
-    public void ShowQuestUI(string questDescription)
+    public void ShowQuestUI()
     {
-        questDescriptionText.text = questDescription;
         questUI.SetActive(true);
         questSelect.SetActive(true);
         questInfo.SetActive(false);
-    }
 
+    }
     public void QuestSelect()
     {
         questSelect.SetActive(false);
         questInfo.SetActive(true);
+
+        var idQuest = questSelectPrefab.GetComponent<QuestSelect>().idQuest;
+        QuestData quest = QuestDataManager.FindQuestByID(idQuest);
+        questDescriptionText.text = quest.QuestName;
+        questNameText.text = quest.QuestName;
+        questText.text = quest.QuestInfo;
 
         string questName = questDescriptionText.text;
         QuestItem selectedQuest = FindQuestByName(questName);
