@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class QuestManager : MonoBehaviour
@@ -9,26 +8,24 @@ public class QuestManager : MonoBehaviour
     public GameObject questUI;
     public GameObject questSelect;
     public GameObject questInfo;
+    public GameObject acceptQuestButton;
+    public GameObject completeQuestButton;
+
+    public GameObject questSelectPrefab;
     public TMP_Text questDescriptionText;
-    public Button acceptQuestButton;
-    public Button completeQuestButton;
-    public Button returnQuestButton;
-    public Button endConversationButton;
 
     public GameObject questParent;
     public GameObject questPrefab;
+
+    public List<QuestItem> acceptQuests = new List<QuestItem>();
     public List<QuestItem> activeQuests = new List<QuestItem>();
 
-    private void Start()
+    private void Awake()
     {
         talkPrompt.SetActive(false);
         questUI.SetActive(false);
-
-        acceptQuestButton.onClick.AddListener(AcceptQuest);
-        completeQuestButton.onClick.AddListener(OnCompleteQuestButtonPressed);
-        returnQuestButton.onClick.AddListener(ReturnQuestButtonPressed);
-        endConversationButton.onClick.AddListener(EndConversation);
-
+        acceptQuestButton.SetActive(false);
+        completeQuestButton.SetActive(false);
     }
 
     public void ShowTalkPrompt()
@@ -47,52 +44,69 @@ public class QuestManager : MonoBehaviour
         questUI.SetActive(true);
         questSelect.SetActive(true);
         questInfo.SetActive(false);
-        acceptQuestButton.gameObject.SetActive(false);
-        completeQuestButton.gameObject.SetActive(false);
-        returnQuestButton.gameObject.SetActive(false);
-        endConversationButton.gameObject.SetActive(true);
     }
 
     public void QuestSelect()
     {
         questSelect.SetActive(false);
         questInfo.SetActive(true);
-        acceptQuestButton.gameObject.SetActive(true);
-        returnQuestButton.gameObject.SetActive(true);
-        endConversationButton.gameObject.SetActive(false);
+
+        string questName = questDescriptionText.text;
+        QuestItem selectedQuest = FindQuestByName(questName);
+
+        if (selectedQuest != null)
+        {
+            switch (selectedQuest.questState)
+            {
+                case QuestState.Active:
+                    acceptQuestButton.SetActive(false);
+                    completeQuestButton.SetActive(true);
+                    break;
+                case QuestState.Completed:
+                    acceptQuestButton.SetActive(false);
+                    completeQuestButton.SetActive(false);
+                    break;
+            }
+        }
+        else
+        {
+            acceptQuestButton.SetActive(true);
+            completeQuestButton.SetActive(false);
+        }
     }
 
-    private void AcceptQuest()
+    public void AcceptQuest()
     {
         string questName = questDescriptionText.text;
 
-        if (IsQuestObjectExists(questName))
+        if (FindQuestByName(questName))
         {
             Debug.Log("Квест с таким именем уже существует!");
-            return; // Прерываем выполнение, если объект с таким именем уже существует
+            return;
         }
 
         Debug.Log("Квест принят!");
         GameObject questObject = Instantiate(questPrefab, questParent.transform);
         QuestItem questItem = questObject.GetComponent<QuestItem>();
 
+
         if (questItem != null)
         {
             questItem.SetQuestName(questName); // Устанавливаем название квеста
-            AddQuest(questItem); // Добавляем квест в активные
+            AddQuestActive(questItem); // Добавляем квест в активные
         }
 
         questUI.SetActive(false);
     }
 
-    public void AddQuest(QuestItem quest)
+    private void AddQuestActive(QuestItem quest)
     {
         if (!activeQuests.Contains(quest))
         {
             activeQuests.Add(quest);
             Debug.Log("Квест добавлен: " + quest.questNameText.text);
-            completeQuestButton.gameObject.SetActive(true);
-            acceptQuestButton.gameObject.SetActive(false);
+            completeQuestButton.SetActive(true);
+            acceptQuestButton.SetActive(false);
         }
         else
         {
@@ -100,14 +114,15 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    public void CompleteQuest(QuestItem quest)
+    private void CompleteQuest(QuestItem quest)
     {
         if (activeQuests.Remove(quest)) // Удаляем квест из активных
         {
-            quest.CompleteQuest(); // Предполагается, что у QuestItem есть метод для завершения квеста
+            quest.CompleteQuest(); // Завершаем квест
             Debug.Log("Квест завершен: " + quest.questNameText.text);
-            completeQuestButton.gameObject.SetActive(false);
-            // Здесь можно также удалить квест из UI, если это необходимо
+            completeQuestButton.SetActive(false);
+            questUI.SetActive(false);
+            questSelectPrefab.SetActive(false);
         }
         else
         {
@@ -115,46 +130,35 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    private bool IsQuestObjectExists(string questName)
+    private QuestItem FindQuestByName(string questName)
     {
         foreach (Transform child in questParent.transform)
         {
             QuestItem questItem = child.GetComponent<QuestItem>();
             if (questItem != null && questItem.questNameText.text == questName)
             {
-                return true; // Объект с таким именем уже существует
+                return questItem; // Возвращаем найденный квест
             }
         }
-        return false; // Объект не найден
+        return null; // Если квест не найден
     }
 
-    private void EndConversation()
+    public void ReturnQuestButton()
+    {
+        questSelect.SetActive(true);
+        questInfo.SetActive(false);
+    }
+    public void EndTalkButton()
     {
         questUI.SetActive(false);
         HideTalkPrompt();
     }
 
-    private void ReturnQuestButtonPressed()
-    {
-        questSelect.SetActive(true);
-        questInfo.SetActive(false);
-        acceptQuestButton.gameObject.SetActive(false);
-        completeQuestButton.gameObject.SetActive(false);
-        returnQuestButton.gameObject.SetActive(false);
-        endConversationButton.gameObject.SetActive(true);
-    }
-
-    private void OnCompleteQuestButtonPressed()
+    public void CompleteQuestButton()
     {
         if (activeQuests.Count > 0)
         {
             CompleteQuest(activeQuests[activeQuests.Count - 1]); // Завершить последний активный квест
         }
-    }
-
-
-    private void UpdateCompleteQuestButtonState(bool state)
-    {
-        completeQuestButton.gameObject.SetActive(state);
     }
 }
