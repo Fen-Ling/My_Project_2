@@ -5,7 +5,7 @@ public static class QuestDataManager
 {
     private static QuestDataList questDataList = new QuestDataList();
 
-    public static void AddQuestData(int questID, string questName, string questInfo, bool questComplete)
+    public static void AddQuestData(int questID, string questName, string questInfo, int questProgressStart, int questProgressEnd, bool questComplete)
     {
         string filepath = Path.Combine(Application.persistentDataPath, "QuestData.json");
 
@@ -16,6 +16,8 @@ public static class QuestDataManager
             QuestID = questID,
             QuestName = questName,
             QuestInfo = questInfo,
+            QuestProgressStart = questProgressStart,
+            QuestProgressEnd = questProgressEnd,
             QuestComplete = questComplete,
         };
 
@@ -60,5 +62,40 @@ public static class QuestDataManager
 
         Debug.Log("Квест не найден.");
         return null;
+    }
+
+    public static QuestData FindQuestByName(string questName)
+    {
+        LoadQuestData();
+        foreach (var quest in questDataList.quests)
+        {
+            if (quest.QuestName.Equals(questName, System.StringComparison.OrdinalIgnoreCase))
+            {
+                Debug.Log($"Квест найден: ID = {quest.QuestID}, Название = {quest.QuestName}");
+                return quest;
+            }
+        }
+
+        Debug.Log("Квест не найден.");
+        return null;
+    }
+
+    public static void UpdateQuestByName(string questName, bool questComplete)
+    {
+        LoadQuestData();
+        QuestData questToUpdate = FindQuestByName(questName);
+        if (questToUpdate != null)
+        {
+            questToUpdate.QuestComplete = questComplete;
+
+            string json = JsonUtility.ToJson(questDataList, true);
+            string filepath = Path.Combine(Application.persistentDataPath, "QuestData.json");
+            File.WriteAllText(filepath, json);
+            Debug.Log($"Статус завершения квеста обновлен: ID = {questToUpdate.QuestID}, Завершен = {questToUpdate.QuestComplete}");
+        }
+        else
+        {
+            Debug.Log("Не удалось обновить статус завершения квеста. Квест не найден.");
+        }
     }
 }

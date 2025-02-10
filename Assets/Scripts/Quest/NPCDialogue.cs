@@ -19,7 +19,7 @@ public class NPCDialogue : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = true;
-            dialogueUIManager.ShowTalkPrompt(); // Показываем приглашение к разговору
+            dialogueUIManager.ShowTalkPrompt();
         }
     }
 
@@ -28,7 +28,7 @@ public class NPCDialogue : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
-            dialogueUIManager.HideTalkPrompt(); // Скрываем приглашение к разговору
+            dialogueUIManager.HideTalkPrompt();
         }
     }
 

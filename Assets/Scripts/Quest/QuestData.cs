@@ -7,6 +7,8 @@ public class QuestData
     public int QuestID;
     public string QuestName;
     public string QuestInfo;
+    public int QuestProgressStart;
+    public int QuestProgressEnd;
     public bool QuestComplete;
 }
 

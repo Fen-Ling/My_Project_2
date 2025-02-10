@@ -6,29 +6,40 @@ public class QuestManager : MonoBehaviour
 {
     public GameObject talkPrompt;
     public GameObject questUI;
-    public GameObject questSelect;
-    public GameObject questInfo;
+    public GameObject questSelectUI;
+    public GameObject questInfoUI;
     public GameObject acceptQuestButton;
     public GameObject completeQuestButton;
-
-    public GameObject questSelectPrefab;
-    public TMP_Text questDescriptionText;
+    public GameObject questSelect;
+    private GameObject[] questSelectPrefab;
     public TMP_Text questNameText;
     public TMP_Text questText;
-
     public GameObject questParent;
     public GameObject questPrefab;
 
     public List<QuestItem> activeQuests = new List<QuestItem>();
+    private QuestItem currentQuest;
+    private QuestData questData;
 
-    private void Awake()
+    private void Start()
     {
         talkPrompt.SetActive(false);
         questUI.SetActive(false);
         acceptQuestButton.SetActive(false);
         completeQuestButton.SetActive(false);
-    }
 
+        if (questSelect != null)
+        {
+            int childCount = questSelect.transform.childCount;
+            questSelectPrefab = new GameObject[childCount];
+
+            for (int i = 0; i < childCount; i++)
+            {
+                questSelectPrefab[i] = questSelect.transform.GetChild(i).gameObject;
+            }
+        }
+    }
+    
     public void ShowTalkPrompt()
     {
         talkPrompt.SetActive(true);
@@ -42,48 +53,66 @@ public class QuestManager : MonoBehaviour
     public void ShowQuestUI()
     {
         questUI.SetActive(true);
-        questSelect.SetActive(true);
-        questInfo.SetActive(false);
-
+        questSelectUI.SetActive(true);
+        questInfoUI.SetActive(false);
+        
     }
-    public void QuestSelect()
+
+    private void DisableQuestPrefab(string questName)
     {
-        questSelect.SetActive(false);
-        questInfo.SetActive(true);
-
-        var idQuest = questSelectPrefab.GetComponent<QuestSelect>().idQuest;
-        QuestData quest = QuestDataManager.FindQuestByID(idQuest);
-        questDescriptionText.text = quest.QuestName;
-        questNameText.text = quest.QuestName;
-        questText.text = quest.QuestInfo;
-
-        string questName = questDescriptionText.text;
-        QuestItem selectedQuest = FindQuestByName(questName);
-
-        if (selectedQuest != null)
+        // Предполагается, что префаб квеста связан с его именем
+        if (questPrefab != null)
         {
-            switch (selectedQuest.questState)
-            {
-                case QuestState.Active:
-                    acceptQuestButton.SetActive(false);
-                    completeQuestButton.SetActive(true);
-                    break;
-                case QuestState.Completed:
-                    acceptQuestButton.SetActive(false);
-                    completeQuestButton.SetActive(false);
-                    break;
-            }
+            questPrefab.SetActive(false);
+            Debug.Log($"Префаб квеста '{questName}' отключён, так как квест завершен.");
         }
         else
         {
-            acceptQuestButton.SetActive(true);
-            completeQuestButton.SetActive(false);
+            Debug.LogWarning("Префаб квеста не установлен.");
         }
     }
 
-    public void AcceptQuest()
+    public void QuestSelect(int index)
     {
-        string questName = questDescriptionText.text;
+        questSelectUI.SetActive(false);
+        questInfoUI.SetActive(true);
+
+        var idQuest = questSelectPrefab[index].GetComponent<QuestPrefab>().idQuest;
+        QuestData quest = QuestDataManager.FindQuestByID(idQuest);
+        if (quest != null)
+        {
+            questNameText.text = quest.QuestName;
+            questText.text = quest.QuestInfo;
+
+            string questName = questNameText.text;
+            QuestItem selectedQuest = FindQuestByName(questName);
+
+            if (selectedQuest != null)
+            {
+                currentQuest = selectedQuest;
+                switch (selectedQuest.questState)
+                {
+                    case QuestState.Active:
+                        acceptQuestButton.SetActive(false);
+                        completeQuestButton.SetActive(true);
+                        break;
+                    case QuestState.Completed:
+                        acceptQuestButton.SetActive(false);
+                        completeQuestButton.SetActive(false);
+                        break;
+                }
+            }
+            else
+            {
+                acceptQuestButton.SetActive(true);
+                completeQuestButton.SetActive(false);
+            }
+        }
+    }
+
+    public void AcceptQuestButton()
+    {
+        string questName = questNameText.text;
 
         if (FindQuestByName(questName))
         {
@@ -98,8 +127,8 @@ public class QuestManager : MonoBehaviour
 
         if (questItem != null)
         {
-            questItem.SetQuestName(questName); // Устанавливаем название квеста
-            AddQuestActive(questItem); // Добавляем квест в активные
+            questItem.SetQuestName(questName);
+            AddQuestActive(questItem);
         }
 
         questUI.SetActive(false);
@@ -110,6 +139,7 @@ public class QuestManager : MonoBehaviour
         if (!activeQuests.Contains(quest))
         {
             activeQuests.Add(quest);
+
             Debug.Log("Квест добавлен: " + quest.questNameText.text);
             completeQuestButton.SetActive(true);
             acceptQuestButton.SetActive(false);
@@ -122,13 +152,11 @@ public class QuestManager : MonoBehaviour
 
     private void CompleteQuest(QuestItem quest)
     {
-        if (activeQuests.Remove(quest)) // Удаляем квест из активных
+        if (activeQuests.Remove(quest))
         {
-            quest.CompleteQuest(); // Завершаем квест
-            Debug.Log("Квест завершен: " + quest.questNameText.text);
-            completeQuestButton.SetActive(false);
+            quest.CompleteQuest();
             questUI.SetActive(false);
-            questSelectPrefab.SetActive(false);
+            Debug.Log("Квест завершен: " + quest.questNameText.text);
         }
         else
         {
@@ -143,28 +171,34 @@ public class QuestManager : MonoBehaviour
             QuestItem questItem = child.GetComponent<QuestItem>();
             if (questItem != null && questItem.questNameText.text == questName)
             {
-                return questItem; // Возвращаем найденный квест
+                return questItem;
             }
         }
-        return null; // Если квест не найден
+        return null;
+    }
+
+    public void CompleteQuestButton()
+    {
+        if (currentQuest != null)
+        {
+            CompleteQuest(currentQuest);
+        }
+        else
+        {
+            Debug.Log("Нет выбранного квеста для завершения.");
+        }
     }
 
     public void ReturnQuestButton()
     {
-        questSelect.SetActive(true);
-        questInfo.SetActive(false);
+        questSelectUI.SetActive(true);
+        questInfoUI.SetActive(false);
     }
+
     public void EndTalkButton()
     {
         questUI.SetActive(false);
         HideTalkPrompt();
     }
 
-    public void CompleteQuestButton()
-    {
-        if (activeQuests.Count > 0)
-        {
-            CompleteQuest(activeQuests[activeQuests.Count - 1]); // Завершить последний активный квест
-        }
-    }
 }
