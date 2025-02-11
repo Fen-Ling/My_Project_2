@@ -10,7 +10,7 @@ public class ArrowSelector : MonoBehaviour
 
     private void Awake()
     {
-        attackArrow = FindObjectOfType<Attack_Archer>();
+        attackArrow = gameObject.GetComponentInParent<Attack_Archer>();
     }
 
     private void Start()

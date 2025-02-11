@@ -10,7 +10,7 @@ public class MagicSelector : MonoBehaviour
 
     private void Awake()
     {
-        attackMage = FindObjectOfType<Attack_Mage>();
+        attackMage = gameObject.GetComponentInParent<Attack_Mage>();
     }
     private void Start()
     {

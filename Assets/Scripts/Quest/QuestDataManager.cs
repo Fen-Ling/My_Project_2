@@ -37,8 +37,6 @@ public static class QuestDataManager
         {
             string json = File.ReadAllText(filepath);
             questDataList = JsonUtility.FromJson<QuestDataList>(json);
-            Debug.Log("Данные квестов загружены!");
-
             return true;
         }
         else

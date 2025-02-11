@@ -46,20 +46,22 @@ public class Loadings_Start : MonoBehaviour
     {
         if (PlayerDataManager.LoadPlayerData(filename))
         {
+
             int indexScene = PlayerDataManager.playerData.sceneIndex;
             if (indexScene == 1)
             {
-                StartCoroutine(LoadSceneAsync(indexScene));
+                StartCoroutine(LoadSceneAsync(indexScene, filename));
             }
             else
             {
+
                 PlayerDataManager.playerData.position = new Vector3(433, 69, 564);
-                StartCoroutine(LoadSceneAsync(1));
+                StartCoroutine(LoadSceneAsync(1, filename));
             }
         }
     }
 
-    IEnumerator LoadSceneAsync(int sceneName)
+    IEnumerator LoadSceneAsync(int sceneName, string filename)
     {
         SceneManager.LoadScene("Game_Loading", LoadSceneMode.Additive);
         yield return new WaitForSecondsRealtime(1f);
@@ -74,13 +76,13 @@ public class Loadings_Start : MonoBehaviour
             Debug.Log("Загрузка: " + ao.progress);
             yield return null;
         }
-
         var scene = SceneManager.GetSceneByBuildIndex(sceneName);
         yield return new WaitUntil(() => scene.isLoaded);
-
         SceneManager.SetActiveScene(scene);
         Debug.Log("Новая сцена загружена");
+
         SceneManager.UnloadSceneAsync("Game_Loading");
         yield return SceneManager.UnloadSceneAsync(activeScene.name);
+        QuestDataManager.LoadQuestDataPlayer("quest" + filename);
     }
 }
