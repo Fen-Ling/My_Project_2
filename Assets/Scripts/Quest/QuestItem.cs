@@ -13,13 +13,20 @@ public class QuestItem : MonoBehaviour
     public TMP_Text questNameText;
     public TMP_Text questText;
     public QuestState questState;
+    private int questProgress;
+    private int questProgressEnd;
 
 
-    public void Awake()
+    public void Start()
     {
         questState = QuestState.Available;
-
+        var quest = QuestDataManager.FindQuestByName(questNameText.text);
+        questProgress = quest.QuestProgressStart;
+        questProgressEnd = quest.QuestProgressEnd;
+        questText.text = "Прогресс:" + questProgress + "из" + questProgressEnd;
     }
+
+
     public void SetQuestName(string questName)
     {
         if (questNameText != null && questState != QuestState.Completed)
@@ -33,15 +40,21 @@ public class QuestItem : MonoBehaviour
 
     public void CompleteQuest()
     {
-        // Логика завершения квеста (например, обновление статуса, награды и т.д.)
-        questState = QuestState.Completed;
-        QuestDataManager.UpdateQuestByName(questNameText.text, true);
-        Debug.Log("Квест " + questNameText.text + " завершен!");
-        gameObject.SetActive(false);
+        if (questProgress == questProgressEnd)
+        {
+            questState = QuestState.Completed;
+            QuestDataManager.UpdateQuestByName(questNameText.text, true);
+            Debug.Log("Квест " + questNameText.text + " завершен!");
+            gameObject.SetActive(false);
+        }
+        else
+            Debug.Log("Квест " + questNameText.text + "не завершен!");
     }
 
-    public void ProgressQuest()
+    public void ProgressQuest(int progress)
     {
-
+        questProgress += progress;
+        questProgress = Mathf.Clamp(questProgress, 0, questProgressEnd);
+        questText.text = "Прогресс:" + questProgress + "из" + questProgressEnd;
     }
 }

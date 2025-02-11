@@ -58,19 +58,19 @@ public class QuestManager : MonoBehaviour
         
     }
 
-    private void DisableQuestPrefab(string questName)
-    {
-        // Предполагается, что префаб квеста связан с его именем
-        if (questPrefab != null)
-        {
-            questPrefab.SetActive(false);
-            Debug.Log($"Префаб квеста '{questName}' отключён, так как квест завершен.");
-        }
-        else
-        {
-            Debug.LogWarning("Префаб квеста не установлен.");
-        }
-    }
+    // private void DisableQuestPrefab(string questName)
+    // {
+    //     // Предполагается, что префаб квеста связан с его именем
+    //     if (questPrefab != null)
+    //     {
+    //         questPrefab.SetActive(false);
+    //         Debug.Log($"Префаб квеста '{questName}' отключён, так как квест завершен.");
+    //     }
+    //     else
+    //     {
+    //         Debug.LogWarning("Префаб квеста не установлен.");
+    //     }
+    // }
 
     public void QuestSelect(int index)
     {
@@ -128,6 +128,7 @@ public class QuestManager : MonoBehaviour
         if (questItem != null)
         {
             questItem.SetQuestName(questName);
+            
             AddQuestActive(questItem);
         }
 

@@ -83,6 +83,7 @@ public class Player_Select : MonoBehaviour
     public void StartScene()
     {
         PlayerDataManager.NewGame_PlayerData(genderIndex, classIndex);
+
         StartCoroutine(LoadSceneAsync(1));
     }
 
@@ -107,6 +108,8 @@ public class Player_Select : MonoBehaviour
 
         SceneManager.SetActiveScene(scene);
         Debug.Log("Новая сцена загружена");
+        QuestDataManager.ResetQuestData();
+        QuestDataManager.LoadQuestData();
         SceneManager.UnloadSceneAsync("Game_Loading");
         yield return SceneManager.UnloadSceneAsync(activeScene.name);
     }

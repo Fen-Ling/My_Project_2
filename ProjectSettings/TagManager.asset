@@ -9,6 +9,7 @@ TagManager:
   - Weapon
   - Dangeons
   - Statistic
+  - QuestActive
   layers:
   - Default
   - TransparentFX

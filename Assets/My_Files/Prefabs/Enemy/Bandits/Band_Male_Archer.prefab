@@ -1472,6 +1472,7 @@ GameObject:
   - component: {fileID: 4115342685127220314}
   - component: {fileID: 4381755219208279711}
   - component: {fileID: 6435021685422128415}
+  - component: {fileID: 4930969784531881826}
   m_Layer: 0
   m_Name: Band_Male_Archer
   m_TagString: Enemy
@@ -1573,7 +1574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 100
   CorHP: 0
-  Enimy_EXP: 0
+  Enemy_EXP: 0
   healthBar: {fileID: 517295364058996802}
   audioDeath: {fileID: 8300000, guid: 6aad7f6c1884fd4408d3cef152023f67, type: 3}
 --- !u!136 &4381755219208279711
@@ -1613,6 +1614,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Arrow_Prefab: {fileID: 9003682227420312995, guid: 6fc433cb52764f044ab6ffce2f0000fb, type: 3}
   spawnPoint: {fileID: 6862098726225464950}
+--- !u!114 &4930969784531881826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3974677234826436597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7aa61d9a373724d924b3f01bf0f4ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: 03000000
+  activequest:
+  - {fileID: 0}
 --- !u!1 &3976416926274221524
 GameObject:
   m_ObjectHideFlags: 0
