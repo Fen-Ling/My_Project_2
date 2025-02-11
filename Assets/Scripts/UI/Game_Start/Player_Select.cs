@@ -108,8 +108,8 @@ public class Player_Select : MonoBehaviour
 
         SceneManager.SetActiveScene(scene);
         Debug.Log("Новая сцена загружена");
-        QuestDataManager.ResetQuestData();
-        QuestDataManager.LoadQuestData();
+        // QuestDataManager.ResetQuestData();
+        // QuestDataManager.LoadQuestData();
         SceneManager.UnloadSceneAsync("Game_Loading");
         yield return SceneManager.UnloadSceneAsync(activeScene.name);
     }

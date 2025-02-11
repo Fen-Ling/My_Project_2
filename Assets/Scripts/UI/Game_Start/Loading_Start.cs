@@ -46,7 +46,6 @@ public class Loadings_Start : MonoBehaviour
     {
         if (PlayerDataManager.LoadPlayerData(filename))
         {
-            QuestDataManager.LoadQuestDataPlayer("quest" + filename);
             int indexScene = PlayerDataManager.playerData.sceneIndex;
             if (indexScene == 1)
             {
@@ -54,7 +53,6 @@ public class Loadings_Start : MonoBehaviour
             }
             else
             {
-
                 PlayerDataManager.playerData.position = new Vector3(433, 69, 564);
                 StartCoroutine(LoadSceneAsync(1));
             }
