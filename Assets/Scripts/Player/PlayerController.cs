@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public InputActionAsset inputActions;
     private InputAction m_lookAction;
     private Vector3 m_Rotation;
+    private bool isPlayerInRange = false;
 
     private void Awake()
     {
@@ -23,12 +24,20 @@ public class PlayerController : MonoBehaviour
 
     private void Look(Vector2 rotate)
     {
-        if (rotate.sqrMagnitude < 0.01)
-            return;
+        if (!isPlayerInRange)
+        {
+            if (rotate.sqrMagnitude < 0.01)
+                return;
 
-        var scaledRotateSpeed = rotateSpeed * Time.deltaTime;
-        m_Rotation.y += rotate.x * scaledRotateSpeed;
-        m_Rotation.x = Mathf.Clamp(m_Rotation.x - rotate.y * scaledRotateSpeed, 0, 0);
-        transform.localEulerAngles = m_Rotation;
+            var scaledRotateSpeed = rotateSpeed * Time.deltaTime;
+            m_Rotation.y += rotate.x * scaledRotateSpeed;
+            m_Rotation.x = Mathf.Clamp(m_Rotation.x - rotate.y * scaledRotateSpeed, 0, 0);
+            transform.localEulerAngles = m_Rotation;
+        }
+    }
+
+    public void SetPlayerInRange(bool value)
+    {
+        isPlayerInRange = value;
     }
 }

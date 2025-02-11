@@ -6,6 +6,7 @@ public class Player_Animation : MonoBehaviour
     private Animator m_anim;
     public InputActionAsset inputActions;
     private InputAction m_moveAction;
+    private bool isPlayerInRange = false;
 
     void Start()
     {
@@ -27,9 +28,20 @@ public class Player_Animation : MonoBehaviour
             m_anim.SetTrigger("Sprint");
         }
 
-        bool isAttackPressed = Mouse.current.leftButton.wasPressedThisFrame;
-        m_anim.SetBool("Attack", isAttackPressed);
-
-
+        if (!isPlayerInRange)
+        {
+            bool isAttackPressed = Mouse.current.leftButton.wasPressedThisFrame;
+            m_anim.SetBool("Attack", isAttackPressed);
+        }
+        else
+        {
+            m_anim.SetBool("Attack", false);
+        }
     }
+
+    public void SetPlayerInRange(bool value)
+    {
+        isPlayerInRange = value;
+    }
+
 }

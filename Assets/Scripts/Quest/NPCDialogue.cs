@@ -18,9 +18,20 @@ public class NPCDialogue : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+
             isPlayerInRange = true;
             dialogueUIManager.ShowTalkPrompt();
+
+            Player_Animation playerAnimation = other.GetComponent<Player_Animation>();
+            PlayerController playerController = other.GetComponent<PlayerController>();
+            if (playerAnimation != null)
+            {
+                playerAnimation.SetPlayerInRange(true);
+                playerController.SetPlayerInRange(true);
+
+            }
         }
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -29,6 +40,14 @@ public class NPCDialogue : MonoBehaviour
         {
             isPlayerInRange = false;
             dialogueUIManager.HideTalkPrompt();
+
+            Player_Animation playerAnimation = other.GetComponent<Player_Animation>();
+            PlayerController playerController = other.GetComponent<PlayerController>();
+            if (playerAnimation != null)
+            {
+                playerAnimation.SetPlayerInRange(false);
+                playerController.SetPlayerInRange(false);
+            }
         }
     }
 
