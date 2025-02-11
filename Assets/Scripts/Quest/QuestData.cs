@@ -16,4 +16,5 @@ public class QuestData
 public class QuestDataList
 {
     public List<QuestData> quests = new List<QuestData>();
+    
 }

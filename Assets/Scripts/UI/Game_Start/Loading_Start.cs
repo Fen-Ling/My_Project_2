@@ -46,8 +46,8 @@ public class Loadings_Start : MonoBehaviour
     {
         if (PlayerDataManager.LoadPlayerData(filename))
         {
+            QuestDataManager.LoadQuestDataPlayer("quest" + filename);
             int indexScene = PlayerDataManager.playerData.sceneIndex;
-
             if (indexScene == 1)
             {
                 StartCoroutine(LoadSceneAsync(indexScene));

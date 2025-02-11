@@ -50,6 +50,7 @@ public class Saving_Game : MonoBehaviour
     {
         string filename = defaultFilename + (index + 1).ToString();
         PlayerDataManager.SavePlayerData(filename + ".json", player);
+
         buttons[index].gameObject.GetComponentInChildren<TextMeshProUGUI>().text = filename;
     }
     public void Delete(int index)

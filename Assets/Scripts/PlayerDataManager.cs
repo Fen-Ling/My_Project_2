@@ -32,11 +32,13 @@ public static class PlayerDataManager
         File.WriteAllText(filepath, json);
         Debug.Log("Данные игрока сохранены в файл!");
         Debug.Log($"Сцена: {playerData.sceneIndex}, Уровень: {playerData.level}, Опыт: {playerData.curExp}, Опыта до след. уровня: {playerData.ExpToLvl}, Макс. НР: {playerData.MaxHP}, Убито: {playerData.Kill}, Координаты: {playerData.position}");
+        QuestDataManager.SaveQuestDataPlayer("quest" + filename);
     }
 
     public static bool LoadPlayerData(string filename)
     {
         string filepath = Path.Combine(Application.persistentDataPath, filename);
+
 
         if (File.Exists(filepath))
         {
@@ -44,7 +46,6 @@ public static class PlayerDataManager
             playerData = JsonUtility.FromJson<PlayerData>(json);
             Debug.Log("Данные игрока загружены!");
             Debug.Log($"Сцена: {playerData.sceneIndex}, Уровень: {playerData.level}, Опыт: {playerData.curExp}, Опыта до след. уровня: {playerData.ExpToLvl}, Макс. НР: {playerData.MaxHP}, Убито: {playerData.Kill}, Координаты: {playerData.position}");
-
             return true;
         }
         else

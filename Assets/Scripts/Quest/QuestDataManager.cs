@@ -48,6 +48,67 @@ public static class QuestDataManager
         }
     }
 
+    public static void ResetQuestData()
+    {
+        string filepath = Path.Combine(Application.persistentDataPath, "QuestData.json");
+        if (LoadQuestData())
+        {
+            // Проходим по всем квестам и сбрасываем статус завершенности
+            foreach (var quest in questDataList.quests)
+            {
+                if (quest.QuestComplete)
+                {
+                    quest.QuestComplete = false;
+                    Debug.Log($"Квест сброшен: ID = {quest.QuestID}, Название = {quest.QuestName}");
+                }
+            }
+
+            string json = JsonUtility.ToJson(questDataList, true);
+            File.WriteAllText(filepath, json);
+            Debug.Log("Все завершенные квесты сброшены на незавершенные.");
+        }
+        else
+        {
+            Debug.Log("Не удалось загрузить данные квестов для сброса.");
+        }
+    }
+
+    public static void SaveQuestDataPlayer(string filename)
+    {
+        string filepath = Path.Combine(Application.persistentDataPath, filename);
+
+        LoadQuestData();
+        string json = JsonUtility.ToJson(questDataList, true);
+        File.WriteAllText(filepath, json);
+        Debug.Log("Данные игрока сохранены в файл!");
+
+    }
+
+    public static bool LoadQuestDataPlayer(string filename)
+    {
+        string filepath = Path.Combine(Application.persistentDataPath, filename);
+
+        if (File.Exists(filepath))
+        {
+            string json = File.ReadAllText(filepath);
+            questDataList = JsonUtility.FromJson<QuestDataList>(json);
+            Debug.Log("Данные квестов игрока загружены!");
+
+            string savePath = Path.Combine(Application.persistentDataPath, "QuestData.json");
+            string saveJson = JsonUtility.ToJson(questDataList, true);
+            File.WriteAllText(savePath, saveJson);
+            Debug.Log("Данные о квестах сохранены в QuestData.json");
+
+            return true;
+        }
+        else
+        {
+            Debug.Log("Файл c квестами игрока не найден.");
+            return false;
+        }
+    }
+
+
     public static QuestData FindQuestByID(int questID)
     {
         LoadQuestData();
@@ -98,4 +159,6 @@ public static class QuestDataManager
             Debug.Log("Не удалось обновить статус завершения квеста. Квест не найден.");
         }
     }
+
+
 }
