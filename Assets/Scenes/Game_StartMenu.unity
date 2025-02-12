@@ -1619,7 +1619,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: playerData03.json
+          m_StringArgument: playerData03
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &314585627
@@ -2097,7 +2097,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: playerData05.json
+          m_StringArgument: playerData05
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &553483631
@@ -2306,7 +2306,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: playerData06.json
+          m_StringArgument: playerData06
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &592537856
@@ -5030,7 +5030,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: playerData02.json
+          m_StringArgument: playerData02
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1530083388
@@ -5839,7 +5839,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: playerData07.json
+          m_StringArgument: playerData07
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1718532633
@@ -6826,7 +6826,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: playerData04.json
+          m_StringArgument: playerData04
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2048406384
@@ -26076,6 +26076,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 191032249}
+    - target: {fileID: 3135050456305430358, guid: 5f382daec2802f44b8fb45b666dd44a1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: playerData01
+      objectReference: {fileID: 0}
     - target: {fileID: 7567571871257797710, guid: 5f382daec2802f44b8fb45b666dd44a1, type: 3}
       propertyPath: m_Name
       value: Button

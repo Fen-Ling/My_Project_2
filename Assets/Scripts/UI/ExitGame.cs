@@ -7,11 +7,11 @@ public class ExitGame : MonoBehaviour
         {
 #if UNITY_EDITOR
 
-            QuestDataManager.ResetQuestData();
+
             UnityEditor.EditorApplication.isPlaying = false;
 #else
 
-            QuestDataManager.ResetQuestData();
+
             Application.Quit();
 #endif
         }

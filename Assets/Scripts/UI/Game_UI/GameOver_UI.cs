@@ -24,7 +24,6 @@ public class GameOver_UI : MonoBehaviour
     public void GoToMainMenu()
     {
         Destroy(persistentObjects);
-        QuestDataManager.ResetQuestData();
         SceneManager.LoadScene(0);
     }
 

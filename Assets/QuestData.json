@@ -1,0 +1,28 @@
+{
+    "quests": [
+        {
+            "QuestID": 1,
+            "QuestName": "Заполучить меч",
+            "QuestInfo": "Найди меч в лесу.",
+            "QuestProgressStart": 0,
+            "QuestProgressEnd": 1,
+            "QuestComplete": false
+        },
+        {
+            "QuestID": 2,
+            "QuestName": "Поговорить с мастером",
+            "QuestInfo": "Поговори с мастером о своем путешествии.",
+            "QuestProgressStart": 0,
+            "QuestProgressEnd": 1,
+            "QuestComplete": false
+        },
+        {
+            "QuestID": 3,
+            "QuestName": "Убить 10 разбойников",
+            "QuestInfo": "Пойдите в лес и убейте 10 разбойников",
+            "QuestProgressStart": 0,
+            "QuestProgressEnd": 10,
+            "QuestComplete": false
+        }
+    ]
+}

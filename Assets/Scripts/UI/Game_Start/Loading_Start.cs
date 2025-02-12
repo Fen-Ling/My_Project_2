@@ -44,24 +44,26 @@ public class Loadings_Start : MonoBehaviour
 
     public void Load(string filename)
     {
-        if (PlayerDataManager.LoadPlayerData(filename))
+        var filenamequest = filename + "quest.json";
+        var filenamedata = filename + ".json";
+        if (PlayerDataManager.LoadPlayerData(filenamedata) && QuestDataManager.LoadQuestDataPlayer(filenamequest))
         {
 
             int indexScene = PlayerDataManager.playerData.sceneIndex;
             if (indexScene == 1)
             {
-                StartCoroutine(LoadSceneAsync(indexScene, filename));
+                StartCoroutine(LoadSceneAsync(indexScene));
             }
             else
             {
 
                 PlayerDataManager.playerData.position = new Vector3(433, 69, 564);
-                StartCoroutine(LoadSceneAsync(1, filename));
+                StartCoroutine(LoadSceneAsync(1));
             }
         }
     }
 
-    IEnumerator LoadSceneAsync(int sceneName, string filename)
+    IEnumerator LoadSceneAsync(int sceneName)
     {
         SceneManager.LoadScene("Game_Loading", LoadSceneMode.Additive);
         yield return new WaitForSecondsRealtime(1f);
@@ -83,6 +85,6 @@ public class Loadings_Start : MonoBehaviour
 
         SceneManager.UnloadSceneAsync("Game_Loading");
         yield return SceneManager.UnloadSceneAsync(activeScene.name);
-        QuestDataManager.LoadQuestDataPlayer("quest" + filename);
+        
     }
 }

@@ -49,6 +49,7 @@ public class Saving_Game : MonoBehaviour
     public void Saving(int index)
     {
         string filename = defaultFilename + (index + 1).ToString();
+        QuestDataManager.SaveQuestDataPlayer(filename + "quest.json");
         PlayerDataManager.SavePlayerData(filename + ".json", player);
 
         buttons[index].gameObject.GetComponentInChildren<TextMeshProUGUI>().text = filename;
@@ -56,6 +57,7 @@ public class Saving_Game : MonoBehaviour
     public void Delete(int index)
     {
         string filename = defaultFilename + (index + 1).ToString();
+        QuestDataManager.DeleteQuestDataPlayer(filename + "quest.json");
         PlayerDataManager.DeletePlayerData(filename + ".json");
         buttons[index].gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "-";
     }

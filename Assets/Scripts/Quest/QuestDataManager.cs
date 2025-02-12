@@ -7,7 +7,7 @@ public static class QuestDataManager
 
     public static void AddQuestData(int questID, string questName, string questInfo, int questProgressStart, int questProgressEnd, bool questComplete)
     {
-        string filepath = Path.Combine(Application.persistentDataPath, "QuestData.json");
+        string filepath = Path.Combine(Application.dataPath, "QuestData.json");
 
         LoadQuestData();
 
@@ -31,7 +31,7 @@ public static class QuestDataManager
 
     public static bool LoadQuestData()
     {
-        string filepath = Path.Combine(Application.persistentDataPath, "QuestData.json");
+        string filepath = Path.Combine(Application.dataPath, "QuestData.json");
 
         if (File.Exists(filepath))
         {
@@ -48,7 +48,7 @@ public static class QuestDataManager
 
     public static void ResetQuestData()
     {
-        string filepath = Path.Combine(Application.persistentDataPath, "QuestData.json");
+        string filepath = Path.Combine(Application.dataPath, "QuestData.json");
         if (LoadQuestData())
         {
             // Проходим по всем квестам и сбрасываем статус завершенности
@@ -78,7 +78,7 @@ public static class QuestDataManager
         LoadQuestData();
         string json = JsonUtility.ToJson(questDataList, true);
         File.WriteAllText(filepath, json);
-        Debug.Log("Данные игрока сохранены в файл!");
+        Debug.Log("Данные квестов сохранены в файл!");
 
     }
 
@@ -92,7 +92,7 @@ public static class QuestDataManager
             questDataList = JsonUtility.FromJson<QuestDataList>(json);
             Debug.Log("Данные квестов игрока загружены!");
 
-            string savePath = Path.Combine(Application.persistentDataPath, "QuestData.json");
+            string savePath = Path.Combine(Application.dataPath, "QuestData.json");
             string saveJson = JsonUtility.ToJson(questDataList, true);
             File.WriteAllText(savePath, saveJson);
             Debug.Log("Данные о квестах сохранены в QuestData.json");
@@ -101,11 +101,25 @@ public static class QuestDataManager
         }
         else
         {
-            Debug.Log("Файл c квестами игрока не найден.");
+            Debug.Log("Файл c квестами игрока не найден^" + filename);
             return false;
         }
     }
 
+    public static void DeleteQuestDataPlayer(string filename)
+    {
+        string filepath = Path.Combine(Application.persistentDataPath, filename);
+
+        if (File.Exists(filepath))
+        {
+            File.Delete(filepath);
+            Debug.Log("Данные квестов удалены!");
+        }
+        else
+        {
+            Debug.Log("Файл c данными квестов игрока не найден.");
+        }
+    }
 
     public static QuestData FindQuestByID(int questID)
     {
@@ -148,7 +162,7 @@ public static class QuestDataManager
             questToUpdate.QuestComplete = questComplete;
 
             string json = JsonUtility.ToJson(questDataList, true);
-            string filepath = Path.Combine(Application.persistentDataPath, "QuestData.json");
+            string filepath = Path.Combine(Application.dataPath, "QuestData.json");
             File.WriteAllText(filepath, json);
             Debug.Log($"Статус завершения квеста обновлен: ID = {questToUpdate.QuestID}, Завершен = {questToUpdate.QuestComplete}");
         }
