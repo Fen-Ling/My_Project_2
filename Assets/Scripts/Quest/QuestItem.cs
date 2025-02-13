@@ -23,7 +23,7 @@ public class QuestItem : MonoBehaviour
         currentQuest = QuestDataManager.FindQuestByName(questNameText.text);
         questProgress = currentQuest.QuestProgressStart;
         questProgressEnd = currentQuest.QuestProgressEnd;
-        questText.text = "Прогресс:" + questProgress + "из" + questProgressEnd;
+        questText.text = "Прогресс: " + questProgress + " из " + questProgressEnd;
     }
 
 

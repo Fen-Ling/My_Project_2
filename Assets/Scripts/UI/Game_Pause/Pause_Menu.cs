@@ -39,6 +39,7 @@ public class Pause_Menu : MonoBehaviour
 
     public void Back_to_Menu()
     {
+        QuestDataManager.ResetQuestData();
         StartCoroutine(LoadSceneAsync("Game_StartMenu"));
     }
 

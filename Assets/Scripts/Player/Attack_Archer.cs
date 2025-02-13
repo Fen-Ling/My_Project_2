@@ -36,7 +36,7 @@ public class Attack_Archer : MonoBehaviour
             if (enemy != null)
             {
                 Vector3 targetPosition = enemy.transform.position;
-                targetPosition.y += 0.3f; // Поднимаем на 1 единицу
+                targetPosition.y += 0.5f;
 
                 // Вычисляем направление к врагу
                 launchDirection = (targetPosition - spawnPoint.position).normalized;
@@ -60,7 +60,7 @@ public class Attack_Archer : MonoBehaviour
                 Debug.Log("Enemy");
             }
         }
-        ChooseFireType(fireindex);
+        ExecuteFireType();
         hitAudioSource.Play();
     }
 
@@ -97,9 +97,9 @@ public class Attack_Archer : MonoBehaviour
         }
     }
 
-    public void ChooseFireType(int fireType)
+    public void ExecuteFireType()
     {
-        switch (fireType)
+        switch (fireindex)
         {
             case 0:
                 Fire(); // Одиночный выстрел
@@ -114,7 +114,12 @@ public class Attack_Archer : MonoBehaviour
                 Debug.LogWarning("Неверный тип стрельбы");
                 break;
         }
-        fireindex = fireType;
+    }
+
+    public void ChooseFireType(int fireType)
+    {
+        fireindex = fireType; // Устанавливаем только индекс типа стрельбы
+        Debug.Log("Тип стрельбы установлен: " + fireindex);
     }
 }
 

@@ -1268,6 +1268,7 @@ GameObject:
   - component: {fileID: 3893033123869426202}
   - component: {fileID: 7594254840009473120}
   - component: {fileID: 4839127960727435757}
+  - component: {fileID: 2186776617344732208}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Enemy
@@ -1368,11 +1369,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHP: 100
-  healing: 0.05
   CorHP: 0
-  Enimy_EXP: 0
+  Enemy_EXP: 0
   healthBar: {fileID: 5365995024042946562}
   audioDeath: {fileID: 8300000, guid: 113eb25f11404114da8b081c64ec7948, type: 3}
+  questProgress: {fileID: 0}
 --- !u!136 &4839127960727435757
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1396,6 +1397,20 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2186776617344732208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4026104807548298721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7aa61d9a373724d924b3f01bf0f4ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: 04000000
+  questactive: []
 --- !u!1 &4079149968751985884
 GameObject:
   m_ObjectHideFlags: 0

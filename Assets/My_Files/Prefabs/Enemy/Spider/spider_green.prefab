@@ -1329,6 +1329,7 @@ GameObject:
   - component: {fileID: 5072493141809990014}
   - component: {fileID: -741958078588704836}
   - component: {fileID: -6294789351424564283}
+  - component: {fileID: -8962880174899805528}
   m_Layer: 0
   m_Name: spider_green
   m_TagString: Enemy
@@ -1429,11 +1430,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHP: 100
-  healing: 0.05
   CorHP: 0
-  Enimy_EXP: 0
+  Enemy_EXP: 0
   healthBar: {fileID: 8001707397354473983}
   audioDeath: {fileID: 8300000, guid: 2f905cf578c2567469699be3ca258080, type: 3}
+  questProgress: {fileID: 0}
 --- !u!136 &-6294789351424564283
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1457,6 +1458,20 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &-8962880174899805528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702535359400005489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7aa61d9a373724d924b3f01bf0f4ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: 05000000
+  questactive: []
 --- !u!1 &5852147250709257324
 GameObject:
   m_ObjectHideFlags: 0

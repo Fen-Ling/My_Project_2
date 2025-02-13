@@ -34,7 +34,7 @@ public class MagicSelector : MonoBehaviour
 
         // Устанавливаем новую кнопку как нажатую
         selectedMagicIndex = index;
-        magicButtons[selectedMagicIndex].GetComponentInChildren<Image>().color = Color.green; // Меняем цвет нажатой кнопки
+        magicButtons[selectedMagicIndex].GetComponentInChildren<Image>().color = Color.red; // Меняем цвет нажатой кнопки
 
         attackMage.SetMagicIndex(selectedMagicIndex);
     }

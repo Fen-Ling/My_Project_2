@@ -26,7 +26,6 @@ public class QuestManager : MonoBehaviour
         questUI.SetActive(false);
         acceptQuestButton.SetActive(false);
         completeQuestButton.SetActive(false);
-        LoadActiveQuests();
         if (questSelect != null)
         {
             int childCount = questSelect.transform.childCount;
@@ -36,6 +35,7 @@ public class QuestManager : MonoBehaviour
             {
                 questSelectPrefab[i] = questSelect.transform.GetChild(i).gameObject;
             }
+            LoadActiveQuests();
         }
     }
 
@@ -169,7 +169,7 @@ public class QuestManager : MonoBehaviour
         List<string> questNames = new List<string>();
         foreach (var quest in activeQuests)
         {
-            questNames.Add(quest.questNameText.text); // Предполагается, что questNameText - это текстовое поле с именем квеста
+            questNames.Add(quest.questNameText.text);
         }
         return questNames;
     }

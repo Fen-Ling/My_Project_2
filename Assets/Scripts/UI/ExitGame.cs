@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class ExitGame : MonoBehaviour
 
+{
+    public void Quit()
     {
-        public void Quit()
-        {
 #if UNITY_EDITOR
 
-
-            UnityEditor.EditorApplication.isPlaying = false;
+        QuestDataManager.ResetQuestData();
+        UnityEditor.EditorApplication.isPlaying = false;
 #else
 
-
+            QuestDataManager.ResetQuestData();
             Application.Quit();
 #endif
-        }
     }
+}

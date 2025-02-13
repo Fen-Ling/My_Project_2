@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 1724091542333700470}
   - component: {fileID: 404349907298778777}
   - component: {fileID: 6031158805461711987}
+  - component: {fileID: 8696213366403468879}
   m_Layer: 0
   m_Name: Wolf
   m_TagString: Enemy
@@ -252,6 +253,7 @@ MonoBehaviour:
   Enemy_EXP: 0
   healthBar: {fileID: 8449498279895502390}
   audioDeath: {fileID: 8300000, guid: 520100820c4265c4cae21f37af77a970, type: 3}
+  questProgress: {fileID: 0}
 --- !u!136 &6031158805461711987
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -275,6 +277,20 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &8696213366403468879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413924882815083140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7aa61d9a373724d924b3f01bf0f4ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: 02000000
+  questactive: []
 --- !u!1 &1437275432517112743
 GameObject:
   m_ObjectHideFlags: 0

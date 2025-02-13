@@ -2251,6 +2251,7 @@ GameObject:
   - component: {fileID: -8107362574807559588}
   - component: {fileID: -5771264488766407957}
   - component: {fileID: 8572098238725306022}
+  - component: {fileID: -5580346970432083214}
   m_Layer: 0
   m_Name: Bear
   m_TagString: Enemy
@@ -2329,11 +2330,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHP: 200
-  healing: 0.2
   CorHP: 0
-  Enimy_EXP: 0
+  Enemy_EXP: 0
   healthBar: {fileID: 2203374141616606611}
   audioDeath: {fileID: 8300000, guid: ec99a5cc045403d4987237249990c3e6, type: 3}
+  questProgress: {fileID: 0}
 --- !u!195 &-5771264488766407957
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2379,6 +2380,20 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &-5580346970432083214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7994951938974393031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7aa61d9a373724d924b3f01bf0f4ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: 02000000
+  questactive: []
 --- !u!1 &8235472661244897009
 GameObject:
   m_ObjectHideFlags: 0

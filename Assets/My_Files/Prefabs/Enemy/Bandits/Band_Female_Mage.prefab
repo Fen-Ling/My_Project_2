@@ -4284,7 +4284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questID: 03000000
-  activequest: {fileID: 0}
+  questactive: []
 --- !u!1 &8404952195285413285
 GameObject:
   m_ObjectHideFlags: 0

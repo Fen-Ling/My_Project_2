@@ -856,6 +856,7 @@ GameObject:
   - component: {fileID: 7637390619013770919}
   - component: {fileID: 960397367184019963}
   - component: {fileID: 2950990183021151232}
+  - component: {fileID: -1992689142824511021}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Enemy
@@ -916,11 +917,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHP: 200
-  healing: 0.1
   CorHP: 0
-  Enimy_EXP: 0
+  Enemy_EXP: 0
   healthBar: {fileID: 1154351001017323267}
   audioDeath: {fileID: 8300000, guid: ba15d7ff945f0b04c9bfdafa789ce9fb, type: 3}
+  questProgress: {fileID: 0}
 --- !u!114 &7637390619013770919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -984,6 +985,20 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &-1992689142824511021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3289313651189049067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7aa61d9a373724d924b3f01bf0f4ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: 04000000
+  questactive: []
 --- !u!1 &3389179529875683394
 GameObject:
   m_ObjectHideFlags: 0
