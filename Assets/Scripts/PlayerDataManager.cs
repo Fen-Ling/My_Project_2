@@ -1,12 +1,13 @@
 using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public static class PlayerDataManager
 {
     public static PlayerData playerData;
 
-    public static void SavePlayerData(string filename, GameObject player)
+    public static void SavePlayerData(string filename, GameObject player, QuestManager questManager)
     {
         string filepath = Path.Combine(Application.persistentDataPath, filename);
         var playerLevel = player.GetComponent<Player_Lvl>();
@@ -14,6 +15,7 @@ public static class PlayerDataManager
         var playerLoader = player.GetComponentInParent<CharacterLoader>();
         var KillStatistic = player.GetComponentInParent<KillEnemy>();
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        List<string> activeQuests = questManager.GetActiveQuestNames();
 
         playerData = new PlayerData()
         {
@@ -25,7 +27,8 @@ public static class PlayerDataManager
             ExpToLvl = playerLevel.expForNewLVL,
             MaxHP = playerHealth.MaxHP,
             Kill = KillStatistic.enemyKillCount,
-            position = player.transform.position
+            position = player.transform.position,
+            activeQuests = activeQuests
         };
 
         string json = JsonUtility.ToJson(playerData, true);

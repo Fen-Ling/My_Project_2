@@ -3271,6 +3271,7 @@ GameObject:
   - component: {fileID: 6563475640146258147}
   - component: {fileID: 4467364551267557595}
   - component: {fileID: 6523031566534833604}
+  - component: {fileID: 5931792468490978008}
   m_Layer: 0
   m_Name: Band_Female_Archer
   m_TagString: Enemy
@@ -3375,6 +3376,7 @@ MonoBehaviour:
   Enemy_EXP: 0
   healthBar: {fileID: 2457117211041261614}
   audioDeath: {fileID: 8300000, guid: 732ab8279ea711b4d85f53330580ddb7, type: 3}
+  questProgress: {fileID: 0}
 --- !u!136 &4467364551267557595
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3412,6 +3414,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Arrow_Prefab: {fileID: 9003682227420312995, guid: 6fc433cb52764f044ab6ffce2f0000fb, type: 3}
   spawnPoint: {fileID: 2755601084202858912}
+--- !u!114 &5931792468490978008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7080052331147169715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7aa61d9a373724d924b3f01bf0f4ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: 03000000
+  activequest: {fileID: 0}
 --- !u!1 &7101815991852774202
 GameObject:
   m_ObjectHideFlags: 0

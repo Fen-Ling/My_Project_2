@@ -171,6 +171,4 @@ public static class QuestDataManager
             Debug.Log("Не удалось обновить статус завершения квеста. Квест не найден.");
         }
     }
-
-
 }

@@ -15,14 +15,14 @@ public class QuestItem : MonoBehaviour
     public QuestState questState;
     private int questProgress;
     private int questProgressEnd;
-
+    public QuestData currentQuest;
 
     public void Start()
     {
         questState = QuestState.Available;
-        var quest = QuestDataManager.FindQuestByName(questNameText.text);
-        questProgress = quest.QuestProgressStart;
-        questProgressEnd = quest.QuestProgressEnd;
+        currentQuest = QuestDataManager.FindQuestByName(questNameText.text);
+        questProgress = currentQuest.QuestProgressStart;
+        questProgressEnd = currentQuest.QuestProgressEnd;
         questText.text = "Прогресс:" + questProgress + "из" + questProgressEnd;
     }
 
@@ -56,5 +56,10 @@ public class QuestItem : MonoBehaviour
         questProgress += progress;
         questProgress = Mathf.Clamp(questProgress, 0, questProgressEnd);
         questText.text = "Прогресс:" + questProgress + "из" + questProgressEnd;
+    }
+
+    public QuestData GetCurrentQuest()
+    {
+        return currentQuest;
     }
 }

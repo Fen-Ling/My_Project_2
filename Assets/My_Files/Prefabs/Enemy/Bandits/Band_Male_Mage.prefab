@@ -3810,6 +3810,7 @@ GameObject:
   - component: {fileID: 5272657939266368740}
   - component: {fileID: 7704360569986296141}
   - component: {fileID: 6591139960675207936}
+  - component: {fileID: 6808451879450911862}
   m_Layer: 0
   m_Name: Band_Male_Mage
   m_TagString: Enemy
@@ -3914,6 +3915,7 @@ MonoBehaviour:
   Enemy_EXP: 0
   healthBar: {fileID: 7324753734442273276}
   audioDeath: {fileID: 8300000, guid: 6aad7f6c1884fd4408d3cef152023f67, type: 3}
+  questProgress: {fileID: 0}
 --- !u!136 &7704360569986296141
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3951,6 +3953,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Magic_Prefab: {fileID: 5920701282153680505, guid: 245380083c9028f4b88be072722bd079, type: 3}
   spawnPoint: {fileID: 3079868878326618607}
+--- !u!114 &6808451879450911862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8335639599305836903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7aa61d9a373724d924b3f01bf0f4ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: 03000000
+  activequest: {fileID: 0}
 --- !u!1 &8382576584251240373
 GameObject:
   m_ObjectHideFlags: 0

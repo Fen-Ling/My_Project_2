@@ -19,7 +19,6 @@ public class QuestManager : MonoBehaviour
 
     public List<QuestItem> activeQuests = new List<QuestItem>();
     private QuestItem currentQuest;
-    private QuestData questData;
 
     private void Start()
     {
@@ -27,7 +26,7 @@ public class QuestManager : MonoBehaviour
         questUI.SetActive(false);
         acceptQuestButton.SetActive(false);
         completeQuestButton.SetActive(false);
-
+        LoadActiveQuests();
         if (questSelect != null)
         {
             int childCount = questSelect.transform.childCount;
@@ -39,7 +38,7 @@ public class QuestManager : MonoBehaviour
             }
         }
     }
-    
+
     public void ShowTalkPrompt()
     {
         talkPrompt.SetActive(true);
@@ -55,7 +54,7 @@ public class QuestManager : MonoBehaviour
         questUI.SetActive(true);
         questSelectUI.SetActive(true);
         questInfoUI.SetActive(false);
-        
+
     }
 
     // private void DisableQuestPrefab(string questName)
@@ -128,7 +127,7 @@ public class QuestManager : MonoBehaviour
         if (questItem != null)
         {
             questItem.SetQuestName(questName);
-            
+
             AddQuestActive(questItem);
         }
 
@@ -162,6 +161,40 @@ public class QuestManager : MonoBehaviour
         else
         {
             Debug.Log("Квест не найден в активных: " + quest.questNameText.text);
+        }
+    }
+
+    public List<string> GetActiveQuestNames()
+    {
+        List<string> questNames = new List<string>();
+        foreach (var quest in activeQuests)
+        {
+            questNames.Add(quest.questNameText.text); // Предполагается, что questNameText - это текстовое поле с именем квеста
+        }
+        return questNames;
+    }
+
+    public void LoadActiveQuests()
+    {
+        List<string> questNames = PlayerDataManager.playerData.activeQuests;
+        foreach (var questName in questNames)
+        {
+            QuestData questData = QuestDataManager.FindQuestByName(questName);
+            if (questData != null)
+            {
+                if (FindQuestByName(questName))
+                {
+                    Debug.Log("Квест с таким именем уже существует!");
+                    return;
+                }
+                GameObject questObject = Instantiate(questPrefab, questParent.transform);
+                QuestItem questItem = questObject.GetComponent<QuestItem>();
+                if (questItem != null)
+                {
+                    questItem.SetQuestName(questData.QuestName);
+                    AddQuestActive(questItem);
+                }
+            }
         }
     }
 

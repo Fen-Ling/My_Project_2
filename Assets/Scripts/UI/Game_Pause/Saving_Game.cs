@@ -9,6 +9,7 @@ public class Saving_Game : MonoBehaviour
     public GameObject SaveUI;
     public Pause_Menu PauseMenu;
     public Button[] buttons;
+    public QuestManager questManager;
     public string defaultFilename;
     private GameObject player;
 
@@ -50,7 +51,7 @@ public class Saving_Game : MonoBehaviour
     {
         string filename = defaultFilename + (index + 1).ToString();
         QuestDataManager.SaveQuestDataPlayer(filename + "quest.json");
-        PlayerDataManager.SavePlayerData(filename + ".json", player);
+        PlayerDataManager.SavePlayerData(filename + ".json", player, questManager);
 
         buttons[index].gameObject.GetComponentInChildren<TextMeshProUGUI>().text = filename;
     }

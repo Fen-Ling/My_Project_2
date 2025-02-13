@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour
     private InputAction m_lookAction;
     private Vector3 m_Rotation;
     private bool isPlayerInRange = false;
+    private Vector3 savedPosition;
 
     private void Awake()
     {
-        transform.position = PlayerDataManager.playerData.position;
+        savedPosition = PlayerDataManager.playerData.position;
+        TeleportPlayer();
         m_lookAction = inputActions.FindAction("Player/Look");
         m_lookAction.Enable();
     }
@@ -39,5 +41,12 @@ public class PlayerController : MonoBehaviour
     public void SetPlayerInRange(bool value)
     {
         isPlayerInRange = value;
+    }
+
+    private void TeleportPlayer()
+    {
+        gameObject.GetComponent<CharacterController>().enabled = false;
+        transform.position = savedPosition;
+        gameObject.GetComponent<CharacterController>().enabled = true;
     }
 }

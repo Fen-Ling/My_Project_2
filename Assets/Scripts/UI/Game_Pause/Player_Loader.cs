@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class CharacterLoader : MonoBehaviour
@@ -7,6 +8,8 @@ public class CharacterLoader : MonoBehaviour
     public int genderIndex;
     public int classIndex;
     private GameObject[] currentCharacters;
+    public CinemachineCamera cinemachineCamera;
+     private GameObject player;
 
     private void Start()
     {
@@ -16,7 +19,7 @@ public class CharacterLoader : MonoBehaviour
         UpdateCharacterArray();
         ActivateCurrentCharacter();
         RemoveInactiveCharacters(currentCharacters, classIndex);
-
+        CameraTarget();
     }
 
     private void UpdateCharacterArray()
@@ -45,7 +48,8 @@ public class CharacterLoader : MonoBehaviour
 
         if (classIndex >= 0 && classIndex < currentCharacters.Length)
         {
-            currentCharacters[classIndex].SetActive(true); // Активируем только первого персонажа
+            player = currentCharacters[classIndex]; // Сохраняем ссылку на активированного персонажа
+            player.SetActive(true);
         }
     }
 
@@ -63,6 +67,18 @@ public class CharacterLoader : MonoBehaviour
         for (int i = oppositeGenderCharacters.Length - 1; i >= 0; i--)
         {
             Destroy(oppositeGenderCharacters[i]);
+        }
+    }
+
+    private void CameraTarget()
+    {
+         if (cinemachineCamera != null && player != null)
+        {
+            cinemachineCamera.Follow = player.transform;
+        }
+        else
+        {
+            Debug.LogError("CinemachineVirtualCamera или Player не найдены!");
         }
     }
 }

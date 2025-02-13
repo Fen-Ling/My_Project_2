@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerData
@@ -11,5 +12,6 @@ public class PlayerData
     public int sceneIndex;
     public int Kill;
     public Vector3 position;
+    public List<string> activeQuests;
 
 }
