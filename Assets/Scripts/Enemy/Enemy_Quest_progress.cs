@@ -16,7 +16,7 @@ public class Enemy_Quest_progress : MonoBehaviour
     }
     private void Update()
     {
-        if (activequest != null && questactive == null)
+        if (activequest != null)
         {
             UpdateActiveQuestArray();
         }
@@ -38,20 +38,16 @@ public class Enemy_Quest_progress : MonoBehaviour
         {
             if (questObj.TryGetComponent(out QuestItem quest))
             {
-                int IDquest = GetQuestID(quest);
                 var questact = QuestDataManager.FindQuestByName(quest.questNameText.text);
-
-                if (IDquest == questact.QuestID)
-                {
-                    quest.ProgressQuest(progress);
-                    Debug.Log(quest.questNameText.text + "+1");
-                }
+                if (questact == null) continue;
+                int activeQuestID = questact.QuestID;
+                if (Array.Exists(questID, id => id == activeQuestID))
+            {
+                quest.ProgressQuest(progress);
+                Debug.Log(quest.questNameText.text + "+ 1");
+            }
             }
         }
     }
 
-    private int GetQuestID(QuestItem quest)
-    {
-        return questID[Array.IndexOf(questactive.ToArray(), quest.gameObject)];
-    }
 }
