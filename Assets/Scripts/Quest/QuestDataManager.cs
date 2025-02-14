@@ -41,8 +41,18 @@ public static class QuestDataManager
         }
         else
         {
-            Debug.Log("Файл c данными квестов не найден.");
-            return false;
+            TextAsset questData = Resources.Load<TextAsset>("QuestData");
+
+            if (questData != null)
+            {
+                string json = questData.text;
+                questDataList = JsonUtility.FromJson<QuestDataList>(json);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 
