@@ -7,7 +7,7 @@ public static class QuestDataManager
 
     public static void AddQuestData(int questID, string questName, string questInfo, int questProgressStart, int questProgressEnd, bool questComplete)
     {
-        string filepath = Path.Combine(Application.dataPath, "QuestData.json");
+        string filepath = Path.Combine(Application.persistentDataPath, "QuestData.json");
 
         LoadQuestData();
 
@@ -31,7 +31,7 @@ public static class QuestDataManager
 
     public static bool LoadQuestData()
     {
-        string filepath = Path.Combine(Application.dataPath, "QuestData.json");
+        string filepath = Path.Combine(Application.persistentDataPath, "QuestData.json");
 
         if (File.Exists(filepath))
         {
@@ -48,7 +48,7 @@ public static class QuestDataManager
 
     public static void ResetQuestData()
     {
-        string filepath = Path.Combine(Application.dataPath, "QuestData.json");
+        string filepath = Path.Combine(Application.persistentDataPath, "QuestData.json");
         if (LoadQuestData())
         {
             // Проходим по всем квестам и сбрасываем статус завершенности
@@ -92,7 +92,7 @@ public static class QuestDataManager
             questDataList = JsonUtility.FromJson<QuestDataList>(json);
             Debug.Log("Данные квестов игрока загружены!");
 
-            string savePath = Path.Combine(Application.dataPath, "QuestData.json");
+            string savePath = Path.Combine(Application.persistentDataPath, "QuestData.json");
             string saveJson = JsonUtility.ToJson(questDataList, true);
             File.WriteAllText(savePath, saveJson);
             Debug.Log("Данные о квестах сохранены в QuestData.json");
@@ -162,7 +162,7 @@ public static class QuestDataManager
             questToUpdate.QuestComplete = questComplete;
 
             string json = JsonUtility.ToJson(questDataList, true);
-            string filepath = Path.Combine(Application.dataPath, "QuestData.json");
+            string filepath = Path.Combine(Application.persistentDataPath, "QuestData.json");
             File.WriteAllText(filepath, json);
             Debug.Log($"Статус завершения квеста обновлен: ID = {questToUpdate.QuestID}, Завершен = {questToUpdate.QuestComplete}");
         }

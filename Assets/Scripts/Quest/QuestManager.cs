@@ -22,6 +22,7 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
+        QuestDataManager.LoadQuestData();
         talkPrompt.SetActive(false);
         questUI.SetActive(false);
         acceptQuestButton.SetActive(false);

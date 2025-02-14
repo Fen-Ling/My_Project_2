@@ -165,7 +165,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.4
   androidMinAspectRatio: 1
   applicationIdentifier:
-    Standalone: com.DefaultCompany.My-Project-2
+    Standalone: com.DefaultCompany.Sacred---Project
   buildNumber:
     Standalone: 0
     VisionOS: 0
