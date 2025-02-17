@@ -42,15 +42,31 @@ public class Enemy_Damage : MonoBehaviour
             player.GetComponent<Player_Lvl>().Experience(Enemy_EXP);
             killEnemy.IncreaseKillCount();
             questProgress.QuestProgress();
-            GetComponent<NavMeshAgent>().enabled = false;
-            GetComponent<Collider>().enabled = false;
             healthBar.gameObject.SetActive(false);
+            DisableAllComponents();
             Destroy(gameObject, 1.5f);
 
         }
         else
         {
             animator.SetTrigger("Damage");
+        }
+    }
+
+    private void DisableAllComponents()
+    {
+        Component[] components = GetComponents<Component>();
+
+        foreach (Component component in components)
+        {
+            if (!(component is Animator) && !(component is Transform))
+            {
+                Behaviour behaviour = component as Behaviour;
+                if (behaviour != null)
+                {
+                    behaviour.enabled = false;
+                }
+            }
         }
     }
 }
