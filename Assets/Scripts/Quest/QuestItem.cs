@@ -16,6 +16,7 @@ public class QuestItem : MonoBehaviour
     private int questProgress;
     private int questProgressEnd;
     public QuestData currentQuest;
+    private object QuestButton;
 
     public void Start()
     {
@@ -42,6 +43,7 @@ public class QuestItem : MonoBehaviour
     {
         if (questProgress == questProgressEnd)
         {
+
             questState = QuestState.Completed;
             QuestDataManager.UpdateQuestByName(questNameText.text, true);
             Debug.Log("Квест " + questNameText.text + " завершен!");

@@ -3,24 +3,23 @@ using UnityEngine.InputSystem;
 
 public class NPCDialogue : MonoBehaviour
 {
-    public QuestManager dialogueUIManager;
+    public GameObject dialogueUIManager;
     public InputActionAsset inputActions;
     private InputAction m_questAction;
-
     private bool isPlayerInRange = false;
-
+    
     private void Awake()
     {
+        dialogueUIManager = GameObject.FindGameObjectWithTag("QuestManager");
         m_questAction = inputActions.FindAction("UI/NPSTalk");
-    }
+     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-
             isPlayerInRange = true;
-            dialogueUIManager.ShowTalkPrompt();
+            dialogueUIManager.GetComponent<QuestManager>().ShowTalkPrompt();
 
             Player_Animation playerAnimation = other.GetComponent<Player_Animation>();
             PlayerController playerController = other.GetComponent<PlayerController>();
@@ -28,10 +27,8 @@ public class NPCDialogue : MonoBehaviour
             {
                 playerAnimation.SetPlayerInRange(true);
                 playerController.SetPlayerInRange(true);
-
             }
         }
-
     }
 
     private void OnTriggerExit(Collider other)
@@ -39,7 +36,7 @@ public class NPCDialogue : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
-            dialogueUIManager.HideTalkPrompt();
+            dialogueUIManager.GetComponent<QuestManager>().HideTalkPrompt();
 
             Player_Animation playerAnimation = other.GetComponent<Player_Animation>();
             PlayerController playerController = other.GetComponent<PlayerController>();
@@ -61,6 +58,6 @@ public class NPCDialogue : MonoBehaviour
 
     private void ShowDialogue()
     {
-        dialogueUIManager.ShowQuestUI(); // Показываем UI с описанием квеста
+        dialogueUIManager.GetComponent<QuestManager>().ShowQuestUI(); // Показываем UI с описанием квеста
     }
 }

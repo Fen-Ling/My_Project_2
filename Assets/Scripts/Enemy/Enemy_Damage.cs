@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class Enemy_Damage : MonoBehaviour
@@ -41,6 +42,7 @@ public class Enemy_Damage : MonoBehaviour
             player.GetComponent<Player_Lvl>().Experience(Enemy_EXP);
             killEnemy.IncreaseKillCount();
             questProgress.QuestProgress();
+            GetComponent<NavMeshAgent>().enabled = false;
             GetComponent<Collider>().enabled = false;
             healthBar.gameObject.SetActive(false);
             Destroy(gameObject, 1.5f);

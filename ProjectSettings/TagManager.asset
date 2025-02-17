@@ -10,6 +10,7 @@ TagManager:
   - Dangeons
   - Statistic
   - QuestActive
+  - QuestManager
   layers:
   - Default
   - TransparentFX

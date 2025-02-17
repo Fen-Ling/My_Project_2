@@ -15,7 +15,7 @@ Material:
   - _ALPHATEST_ON
   - _LEAFFLUTTER_ON
   - _RECEIVE_SHADOWS_OFF
-  - _WINDTYPE_GENTLEBREEZE
+  - _WINDTYPE_WINDOFF
   m_InvalidKeywords:
   - GentleBreeze
   - _DIRECTIONALWIND_ON
@@ -170,7 +170,7 @@ Material:
     - _RandomContrast: 0
     - _RandomContrastOnOff: 0
     - _ReceiveShadows: 0
-    - _SeasonChangeGlobal: -2
+    - _SeasonChangeGlobal: 0
     - _SeasonVertexColorR: 0
     - _SelfShadingVertexColor: 0
     - _SimplePivotSway: 0

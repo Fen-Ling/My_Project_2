@@ -5,6 +5,7 @@ using TMPro;
 public class QuestManager : MonoBehaviour
 {
     public GameObject talkPrompt;
+    public GameObject questItemPrompt;
     public GameObject questUI;
     public GameObject questSelectUI;
     public GameObject questInfoUI;
@@ -50,27 +51,22 @@ public class QuestManager : MonoBehaviour
         talkPrompt.SetActive(false);
     }
 
+    public void ShowQuestItem()
+    {
+        questItemPrompt.SetActive(true);
+    }
+
+    public void HideQuestItem()
+    {
+        questItemPrompt.SetActive(false);
+    }
+
     public void ShowQuestUI()
     {
         questUI.SetActive(true);
         questSelectUI.SetActive(true);
         questInfoUI.SetActive(false);
-
     }
-
-    // private void DisableQuestPrefab(string questName)
-    // {
-    //     // Предполагается, что префаб квеста связан с его именем
-    //     if (questPrefab != null)
-    //     {
-    //         questPrefab.SetActive(false);
-    //         Debug.Log($"Префаб квеста '{questName}' отключён, так как квест завершен.");
-    //     }
-    //     else
-    //     {
-    //         Debug.LogWarning("Префаб квеста не установлен.");
-    //     }
-    // }
 
     public void QuestSelect(int index)
     {

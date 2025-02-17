@@ -47,6 +47,14 @@
             "QuestProgressStart": 0,
             "QuestProgressEnd": 1,
             "QuestComplete": false
+        },
+        {
+            "QuestID": 7,
+            "QuestName": "Найдите меч",
+            "QuestInfo": "Пойдите в лес и найдите меч",
+            "QuestProgressStart": 0,
+            "QuestProgressEnd": 2,
+            "QuestComplete": false
         }
     ]
 }

@@ -12,10 +12,10 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _ALPHATEST_ON
   - _RECEIVE_SHADOWS_OFF
   - _WINDTYPE_GENTLEBREEZE
   m_InvalidKeywords:
-  - _ALPHATEST_ON
   - _EMISSION
   - _NORMALIZESEASONS_ON
   - _RECEIVESHADOWS_OFF
@@ -165,6 +165,7 @@ Material:
     - _NormalizeSeasons: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _PivotSway: 0
     - _PreventBarkStretching: 0
     - _PreventStrecthing_Offset: -0.2
     - _PreventStrecthing_Scale: 5
@@ -177,7 +178,7 @@ Material:
     - _RandomContrast: 0
     - _RandomContrastOnOff: 0
     - _ReceiveShadows: 0
-    - _SeasonChangeGlobal: -2
+    - _SeasonChangeGlobal: 0
     - _SeasonVertexColorR: 0
     - _SelfShadingVertexColor: 0
     - _SimplePivotSway: 0
@@ -185,11 +186,14 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularBackfaceOcclusion: 0
     - _SpecularBackfaceOcclusion1: 0
+    - _SpecularBias: 1
     - _SpecularHighlights: 1
     - _SpecularMapOffset: 0
     - _SpecularMapScale: 1
     - _SpecularPower: 1
     - _SpecularPowerX: 1
+    - _SpecularScale: -5
+    - _SpecularStrength: 2
     - _Specularpower: 1
     - _SrcBlend: 1
     - _StrongWindSpeed: 1
@@ -215,3 +219,4 @@ Material:
     - _DryLeafColor: {r: 1, g: 0.2850455, b: 0, a: 0}
     - _EmissionColor: {r: 0.09411765, g: 0.32941177, b: 0, a: 1}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
