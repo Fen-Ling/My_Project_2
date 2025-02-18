@@ -3,14 +3,13 @@ using UnityEngine.InputSystem;
 
 public class NPCDialogue : MonoBehaviour
 {
-    public GameObject dialogueUIManager;
+    public QuestManager dialogueUIManager;
     public InputActionAsset inputActions;
     private InputAction m_questAction;
     private bool isPlayerInRange = false;
     
-    private void Awake()
+    void Start()
     {
-        dialogueUIManager = GameObject.FindGameObjectWithTag("QuestManager");
         m_questAction = inputActions.FindAction("UI/NPSTalk");
      }
 

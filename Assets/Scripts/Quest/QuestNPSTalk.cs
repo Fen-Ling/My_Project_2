@@ -7,20 +7,17 @@ public class QuestNPSTalk : MonoBehaviour
 {
     public InputActionAsset inputActions;
     private InputAction m_questAction;
-    public GameObject questManager;
+    public QuestManager questManager;
     public int[] questID;
     private GameObject activquest;
     public List<GameObject> questctive = new List<GameObject>();
 
     private bool isPlayerInRange = false;
 
-    private void Awake()
+    private void Start()
     {
-        questManager = GameObject.FindGameObjectWithTag("QuestManager");
-        activquest = GameObject.FindGameObjectWithTag("QuestActive");
         UpdateActiveQuestArray();
         m_questAction = inputActions.FindAction("UI/NPSTalk");
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -50,12 +47,13 @@ public class QuestNPSTalk : MonoBehaviour
     {
         if (isPlayerInRange && m_questAction.IsPressed())
         {
-                QuestTalk();
+            QuestTalk();
         }
     }
 
     public void UpdateActiveQuestArray()
     {
+        activquest = GameObject.FindGameObjectWithTag("QuestActive");
         questctive.Clear();
         int childCount = activquest.transform.childCount;
 

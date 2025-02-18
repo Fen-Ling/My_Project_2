@@ -8,19 +8,17 @@ public class SwordInStump : MonoBehaviour
     public GameObject Sword;
     public InputActionAsset inputActions;
     private InputAction m_questAction;
-    public GameObject questManager;
+    public QuestManager questManager;
     public int[] questID;
     private GameObject activequest;
     public List<GameObject> questactive = new List<GameObject>();
 
     private bool isPlayerInRange = false;
 
-    private void Start()
+    void Start()
     {
-        questManager = GameObject.FindGameObjectWithTag("QuestManager");
-        activequest = GameObject.FindGameObjectWithTag("QuestActive");
-        UpdateActiveQuestArray();
         m_questAction = inputActions.FindAction("UI/NPSTalk");
+        UpdateActiveQuestArray();
 
     }
 
@@ -49,6 +47,7 @@ public class SwordInStump : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         if (isPlayerInRange && m_questAction.IsPressed())
         {
             if (Sword != null)
@@ -60,6 +59,7 @@ public class SwordInStump : MonoBehaviour
 
     public void UpdateActiveQuestArray()
     {
+        activequest = GameObject.FindGameObjectWithTag("QuestActive");
         questactive.Clear();
         int childCount = activequest.transform.childCount;
 
