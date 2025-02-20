@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class Settings_UI : MonoBehaviour
 {
-	public AudioSource audioSource;
 	public Slider sliderVal;
 	public Dropdown resolutionDropdown;
 	public Toggle fullscreenToggle;
@@ -40,7 +39,7 @@ public class Settings_UI : MonoBehaviour
 		resolutionDropdown.value = currResolutionIndex;
 		resolutionDropdown.RefreshShownValue();
 
-		audioSource.volume = settings.volume;
+		AudioListener.volume = settings.volume;
 		sliderVal.value = settings.volume;
 
 		fullscreenToggle.isOn = settings.isFullScreen;
@@ -49,7 +48,7 @@ public class Settings_UI : MonoBehaviour
 	}
 	public void ChangeVolume(float value)
 	{
-		audioSource.volume = value;
+		AudioListener.volume = value;
 		sliderVal.value = value;
 	}
 
@@ -68,18 +67,19 @@ public class Settings_UI : MonoBehaviour
 	{
 		Settings_Data settings = new Settings_Data
 		{
-			volume = audioSource.volume,
+			volume = AudioListener.volume,
 			width = resolutions[resolutionDropdown.value].width,
 			height = resolutions[resolutionDropdown.value].height,
 			isFullScreen = fullscreenToggle.isOn
 		};
 
 		SettingsDataManager.SaveSettings(settings);
+		ApplySettings(settings);
 	}
 
 	private void ApplySettings(Settings_Data settings)
 	{
-		audioSource.volume = settings.volume;
+		AudioListener.volume = settings.volume;
 		sliderVal.value = settings.volume;
 
 		Screen.SetResolution(settings.width, settings.height, settings.isFullScreen);

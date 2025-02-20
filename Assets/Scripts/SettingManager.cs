@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class SettingsManager : MonoBehaviour
 {
-    public AudioSource audioSource;
     public Camera cam;
 
     private void Start()
@@ -17,7 +16,7 @@ public class SettingsManager : MonoBehaviour
 
         Screen.SetResolution(settings.width, settings.height, settings.isFullScreen);
 
-        audioSource.volume = settings.volume;
+        AudioListener.volume = settings.volume;
 
         Screen.fullScreen = settings.isFullScreen;
     }
