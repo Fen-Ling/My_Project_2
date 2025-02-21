@@ -15,5 +15,9 @@ public class Lock_At_Player : MonoBehaviour
         {
             transform.LookAt(targetCamera.transform);
         }
+        else
+        {
+            targetCamera = GameObject.Find("Cam1").GetComponent<Camera>();
+        }
     }
 }

@@ -9651,7 +9651,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886df6b3278ff7847910f8c6565f0fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 643044842}
   cam: {fileID: 0}
 --- !u!4 &938587460
 Transform:
@@ -11519,7 +11518,7 @@ GameObject:
   - component: {fileID: 1278007794}
   m_Layer: 8
   m_Name: Dang
-  m_TagString: Untagged
+  m_TagString: Dangeons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18659,6 +18658,14 @@ PrefabInstance:
     - target: {fileID: 1923930166926693869, guid: 16efa409f7809d6499a20bf293c5df05, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923930166926854604, guid: 16efa409f7809d6499a20bf293c5df05, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 196020566272700627, guid: 681220b62dd908f45ada123d56e66448, type: 3}
+    - target: {fileID: 1923930166926854604, guid: 16efa409f7809d6499a20bf293c5df05, type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1923930166926854605, guid: 16efa409f7809d6499a20bf293c5df05, type: 3}
       propertyPath: m_Name

@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -20,7 +21,7 @@ public class PortalTeleport : MonoBehaviour
     IEnumerator LoadSceneAsync(string sceneName, Transform player)
     {
         SceneManager.LoadScene("Game_Loading", LoadSceneMode.Additive);
-        
+
         yield return new WaitForSecondsRealtime(1f);
 
         Slider slider = GameObject.Find("LoadingBar").GetComponent<Slider>();
@@ -51,5 +52,20 @@ public class PortalTeleport : MonoBehaviour
         player.GetComponent<CharacterController>().enabled = false;
         player.position = teleportPoint;
         player.GetComponent<CharacterController>().enabled = true;
+    }
+
+    private void SinCamDecol()
+    {
+        var sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        var sinCam = GameObject.FindGameObjectWithTag("SinCam");
+        if (sceneIndex == 2)
+        {
+            sinCam.GetComponent<CharacterController>().enabled = false;
+        }
+        else
+        {
+            sinCam.GetComponent<CharacterController>().enabled = true;
+        }
+
     }
 }
