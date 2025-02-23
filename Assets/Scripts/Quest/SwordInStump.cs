@@ -81,6 +81,10 @@ public class SwordInStump : MonoBehaviour
                 if (Array.Exists(questID, id => id == activeQuestID))
                 {
                     quest.ProgressQuest(1);
+                    if (questact.QuestProgressStart < questact.QuestProgressEnd)
+                    {
+                        questact.QuestProgressStart = questact.QuestProgressStart + 1;
+                    }
                     Destroy(Sword);
                     Debug.Log(quest.questNameText.text + "+ 1");
                 }

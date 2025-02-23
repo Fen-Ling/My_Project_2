@@ -16,7 +16,6 @@ public class QuestItem : MonoBehaviour
     private int questProgress;
     private int questProgressEnd;
     public QuestData currentQuest;
-    private object QuestButton;
 
     public void Start()
     {
@@ -57,7 +56,8 @@ public class QuestItem : MonoBehaviour
     {
         questProgress += progress;
         questProgress = Mathf.Clamp(questProgress, 0, questProgressEnd);
-        questText.text = "Прогресс:" + questProgress + "из" + questProgressEnd;
+        QuestDataManager.ProgressQuestByName(questNameText.text, questProgress);
+        questText.text = "Прогресс:" + questProgress + " из " + questProgressEnd;
     }
 
     public QuestData GetCurrentQuest()

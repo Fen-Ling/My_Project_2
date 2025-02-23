@@ -61,7 +61,6 @@ public static class QuestDataManager
         string filepath = Path.Combine(Application.persistentDataPath, "QuestData.json");
         if (LoadQuestData())
         {
-            // Проходим по всем квестам и сбрасываем статус завершенности
             foreach (var quest in questDataList.quests)
             {
                 if (quest.QuestComplete)
@@ -69,6 +68,12 @@ public static class QuestDataManager
                     quest.QuestComplete = false;
                     Debug.Log($"Квест сброшен: ID = {quest.QuestID}, Название = {quest.QuestName}");
                 }
+                if (quest.QuestProgressStart > 0)
+                {
+                    quest.QuestProgressStart = 0;
+                    Debug.Log($"Квест сброшен: ID = {quest.QuestID}, Прогресс = {quest.QuestProgressStart}");
+                }
+
             }
 
             string json = JsonUtility.ToJson(questDataList, true);
@@ -169,6 +174,7 @@ public static class QuestDataManager
         QuestData questToUpdate = FindQuestByName(questName);
         if (questToUpdate != null)
         {
+            questToUpdate.QuestProgressStart = 0;
             questToUpdate.QuestComplete = questComplete;
 
             string json = JsonUtility.ToJson(questDataList, true);
@@ -179,6 +185,25 @@ public static class QuestDataManager
         else
         {
             Debug.Log("Не удалось обновить статус завершения квеста. Квест не найден.");
+        }
+    }
+
+    public static void ProgressQuestByName(string questName, int questprogress)
+    {
+        LoadQuestData();
+        QuestData questToProgress = FindQuestByName(questName);
+        if (questToProgress != null)
+        {
+            questToProgress.QuestProgressStart = questprogress;
+
+            string json = JsonUtility.ToJson(questDataList, true);
+            string filepath = Path.Combine(Application.persistentDataPath, "QuestData.json");
+            File.WriteAllText(filepath, json);
+            Debug.Log($"Статус прогресса квеста обновлен: ID = {questToProgress.QuestID}, Прогресс = {questToProgress.QuestProgressStart}");
+        }
+        else
+        {
+            Debug.Log("Не удалось обновить статус прогресса квеста. Квест не найден.");
         }
     }
 }

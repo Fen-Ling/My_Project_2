@@ -42,10 +42,14 @@ public class Enemy_Quest_progress : MonoBehaviour
                 if (questact == null) continue;
                 int activeQuestID = questact.QuestID;
                 if (Array.Exists(questID, id => id == activeQuestID))
-            {
-                quest.ProgressQuest(progress);
-                Debug.Log(quest.questNameText.text + "+ 1");
-            }
+                {
+                    quest.ProgressQuest(progress);
+                    if (questact.QuestProgressStart < questact.QuestProgressEnd)
+                    {
+                        questact.QuestProgressStart = questact.QuestProgressStart + 1;
+                    }
+                    Debug.Log(quest.questNameText.text + "+ 1");
+                }
             }
         }
     }

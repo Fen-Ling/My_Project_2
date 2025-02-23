@@ -153,7 +153,6 @@ public class QuestManager : MonoBehaviour
         {
             quest.CompleteQuest();
             questUI.SetActive(false);
-            Debug.Log("Квест завершен: " + quest.questNameText.text);
         }
         else
         {
