@@ -9,13 +9,13 @@ public class CharacterLoader : MonoBehaviour
     public int classIndex;
     private GameObject[] currentCharacters;
     public CinemachineCamera cinemachineCamera;
-     private GameObject player;
+    private GameObject player;
 
     private void Start()
     {
         genderIndex = PlayerDataManager.playerData.genderIndex;
         classIndex = PlayerDataManager.playerData.classIndex;
-        
+
         UpdateCharacterArray();
         ActivateCurrentCharacter();
         RemoveInactiveCharacters(currentCharacters, classIndex);
@@ -72,7 +72,7 @@ public class CharacterLoader : MonoBehaviour
 
     private void CameraTarget()
     {
-         if (cinemachineCamera != null && player != null)
+        if (cinemachineCamera != null && player != null)
         {
             cinemachineCamera.Follow = player.transform;
         }
