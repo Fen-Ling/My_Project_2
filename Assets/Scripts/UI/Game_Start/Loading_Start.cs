@@ -85,6 +85,5 @@ public class Loadings_Start : MonoBehaviour
 
         SceneManager.UnloadSceneAsync("Game_Loading");
         yield return SceneManager.UnloadSceneAsync(activeScene.name);
-        
     }
 }

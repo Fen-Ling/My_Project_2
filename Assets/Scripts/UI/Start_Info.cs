@@ -5,10 +5,12 @@ public class Start_Info : MonoBehaviour
 {
     public GameObject infoWorld;
     public GameObject infoInput;
+    private float corExp;
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        corExp = PlayerDataManager.playerData.curExp;
+        if (corExp == 0)
         {
             Time.timeScale = 0;
             infoWorld.SetActive(true);

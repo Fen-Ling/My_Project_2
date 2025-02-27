@@ -118,7 +118,7 @@ public class Attack_Archer : MonoBehaviour
 
     public void ChooseFireType(int fireType)
     {
-        fireindex = fireType; // Устанавливаем только индекс типа стрельбы
+        fireindex = fireType;
         Debug.Log("Тип стрельбы установлен: " + fireindex);
     }
 }
