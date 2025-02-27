@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Teleport_Buttons : MonoBehaviour
@@ -19,24 +20,31 @@ public class Teleport_Buttons : MonoBehaviour
 
     public void TeleportPlayer(int i)
     {
-        if (i < 0 || i >= points.Length)
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            Debug.LogError("Индекс телепорта вне границ");
-            return;
-        }
+            if (i < 0 || i >= points.Length)
+            {
+                Debug.LogError("Индекс телепорта вне границ");
+                return;
+            }
 
-        Transform player = GameObject.FindWithTag("Player").transform;
+            Transform player = GameObject.FindWithTag("Player").transform;
 
-        CharacterController characterController = player.GetComponent<CharacterController>();
-        if (characterController != null)
-        {
-            characterController.enabled = false;
-            player.position = points[i].position;
-            characterController.enabled = true;
+            CharacterController characterController = player.GetComponent<CharacterController>();
+            if (characterController != null)
+            {
+                characterController.enabled = false;
+                player.position = points[i].position;
+                characterController.enabled = true;
+            }
+            else
+            {
+                Debug.LogError("Компонент CharacterController не найден у игрока");
+            }
         }
         else
         {
-            Debug.LogError("Компонент CharacterController не найден у игрока");
+            Debug.LogError("Не правильная сцена");
         }
     }
 

@@ -22,6 +22,10 @@ public class Player_Animation : MonoBehaviour
         m_anim.SetBool("Backward", moveInput.y < 0);
         m_anim.SetBool("Left", moveInput.x < 0);
         m_anim.SetBool("Right", moveInput.x > 0);
+        m_anim.SetBool("ForwardLeft", moveInput.y > 0 && moveInput.x < 0);
+        m_anim.SetBool("ForwardRight", moveInput.y > 0 && moveInput.x > 0);
+        m_anim.SetBool("BackwardLeft", moveInput.y < 0 && moveInput.x < 0);
+        m_anim.SetBool("BackwardRight", moveInput.y < 0 && moveInput.x > 0);
 
         if (Keyboard.current.leftShiftKey.isPressed)
         {
