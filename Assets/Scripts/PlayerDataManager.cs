@@ -83,7 +83,8 @@ public static class PlayerDataManager
             ExpToLvl = 100,
             MaxHP = 200,
             Kill = 0,
-            position = new Vector3(192, 56, 54)
+            position = new Vector3(192, 56, 54),
+            activeQuests = null
         };
     }
 }

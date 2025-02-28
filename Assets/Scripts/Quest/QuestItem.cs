@@ -57,7 +57,7 @@ public class QuestItem : MonoBehaviour
         questProgress += progress;
         questProgress = Mathf.Clamp(questProgress, 0, questProgressEnd);
         QuestDataManager.ProgressQuestByName(questNameText.text, questProgress);
-        questText.text = "Прогресс:" + questProgress + " из " + questProgressEnd;
+        questText.text = "Прогресс: " + questProgress + " из " + questProgressEnd;
     }
 
     public QuestData GetCurrentQuest()

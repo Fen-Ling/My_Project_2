@@ -7,11 +7,13 @@ public class Player_Animation : MonoBehaviour
     public InputActionAsset inputActions;
     private InputAction m_moveAction;
     private bool isPlayerInRange = false;
+    private CharacterController m_characterController;
 
     void Start()
     {
         m_anim = GetComponent<Animator>();
         m_moveAction = inputActions.FindAction("Player/Move");
+        m_characterController = GetComponent<CharacterController>();
     }
 
     void Update()
@@ -46,6 +48,20 @@ public class Player_Animation : MonoBehaviour
     public void SetPlayerInRange(bool value)
     {
         isPlayerInRange = value;
+    }
+
+    private void OnAnimatorMove()
+    {
+    // Debug.Log(m_anim.deltaPosition + $"  - {m_characterController.isGrounded}");
+        if (m_characterController.isGrounded)
+        {
+            m_characterController.SimpleMove(m_anim.deltaPosition / Time.deltaTime);
+        }
+        else
+        {
+            m_characterController.SimpleMove(Vector3.zero);
+        }
+        
     }
 
 }

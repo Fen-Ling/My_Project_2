@@ -9,10 +9,12 @@ public class GameOver_UI : MonoBehaviour
     public AudioClip audioGameOver;
     private AudioSource hitAudioSource;
 
+    
     private void OnEnable()
     {
         GameOverUI.SetActive(true);
         GameState.gameObject.SetActive(false);
+        hitAudioSource = gameObject.GetComponent<AudioSource>();
         hitAudioSource.Play();
         Time.timeScale = 0;
     }

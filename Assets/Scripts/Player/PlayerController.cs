@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
         TeleportPlayer();
         m_lookAction = inputActions.FindAction("Player/Look");
         m_lookAction.Enable();
+        transform.SetParent(null);
     }
 
     public void Update()

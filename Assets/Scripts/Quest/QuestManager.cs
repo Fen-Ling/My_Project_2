@@ -39,6 +39,10 @@ public class QuestManager : MonoBehaviour
             }
             LoadActiveQuests();
         }
+        else 
+        {
+            Debug.Log("Нет принятых квестов");
+        }
     }
 
     public void ShowTalkPrompt()

@@ -39,6 +39,9 @@ public class Pause_Menu : MonoBehaviour
 
     public void Back_to_Menu()
     {
+        var player = GameObject.FindGameObjectWithTag("Player");
+        Destroy(player);
+        Destroy(persistentObjects);
         QuestDataManager.ResetQuestData();
         StartCoroutine(LoadSceneAsync("Game_StartMenu"));
     }
@@ -52,7 +55,7 @@ public class Pause_Menu : MonoBehaviour
     IEnumerator LoadSceneAsync(string sceneName)
     {
         SceneManager.LoadScene("Game_Loading", LoadSceneMode.Additive);
-        
+
         yield return new WaitForSecondsRealtime(1f);
 
         Slider slider = GameObject.Find("LoadingBar").GetComponent<Slider>();
@@ -70,8 +73,6 @@ public class Pause_Menu : MonoBehaviour
         var scene = SceneManager.GetSceneByName(sceneName);
         yield return new WaitUntil(() => scene.isLoaded);
         SceneManager.SetActiveScene(scene);
-
-        Destroy(persistentObjects);
 
         Debug.Log("Новая сцена загружена");
         SceneManager.UnloadSceneAsync("Game_Loading");
