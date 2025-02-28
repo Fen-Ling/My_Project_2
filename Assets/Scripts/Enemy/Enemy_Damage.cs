@@ -59,7 +59,7 @@ public class Enemy_Damage : MonoBehaviour
 
         foreach (Component component in components)
         {
-            if (!(component is Animator) && !(component is Transform))
+            if (!(component is Animator) && !(component is Transform) && !(component is AudioSource))
             {
                 Behaviour behaviour = component as Behaviour;
                 if (behaviour != null)
