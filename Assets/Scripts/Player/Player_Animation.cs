@@ -52,7 +52,6 @@ public class Player_Animation : MonoBehaviour
 
     private void OnAnimatorMove()
     {
-    // Debug.Log(m_anim.deltaPosition + $"  - {m_characterController.isGrounded}");
         if (m_characterController.isGrounded)
         {
             m_characterController.SimpleMove(m_anim.deltaPosition / Time.deltaTime);
@@ -61,7 +60,6 @@ public class Player_Animation : MonoBehaviour
         {
             m_characterController.SimpleMove(Vector3.zero);
         }
-        
     }
 
 }

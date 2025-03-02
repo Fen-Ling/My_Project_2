@@ -50,6 +50,7 @@ public class CharacterLoader : MonoBehaviour
         {
             player = currentCharacters[classIndex]; // Сохраняем ссылку на активированного персонажа
             player.SetActive(true);
+            player.transform.SetParent(null);
         }
     }
 

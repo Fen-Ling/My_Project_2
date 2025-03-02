@@ -6,6 +6,7 @@ public class NPCDialogue : MonoBehaviour
     public QuestManager dialogueUIManager;
     public InputActionAsset inputActions;
     private InputAction m_questAction;
+    public int[] questIDs;
     private bool isPlayerInRange = false;
     
     void Start()
@@ -57,6 +58,7 @@ public class NPCDialogue : MonoBehaviour
 
     private void ShowDialogue()
     {
-        dialogueUIManager.GetComponent<QuestManager>().ShowQuestUI(); // Показываем UI с описанием квеста
+        dialogueUIManager.GetComponent<QuestManager>().ShowQuestUI();
+        dialogueUIManager.GetComponent<QuestManager>().QuestSelection(questIDs);
     }
 }

@@ -1,11 +1,14 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuestPrefab : MonoBehaviour
 {
     public int idQuest;
     public TMP_Text textName;
     public bool complete;
+    private Button questButton;
+    private QuestManager questManager;
 
     public void Start()
     {
@@ -16,14 +19,12 @@ public class QuestPrefab : MonoBehaviour
             Completed();
             textName.text = quest.QuestName;
             textName = GetComponentInChildren<TMP_Text>();
+            questManager = FindObjectOfType<QuestManager>();
+            questButton = GetComponent<Button>();
+            questButton.onClick.AddListener(() => questManager.QuestSelect(idQuest));
         }
         else
             gameObject.SetActive(false);
-    }
-
-    private void Update()
-    {
-        Completed();
     }
 
     private void Completed()

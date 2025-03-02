@@ -12,7 +12,7 @@ public class QuestManager : MonoBehaviour
     public GameObject acceptQuestButton;
     public GameObject completeQuestButton;
     public GameObject questSelect;
-    private GameObject[] questSelectPrefab;
+    public GameObject questSelectPref;
     public TMP_Text questNameText;
     public TMP_Text questText;
     public GameObject questParent;
@@ -28,21 +28,7 @@ public class QuestManager : MonoBehaviour
         questUI.SetActive(false);
         acceptQuestButton.SetActive(false);
         completeQuestButton.SetActive(false);
-        if (questSelect != null)
-        {
-            int childCount = questSelect.transform.childCount;
-            questSelectPrefab = new GameObject[childCount];
-
-            for (int i = 0; i < childCount; i++)
-            {
-                questSelectPrefab[i] = questSelect.transform.GetChild(i).gameObject;
-            }
-            LoadActiveQuests();
-        }
-        else 
-        {
-            Debug.Log("Нет принятых квестов");
-        }
+        LoadActiveQuests();
     }
 
     public void ShowTalkPrompt()
@@ -72,13 +58,37 @@ public class QuestManager : MonoBehaviour
         questInfoUI.SetActive(false);
     }
 
+    public void QuestSelection(int[] questIDs)
+    {
+        ClearQuestList();
+
+        foreach (int questID in questIDs)
+        {
+            QuestData questpr = QuestDataManager.FindQuestByID(questID);
+            if (questpr != null)
+            {
+                GameObject questPrefabItem = Instantiate(questSelectPref, questSelect.transform);
+                QuestPrefab questPrefabScript = questPrefabItem.GetComponent<QuestPrefab>();
+                questPrefabScript.idQuest = questpr.QuestID;
+            }
+        }
+    }
+
+    private void ClearQuestList()
+    {
+        foreach (Transform child in questSelect.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+
     public void QuestSelect(int index)
     {
         questSelectUI.SetActive(false);
         questInfoUI.SetActive(true);
 
-        var idQuest = questSelectPrefab[index].GetComponent<QuestPrefab>().idQuest;
-        QuestData quest = QuestDataManager.FindQuestByID(idQuest);
+        QuestData quest = QuestDataManager.FindQuestByID(index);
         if (quest != null)
         {
             questNameText.text = quest.QuestName;
