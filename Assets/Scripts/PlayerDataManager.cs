@@ -12,8 +12,9 @@ public static class PlayerDataManager
         string filepath = Path.Combine(Application.persistentDataPath, filename);
         var playerLevel = player.GetComponent<Player_Lvl>();
         var playerHealth = player.GetComponent<Player_HP>();
-        var playerLoader = player.GetComponentInParent<CharacterLoader>();
-        var KillStatistic = player.GetComponentInParent<KillEnemy>();
+        var playerLoaders = GameObject.FindWithTag("PlayerLoader");
+        var playerLoader = playerLoaders.GetComponent<CharacterLoader>();
+        var KillStatistic = player.GetComponent<KillEnemy>();
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
         List<string> activeQuests = questManager.GetActiveQuestNames();
 

@@ -50,16 +50,16 @@ public class Player_Animation : MonoBehaviour
         isPlayerInRange = value;
     }
 
-    private void OnAnimatorMove()
-    {
-        if (m_characterController.isGrounded)
-        {
-            m_characterController.SimpleMove(m_anim.deltaPosition / Time.deltaTime);
-        }
-        else
-        {
-            m_characterController.SimpleMove(Vector3.zero);
-        }
-    }
+    // private void OnAnimatorMove()
+    // {
+    //     if (m_characterController.isGrounded)
+    //     {
+    //         m_characterController.SimpleMove(m_anim.deltaPosition / Time.deltaTime);
+    //     }
+    //     else
+    //     {
+    //         m_characterController.SimpleMove(Vector3.zero);
+    //     }
+    // }
 
 }

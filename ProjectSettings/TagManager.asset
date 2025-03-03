@@ -11,6 +11,9 @@ TagManager:
   - Statistic
   - QuestActive
   - QuestManager
+  - MaxMapCamera
+  - infoUI
+  - PlayerLoader
   layers:
   - Default
   - TransparentFX
