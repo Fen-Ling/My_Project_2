@@ -27,13 +27,25 @@ public static class SettingsDataManager
         else
         {
             Debug.LogWarning("Файл настроек не найден! Используются настройки по умолчанию.");
-            SettingData = new Settings_Data();
+            DefaultSettings();
         }
         return SettingData;
     }
 
     public static Settings_Data GetCurrentSettings()
     {
+        return SettingData;
+    }
+
+    public static Settings_Data DefaultSettings()
+    {
+        SettingData = new Settings_Data()
+        {
+            volume = 1,
+            width = 600,
+            height = 800,
+            isFullScreen = true,
+        };
         return SettingData;
     }
 }

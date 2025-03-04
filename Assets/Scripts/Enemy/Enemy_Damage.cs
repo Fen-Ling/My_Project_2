@@ -23,6 +23,7 @@ public class Enemy_Damage : MonoBehaviour
         animator = GetComponent<Animator>();
         hitAudioSource = gameObject.AddComponent<AudioSource>();
         hitAudioSource.clip = audioDeath;
+        hitAudioSource.reverbZoneMix = 1f;
         CorHP = MaxHP;
         healthBar.maxValue = CorHP;
         healthBar.value = CorHP;

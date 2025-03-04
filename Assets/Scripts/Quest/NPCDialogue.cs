@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class NPCDialogue : MonoBehaviour
 {
-    public QuestManager dialogueUIManager;
+    public GameObject dialogueUIManager;
     public InputActionAsset inputActions;
     private InputAction m_questAction;
     public int[] questIDs;
@@ -12,6 +12,7 @@ public class NPCDialogue : MonoBehaviour
     void Start()
     {
         m_questAction = inputActions.FindAction("UI/NPSTalk");
+        dialogueUIManager = GameObject.FindWithTag("QuestManager");
      }
 
     private void OnTriggerEnter(Collider other)

@@ -7,7 +7,7 @@ public class QuestNPSTalk : MonoBehaviour
 {
     public InputActionAsset inputActions;
     private InputAction m_questAction;
-    public QuestManager questManager;
+    public GameObject questManager;
     public int[] questID;
     private GameObject activquest;
     public List<GameObject> questctive = new List<GameObject>();
@@ -16,6 +16,7 @@ public class QuestNPSTalk : MonoBehaviour
 
     private void Start()
     {
+        questManager = GameObject.FindWithTag("QuestManager");
         UpdateActiveQuestArray();
         m_questAction = inputActions.FindAction("UI/NPSTalk");
     }
