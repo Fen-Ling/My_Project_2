@@ -8,7 +8,7 @@ public class SwordInStump : MonoBehaviour
     public GameObject Sword;
     public InputActionAsset inputActions;
     private InputAction m_questAction;
-    public QuestManager questManager;
+    public GameObject questManager;
     public int[] questID;
     private GameObject activequest;
     public List<GameObject> questactive = new List<GameObject>();
@@ -17,9 +17,9 @@ public class SwordInStump : MonoBehaviour
 
     void Start()
     {
+        questManager = GameObject.FindWithTag("QuestManager");
         m_questAction = inputActions.FindAction("UI/NPSTalk");
         UpdateActiveQuestArray();
-
     }
 
     private void OnTriggerEnter(Collider other)

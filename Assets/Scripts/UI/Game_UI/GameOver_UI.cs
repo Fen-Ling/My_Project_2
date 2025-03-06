@@ -9,7 +9,7 @@ public class GameOver_UI : MonoBehaviour
     public AudioClip audioGameOver;
     private AudioSource hitAudioSource;
 
-    
+
     private void OnEnable()
     {
         GameOverUI.SetActive(true);
@@ -26,6 +26,8 @@ public class GameOver_UI : MonoBehaviour
     public void GoToMainMenu()
     {
         QuestDataManager.ResetQuestData();
+        var player = GameObject.FindGameObjectWithTag("Player");
+        Destroy(player);
         Destroy(persistentObjects);
         SceneManager.LoadScene(0);
     }
