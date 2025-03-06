@@ -17,7 +17,7 @@ public class Statistic : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerLevel = player.GetComponent<Player_Lvl>();
         playerHealth = player.GetComponent<Player_HP>();
-        killEnemy = player.GetComponentInParent<KillEnemy>();
+        killEnemy = player.GetComponent<KillEnemy>();
 
         UpdateUI();
     }

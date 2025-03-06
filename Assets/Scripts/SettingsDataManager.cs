@@ -42,8 +42,8 @@ public static class SettingsDataManager
         SettingData = new Settings_Data()
         {
             volume = 1,
-            width = 600,
-            height = 800,
+            width = 800,
+            height = 600,
             isFullScreen = true,
         };
         return SettingData;
